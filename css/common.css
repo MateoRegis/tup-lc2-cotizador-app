@@ -151,7 +151,11 @@ p{
 .comentario-content h4{
     margin-bottom: 10px;
 }
+<<<<<<< HEAD
 /* --FOOTER-- */
+=======
+
+>>>>>>> 4037c4f61867a0faf6cf6d561de4dd439300c26b
 footer{
     background-color: var(--color-terciary);
 }
