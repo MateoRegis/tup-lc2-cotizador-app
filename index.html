@@ -9,7 +9,8 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="shortcut icon" href="/img/logo-1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="css/pages/index.css" />
+    <link rel="shortcut icon" href="img/logo-1.jpg" type="image/x-icon" />
   </head>
   <body>
     <header>
@@ -26,24 +27,32 @@
           <div class="menu-container">
             <ul class="menu">
               <li class="menu-item">
-                <a href="index.html"
-                  ><i class="fa-solid fa-house"></i> Inicio</a
-                >
+                <div>
+                  <a href="index.html"
+                    ><i class="fa-solid fa-house"></i> Inicio</a
+                  >
+                </div>
               </li>
               <li class="menu-item">
-                <a href="Miarchivo.html"
-                  ><i class="fa-solid fa-folder-open"></i>Mi Archivo</a
-                >
+                <div>
+                  <a href="Miarchivo.html"
+                    ><i class="fa-solid fa-folder-open"></i>Mi Archivo</a
+                  >
+                </div>
               </li>
               <li class="menu-item">
-                <a href="informes.html"
-                  ><i class="fa-solid fa-file"></i>Informes</a
-                >
+                <div>
+                  <a href="informes.html"
+                    ><i class="fa-solid fa-file"></i>Informes</a
+                  >
+                </div>
               </li>
               <li class="menu-item">
-                <a href="contacto.html"
-                  ><i class="fa-solid fa-address-book"></i>Contáctenos</a
-                >
+                <div>
+                  <a href="contacto.html"
+                    ><i class="fa-solid fa-address-book"></i>Contáctenos</a
+                  >
+                </div>
               </li>
             </ul>
           </div>
@@ -54,12 +63,306 @@
               </div>
               <div class="comentario-content">
                 <h4>Nombre Usuario</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At blanditiis maiores perferen</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                  blanditiis maiores perferen
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="main"></div>
+        <div class="main">
+          <section class="bread-crumb-section">
+            <nav class="bread-crumb-container">
+              <ol class="bread-crumb">
+                <li class="bread-crumb-item-active" aria-current="page">
+                  Inicio
+                </li>
+              </ol>
+            </nav>
+          </section>
+          <section class="pizarra-section">
+            <div class="pizarra-cotizaciones">
+              <div class="cotizaciones-title">
+                <h2>PIZARRA DE COTIZACIONES</h2>
+              </div>
+              <div class="selector-monedas">
+                <div class="selector">
+                  <label for="monedas">Seleccione una moneda: </label>
+                  <select name="monedas" id="monedas">
+                    <option value="todas">TODAS</option>
+                    <option value="dolar-oficial">Dólar Oficial</option>
+                    <option value="dolar-blue">Dólar Blue</option>
+                    <option value="dolar-mep">Dólar Bolsa (MEP)</option>
+                    <option value="dolar-ccl">
+                      Dólar Contado Con Liqui (CCL)
+                    </option>
+                    <option value="dolar-tarjeta">Dólar Tarjeta</option>
+                    <option value="dolar-mayorista">Dólar Mayorista</option>
+                    <option value="dolar-cripto">Dólar Cripto</option>
+                    <option value="euro">Euro</option>
+                    <option value="real">Real Brasileño</option>
+                    <option value="peso-chileno">Peso Chileno</option>
+                    <option value="peso-uruguayo">Peso Uruguayo</option>
+                  </select>
+                </div>
+                <div class="filtrar-monedas">
+                  <button class="btn-filtrar">
+                    <i class="fa-solid fa-filter-circle-dollar"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="fecha-hora"><p>Datos Actualizados al <span>15/04/2024 17:30hs</span></p></div>
+              <div class="monedas">
+                <div class="monedas-container">
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="moneda-container">
+                    <div class="moneda">
+                      <div class="moneda-title"><h4>OFICIAL</h4></div>
+                      <div class="moneda-compra">
+                        <div class="compra">
+                          <h5>COMPRA</h5>
+                          <span>$1500</span>
+                        </div>
+                      </div>
+                      <div class="moneda-venta">
+                        <div class="venta">
+                          <h5>VENTA</h5>
+                          <span>$1700</span>
+                        </div>
+                      </div>   
+                    </div>
+                    <div class="favoritos">
+                      <button class="btn-favorito">
+                        <i class="fa-solid fa-bookmark"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              <div class="aviso-favoritos"><p>!Haga clic en el marcador para guardar los datos de la cotización en sus favoritos.</p><p>Datos obtenidos de <span><a href="https://dolarapi.com/docs">DolarApi.com</a></span></p></div>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
 
