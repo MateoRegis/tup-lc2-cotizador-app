@@ -72,12 +72,10 @@ p{
 }
 .page-container{
     display: grid;
-    /* grid-template-areas: 'sidebar main main main main'
-    'sidebar main main main main'
-    'sidebar main main main main'; */
     grid-template-columns: 300px auto;
 }
 .sidebar {
+    max-width: 300px;
     grid-area: 'sidebar';  
     background-color: var(--color-primary);   
     min-height: max-content;

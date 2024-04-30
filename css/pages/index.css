@@ -1,3 +1,4 @@
+
 h2 {
     font-size: 1.5pc;
     letter-spacing: 2px;
@@ -12,11 +13,13 @@ h5 {
 span {
     font-weight: 300;
 }
+.pizarra-section{
+    padding: 20px;
+}
 .pizarra-cotizaciones {
-    width: 90%;
     border: 2px solid var(--color-grey2);
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
 }
 .cotizaciones-title {
     text-align: center;
@@ -30,7 +33,6 @@ span {
     width: 580px;
     border-radius: 15px;
     justify-content: center;
-    margin-left: 75px;
 }
 label {
     font-size: 18px;
@@ -70,45 +72,43 @@ select {
 .fecha-hora {
     margin-top: 20px;
     text-align: end;
-    width: 90%;
-    
 }
 .fecha-hora p {
     font-size: 20px;
 }
 /* Cajas de precio*/
-.monedas {
+/* .monedas {
     display: flex;
     justify-content: center;
     padding: 10px;
     margin-top: 15px;
-}
+} */
 .monedas-container {
     display: grid;
     grid-template-columns: auto auto ;
     border: 1px solid black;
-    width: 90%;
     border-radius: 40px;
-    padding: 20px;
     background-color: var(--color-primary)
 }
 .moneda-container{
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     padding: 15px;
-    justify-content: center;
 }
-.moneda {
+.moneda-tarjeta {
+   display: flex;
+   align-items: center;
+    
+}
+.moneda{
+    flex: 2;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border: 1px solid black;
     border-radius: 14px;
     padding: 7px;
-    width: 500px;
-    height: 70px;
     margin-right: 10px;
-    
 }
 .btn-favorito {
     width: 40px;
@@ -128,7 +128,6 @@ select {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-    width: 90%;
 }
 .aviso-favoritos p {
     font-size: 16px;
