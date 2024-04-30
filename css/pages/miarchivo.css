@@ -1,0 +1,76 @@
+li , span{
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    list-style: none;
+    margin: 0;
+    height: 30px;
+
+}
+.archivos-section {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+.mi-archivo-container {
+    border: 2px solid blueviolet;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1200px;
+    align-items: center;
+}
+.archivos-grid {
+    display: grid;
+    height: 400px;
+    grid-template-rows: 200px , repeat(3,auto);
+    
+}
+
+.titulo-y-impresora {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.impresora { /* Fixear*/
+    text-align: end;
+    justify-items: end;
+}
+.titulo {
+    background-color: var(--color-terciary);
+    display: grid;
+    grid-template-columns: repeat(5,200px);
+    padding: 10px;
+    text-align: center;
+    max-width: 1000px;
+}
+.content {
+    display: grid;
+    grid-template-rows: repeat(2,auto);
+    overflow-y: scroll;
+}
+.row-fecha {
+    background-color: var(--color-primary);
+    padding: 7px;
+}
+.content-monedas {
+    display: grid;
+    grid-template-columns: repeat( 5,200px);
+    max-width: 1000px;
+}
+.content-monedas-column {
+    border: 1px solid gray;
+    text-align: center;
+    padding: 10px;
+}
+.borrar-cotizacion button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.borrar-cotizacion i {
+    font-size: 20px;
+    color: rgb(223, 88, 88);
+}

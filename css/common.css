@@ -172,6 +172,15 @@ footer{
     color: var(--color-primary);
     font-size: 18px;
 }
+/*Migas de Pan*/
+.bread-crumb {
+    display: flex;
+    margin-left: 30px;
+}
+.bread-crumb li {
+    margin-right: 15px;
+    list-style:square;
+}
 /* --MEDIA QUERIES--*/
 @media screen and (max-width:1024px) {
     .footer-container {
