@@ -1,0 +1,8 @@
+.tabla-cotizaciones {
+    display: grid;
+    grid-auto-rows: minmax(40px,auto);
+}
+.fila-cotizaciones {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
