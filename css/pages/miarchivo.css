@@ -1,153 +1,122 @@
-li , span{
-    font-size: 18px;
-    letter-spacing: 1px;
+.titulos h3{
+    font-size: 1.6pc;
     font-weight: 500;
-    list-style: none;
-    margin: 0;
-    height: 30px;
-
+}
+.cotizaciones p{
+    font-size: 1.2pc;
+    letter-spacing: 1px;
 }
 .archivos-section {
     padding: 30px;
-    display: flex;
-    justify-content: center;
 }
 .mi-archivo-container {
     border: 2px solid blueviolet;
     border-radius: 10px;
     padding: 20px;
+    max-height: 500px;
+}
+.titulo-impresora{
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
 }
-.archivos-grid {
-    display: grid;
-    height: 400px;
-    grid-template-rows: 200px , repeat(3,auto);
-    
+.titulo-archivo{
+    margin: auto;
 }
-
-.titulo-y-impresora {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.titulo-archivo h1{
+    font-size: 3pc;
 }
-.impresora {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: 15%;
+.impresora{
+    width: 40px;
+    height: 40px;
 }
-.impresora img {
+.impresora img{
     width: 100%;
     object-fit: cover;
 }
-.titulo {
-    background-color: var(--color-terciary);
+.cotizaciones-guardadas-container{
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
-    padding: 10px;
-    text-align: center;
+    grid-auto-rows: minmax(40px, auto);
 }
-.content {
+.titulos{
     display: grid;
-    grid-template-rows: repeat(2,auto);
+    grid-template-columns: repeat(5, 1fr);
+    background-color: lightblue;
+    height: 70px;
+    margin-bottom: 10px;
+}
+.titulos>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cotizaciones-guardadas{
+    height: 300px;
     overflow-y: scroll;
 }
-.row-fecha {
-    background-color: var(--color-primary);
-    padding: 7px;
-}
-.content-monedas {
-    display: grid;
-    grid-template-columns: repeat( 5,1fr);
-}
-.content-monedas-column {
-    border: 1px solid gray;
-    text-align: center;
+.fecha{
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    color: blue;
     padding: 10px;
 }
-.borrar-cotizacion button{
-    cursor: pointer;
+.fecha span{
+    margin-left: 10px;
+}
+.cotizaciones{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.cotizaciones>div{
+    text-align: center;
+}
+.cotizaciones-guardadas-column{
+    border: 1px solid lightgray;
+}
+.cotizaciones-guardadas-column ul{
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cotizaciones-guardadas-column ul li{
+    margin-bottom: 5px;
+}
+.moneda p{
+    text-align: start;
+    padding-left: 10px;
+}
+.accion button{
     background-color: transparent;
     border: none;
+    width: 30px;
+    cursor: pointer;
+    margin-bottom: 5px;
 }
-.borrar-cotizacion i {
+.accion button i{
     font-size: 20px;
-    color: rgb(223, 88, 88);
 }
-/* Media Queries*/
-@media screen and (min-width: 1920px) { /* Pantallas con ancho minimo de 1920px*/
-    .mi-archivo-container {
-        width: 1200px; /* Ancho fijo */
-    }
-    .titulo {
-        width: 1000px;
-    }
-}
-@media screen and (min-width: 1440px) and (max-width: 1919px){
-    .mi-archivo-container {
-        max-width: 1200px; /* No superar los 1000px */
-    }
-    .titulo {
-        width: 1000px;
-    }
-}
-/* Para pantallas mayores o iguales a 1024px pero menores que 1920px */
-@media screen and (min-width: 1024px) {
-    .mi-archivo-container {
-        width: 80%; /* Ancho relativo al tamaño de la pantalla */
-        max-width: 1000px; /* No superar los 1000px */
-    }
-    .impresora {
-        width: 40px;
-        height: 40px;
-        right: 8%;
-    }
-    li , span{
-        font-size: 10px;
-        height: 15px;
-    }
-    .titulo-y-impresora h1 {
-        font-size: 30px;
-    }
-    .titulo h2 {
-        font-size: 15px;
+
+@media screen and (max-width: 768px){
+    .titulos h3{
+        font-size: 1pc;
         font-weight: 400;
     }
-}
-/* Para pantallas menores de 1024px */
-@media screen and (max-width: 1023px) {
-    .mi-archivo-container {
-        width: 100%; /* Ocupar todo el ancho disponible */
+    .titulo-archivo h1{
+        font-size: 2.5pc;
     }
-    .impresora {
-        width: 40px;
-        height: 40px;
-        right: 8%;
+    .cotizaciones p{
+        font-size: .8pc;
+        letter-spacing: 1px;
     }
-    li , span{
-        font-size: 10px;
-        height: 15px;
-    }
-    .titulo-y-impresora h1 {
-        font-size: 30px;
-    }
-    .titulo h2 {
-        font-size: 15px;
-        font-weight: 400;
-    }
-}
-@media screen and (max-width:768px) {
-    li , span{
-        font-size: 10px;
-        height: 18px;
-    }
-    .impresora {
-        right: 6%;
-        width: 30px;
-        height: 30px;
+    .fecha span{
+        font-size: .8pc;
     }
 }
