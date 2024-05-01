@@ -79,22 +79,12 @@ li , span{
     color: rgb(223, 88, 88);
 }
 /* Media Queries*/
-/* @media screen and (min-width:1920px) {
-    .mi-archivo-container {
-        width: 1200px;
-    }
-    .titulo {
-        grid-template-columns: repeat(5,1fr);
-        min-width: 1000px;
-    }
-    .content-monedas {
-        grid-template-columns: repeat(5 , 1fr);
-        min-width: 1000px;
-    }
-}   */
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1920px) { /* Pantallas con ancho minimo de 1920px*/
     .mi-archivo-container {
         width: 1200px; /* Ancho fijo */
+    }
+    .titulo {
+        width: 1000px;
     }
 }
 /* Para pantallas mayores o iguales a 1024px pero menores que 1920px */
@@ -105,7 +95,7 @@ li , span{
     }
 }
 /* Para pantallas menores de 1024px */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
     .mi-archivo-container {
         width: 100%; /* Ocupar todo el ancho disponible */
     }
