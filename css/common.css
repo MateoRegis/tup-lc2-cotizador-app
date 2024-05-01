@@ -6,12 +6,30 @@
     font-family: 'Roboto' , sans-serif;
 }
 :root {
-    --color-primary: #FFF3CF;
-    --color-secondary: #C9D7DD;
-    --color-terciary: #637A9F;
-    --color-forth: #E8C872;
-    --color-grey1: #C7C8CC;
-    --color-grey2: #B4B4B8;
+    --color-bright-yellow: #ffeb69;
+    --color-bright-orange: #ffc091;
+    --color-dark-purple: #260a2f;
+    --color-dark-gold: #3a341c;
+    --color-bright-blue: #a0e1e1;
+    --color-dark-charcoal: #21231d;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-bright-green: #9fe870;
+    --color-forest-green: #163300;
+    --color-bright-pink: #ffd7ef;
+    --color-dark-maroon: #320707;
+    --color-content-primary: #9fe870;
+    --color-content-secondary: #e8ebe6;
+    --color-content-tertiary: #d0d5ce;
+    --color-content-link: #9fe870;
+    --color-content-link-hover: #cdffad;
+    --color-content-link-active: #ecffe0;
+    --color-interactive-primary: #9fe870;
+    --color-interactive-accent: #9fe870;
+    --color-interactive-control: #163300;
+    --navigation-background-alpha: rgba(34,61,13,.9);
+    --color-interactive-warning: #df8700;
+    --color-interactive-warning-hover: #c97500;
 }
 header {
     
@@ -54,7 +72,7 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #F1EEDC;
+    color: var(--color-content-primary);
     
 }
 .img-container {
@@ -77,7 +95,7 @@ p{
 .sidebar {
     max-width: 300px;
     grid-area: 'sidebar';  
-    background-color: var(--color-primary);   
+    background-color: var(--color-interactive-accent);   
     min-height: 100%;
     padding-bottom: 20px; 
 }
@@ -97,7 +115,7 @@ p{
 .menu-item {
     margin-bottom: 20px;
     height: 50px;
-    background-color: var(--color-grey2);
+    background-color: var(--color-interactive-control);
     display: flex;
     align-items: center;    
     border-radius: 10px;
@@ -107,7 +125,7 @@ p{
     padding-left: 15px;
 }
 .menu-item a{
-    color: var(--color-terciary);
+    color: var(--color-content-primary);
     text-decoration: none;
     letter-spacing: 3px;
     display: flex;
@@ -151,7 +169,7 @@ p{
 }
 /* --FOOTER-- */
 footer{
-    background-color: var(--color-terciary);
+    background-color: lightgrey;
 }
 .footer-container {
     display: grid;

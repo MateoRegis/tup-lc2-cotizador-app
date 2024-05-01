@@ -13,6 +13,10 @@ h5 {
 span {
     font-weight: 300;
 }
+.main{
+    background-color: var(--color-interactive-control);
+
+}
 .pizarra-section{
     padding: 20px;
 }
@@ -24,9 +28,10 @@ span {
 .cotizaciones-title {
     text-align: center;
     margin-bottom: 20px;
+    color: var(--color-content-primary);
 }
 .selector-monedas { 
-    background-color: var(--color-grey1);
+    background-color: #fff;
     display: flex;
     height: 60px;
     align-items: center;
@@ -67,7 +72,7 @@ select {
     border: none;
     background-color: transparent;
     font-size: 17px;
-    color: hsl(0, 2%, 25%);
+    color: var(--color-interactive-control);
 }
 .fecha-hora {
     margin-top: 20px;
@@ -75,24 +80,16 @@ select {
 }
 .fecha-hora p {
     font-size: 20px;
+    color: var(--color-content-primary);
 }
-/* Cajas de precio*/
-/* .monedas {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    margin-top: 15px;
-} */
 .monedas-container {
     display: grid;
     grid-template-columns: auto auto ;
-    border: 1px solid black;
+    border: 1px solid var(--color-interactive-control);
     border-radius: 40px;
-    background-color: var(--color-primary)
+    background-color: #fff;
 }
 .moneda-container{
-    /* display: flex;
-    align-items: center; */
     padding: 15px;
 }
 .moneda-tarjeta {
@@ -105,10 +102,11 @@ select {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid var(--color-interactive-control);
     border-radius: 14px;
     padding: 7px;
     margin-right: 10px;
+    color: var(--color-interactive-control);
 }
 .btn-favorito {
     width: 40px;
@@ -119,7 +117,7 @@ select {
 }
 .btn-favorito i {
     font-size: 30px;
-    color: #456c84e5;
+    color: var(--color-interactive-control);
 }
 .moneda-title {
     justify-items: flex-start; /* fix*/
@@ -131,6 +129,7 @@ select {
 }
 .aviso-favoritos p {
     font-size: 16px;
+    color: var(--color-content-primary);
 }
 .aviso-favoritos span {
     font-weight: bold;
