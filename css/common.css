@@ -78,7 +78,7 @@ p{
     max-width: 300px;
     grid-area: 'sidebar';  
     background-color: var(--color-primary);   
-    min-height: max-content;
+    min-height: 100%;
     padding-bottom: 20px; 
 }
 .main{

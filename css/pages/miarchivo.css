@@ -74,3 +74,41 @@ li , span{
     font-size: 20px;
     color: rgb(223, 88, 88);
 }
+/* Media Queries*/
+@media screen and (max-width:1030px) {
+    .mi-archivo-container {
+        max-width: 700px;
+    }
+    .titulo {
+        grid-template-columns: repeat(5,1fr);
+        max-width: 700px;
+    }
+    .content-monedas {
+        grid-template-columns: repeat(5 , 1fr);
+        max-width: 700px;
+    }
+    li , span{
+        font-size: 15px;
+        height: 20px;
+    }
+    .titulo-y-impresora h1 {
+        font-size: 35px;
+    }
+    .titulo h2 {
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+@media screen and (max-width:768px) {
+    li , span{
+        font-size: 10px;
+        height: 18px;
+    }
+    .titulo-y-impresora h1 {
+        font-size: 30px;
+    }
+    .titulo h2 {
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
