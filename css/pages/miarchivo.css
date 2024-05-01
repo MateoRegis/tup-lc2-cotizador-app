@@ -35,10 +35,10 @@ li , span{
     justify-content: center;
 }
 .impresora {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    right: 100px;
+    right: 15%;
 }
 .impresora img {
     width: 100%;
@@ -87,23 +87,28 @@ li , span{
         width: 1000px;
     }
 }
+@media screen and (min-width: 1440px) and (max-width: 1919px){
+    .mi-archivo-container {
+        max-width: 1200px; /* No superar los 1000px */
+    }
+    .titulo {
+        width: 1000px;
+    }
+}
 /* Para pantallas mayores o iguales a 1024px pero menores que 1920px */
-@media screen and (min-width: 1024px) and (max-width: 1919px) {
+@media screen and (min-width: 1024px) {
     .mi-archivo-container {
         width: 80%; /* Ancho relativo al tamaño de la pantalla */
         max-width: 1000px; /* No superar los 1000px */
     }
-}
-/* Para pantallas menores de 1024px */
-@media screen and (max-width: 1023px) {
-    .mi-archivo-container {
-        width: 100%; /* Ocupar todo el ancho disponible */
+    .impresora {
+        width: 40px;
+        height: 40px;
+        right: 8%;
     }
-}
-@media screen and (max-width:768px) {
     li , span{
         font-size: 10px;
-        height: 18px;
+        height: 15px;
     }
     .titulo-y-impresora h1 {
         font-size: 30px;
@@ -111,5 +116,38 @@ li , span{
     .titulo h2 {
         font-size: 15px;
         font-weight: 400;
+    }
+}
+/* Para pantallas menores de 1024px */
+@media screen and (max-width: 1023px) {
+    .mi-archivo-container {
+        width: 100%; /* Ocupar todo el ancho disponible */
+    }
+    .impresora {
+        width: 40px;
+        height: 40px;
+        right: 8%;
+    }
+    li , span{
+        font-size: 10px;
+        height: 15px;
+    }
+    .titulo-y-impresora h1 {
+        font-size: 30px;
+    }
+    .titulo h2 {
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
+@media screen and (max-width:768px) {
+    li , span{
+        font-size: 10px;
+        height: 18px;
+    }
+    .impresora {
+        right: 6%;
+        width: 30px;
+        height: 30px;
     }
 }
