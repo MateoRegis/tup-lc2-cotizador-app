@@ -19,7 +19,6 @@ li , span{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    max-width: 1200px;
     align-items: center;
 }
 .archivos-grid {
@@ -41,10 +40,9 @@ li , span{
 .titulo {
     background-color: var(--color-terciary);
     display: grid;
-    grid-template-columns: repeat(5,200px);
+    grid-template-columns: repeat(5,1fr);
     padding: 10px;
     text-align: center;
-    max-width: 1000px;
 }
 .content {
     display: grid;
@@ -57,8 +55,7 @@ li , span{
 }
 .content-monedas {
     display: grid;
-    grid-template-columns: repeat( 5,200px);
-    max-width: 1000px;
+    grid-template-columns: repeat( 5,1fr);
 }
 .content-monedas-column {
     border: 1px solid gray;
@@ -75,7 +72,7 @@ li , span{
     color: rgb(223, 88, 88);
 }
 /* Media Queries*/
-@media screen and (max-width:1030px) {
+/* @media screen and (max-width:1030px) {
     .mi-archivo-container {
         max-width: 700px;
     }
@@ -98,7 +95,7 @@ li , span{
         font-size: 18px;
         font-weight: 400;
     }
-}
+} */
 @media screen and (max-width:768px) {
     li , span{
         font-size: 10px;
