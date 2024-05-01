@@ -20,6 +20,7 @@ li , span{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 .archivos-grid {
     display: grid;
@@ -33,9 +34,15 @@ li , span{
     align-items: center;
     justify-content: center;
 }
-.impresora { /* Fixear*/
-    text-align: end;
-    justify-items: end;
+.impresora {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 100px;
+}
+.impresora img {
+    width: 100%;
+    object-fit: cover;
 }
 .titulo {
     background-color: var(--color-terciary);
@@ -72,30 +79,37 @@ li , span{
     color: rgb(223, 88, 88);
 }
 /* Media Queries*/
-/* @media screen and (max-width:1030px) {
+/* @media screen and (min-width:1920px) {
     .mi-archivo-container {
-        max-width: 700px;
+        width: 1200px;
     }
     .titulo {
         grid-template-columns: repeat(5,1fr);
-        max-width: 700px;
+        min-width: 1000px;
     }
     .content-monedas {
         grid-template-columns: repeat(5 , 1fr);
-        max-width: 700px;
+        min-width: 1000px;
     }
-    li , span{
-        font-size: 15px;
-        height: 20px;
+}   */
+@media screen and (min-width: 1920px) {
+    .mi-archivo-container {
+        width: 1200px; /* Ancho fijo */
     }
-    .titulo-y-impresora h1 {
-        font-size: 35px;
+}
+/* Para pantallas mayores o iguales a 1024px pero menores que 1920px */
+@media screen and (min-width: 1024px) and (max-width: 1919px) {
+    .mi-archivo-container {
+        width: 80%; /* Ancho relativo al tamaño de la pantalla */
+        max-width: 1000px; /* No superar los 1000px */
     }
-    .titulo h2 {
-        font-size: 18px;
-        font-weight: 400;
+}
+/* Para pantallas menores de 1024px */
+@media screen and (max-width: 1024px) {
+    .mi-archivo-container {
+        width: 100%; /* Ocupar todo el ancho disponible */
     }
-} */
+}
 @media screen and (max-width:768px) {
     li , span{
         font-size: 10px;
