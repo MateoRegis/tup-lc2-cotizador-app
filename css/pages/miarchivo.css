@@ -1,6 +1,8 @@
 .titulos h3{
-    font-size: 1.6pc;
-    font-weight: 500;
+    font-size: 1.3pc;
+    font-weight: 400;
+    line-height: 2pc;
+    letter-spacing: 1.7px;
 }
 .cotizaciones p{
     font-size: 1.2pc;
@@ -10,7 +12,7 @@
     padding: 30px;
 }
 .mi-archivo-container {
-    border: 2px solid blueviolet;
+    border: 2px solid var(--color-forest-green);
     border-radius: 10px;
     padding: 20px;
     max-height: 500px;
@@ -25,7 +27,7 @@
     margin: auto;
 }
 .titulo-archivo h1{
-    font-size: 3pc;
+    font-size: 2pc;
 }
 .impresora{
     width: 40px;
@@ -43,7 +45,8 @@
 .titulos{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    background-color: lightblue;
+    border: 1px solid var(--color-forest-green);
+    border-radius: 10px;
     height: 70px;
     margin-bottom: 10px;
 }
@@ -92,6 +95,17 @@
 .moneda p{
     text-align: start;
     padding-left: 10px;
+}
+.moneda li {
+    display: flex;
+    gap: 13px;
+}
+.flag-container {
+    width: 30px;
+}
+.flag-container img{
+    width: 100%;
+    object-fit: cover;
 }
 .accion button{
     background-color: transparent;

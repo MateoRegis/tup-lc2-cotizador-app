@@ -3,7 +3,7 @@
     padding: 30px;
 }
 .tablero-cotizaciones {
-    border: 1px solid green;
+    border: 1px solid var(--color-forest-green);
     border-radius: 10px;
     padding: 20px;
 }
@@ -94,6 +94,7 @@ select {
     margin-bottom: 10px;
     text-align: center;
     border: 1px solid var(--color-interactive-control);
+    border-radius: 10px;
 }
 .encabezado div{
     display: flex;
@@ -106,6 +107,14 @@ select {
     background-color: lightgray;
     color: blue;
     padding: 10px;
+    gap: 13px;
+}
+.flag-container {
+    width: 30px;
+}
+.flag-container img{
+    width: 100%;
+    object-fit: cover;
 }
 .fila-datos{
     display: grid;
@@ -127,6 +136,12 @@ select {
 }
 .columna-datos li{
     margin-bottom: 5px;
+}
+.cambio-positivo {
+    color: green;
+}
+.cambio-negativo {
+    color: red;
 }
 .fila-datos p{
     font-size: 1.2pc;
