@@ -1,3 +1,59 @@
+.informes-section {
+    padding: 30px;
+}
+.tablero-cotizaciones {
+    border: 1px solid green;
+}
+.grafico-selector {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0px 20px 0px;
+    align-content: center;
+}
+
+.img-grafico-container {
+    width: 400px;
+    height: 250px;
+}
+.img-grafico-container img {
+    width: 100%;
+    object-fit: cover;
+    
+}
+.icono-selector {
+    display: flex;
+}
+.selector-moneda {
+    border: 1px solid green;
+    padding: 20px;
+    background-color: var(--color-interactive-primary);
+    width: 400px;
+    border-radius: 15px;
+    height: 100px;
+    margin: auto;
+}
+select {
+    border-radius: 7px;
+    width: 270px;
+    height: 28px;
+    padding: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    outline-style: none;
+}
+
+.filtrar-monedas {
+    margin-left: 10px;
+}
+.btn-filtrar {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 17px;
+    color: var(--color-interactive-control);
+}
 .tabla-cotizaciones {
     display: grid;
     grid-auto-rows: minmax(40px,auto);
@@ -6,3 +62,4 @@
     display: grid;
     grid-template-columns: repeat(5,1fr);
 }
+

@@ -16,7 +16,7 @@
     <header>
       <div class="img-background">
         <div class="img-container">
-          <img src="img/logo-1.png" alt="Logo web" />
+          <img src="img/logo-2.jpg" alt="Logo web" />
         </div>
         <div class="title"><h1>Cotizador de Monedas</h1></div>
       </div>
@@ -80,33 +80,48 @@
                 <li class="bread-crumb-item-active" aria-current="page">
                   Inicio
                 </li>
+                <li class="bread-crumb-item-active" aria-current="page">
+                  Informe
+                </li>
               </ol>
             </nav>
           </section>
           <section class="informes-section">
             <div class="tablero-cotizaciones">
-              <div class="selector-moneda">
-                <label for="moneda">Seleccione una moneda:</label>
-                <div class="icono-selector">
-                  <select id="moneda">
-                    <option value="dolar-oficial">Dólar Oficial</option>
-                    <option value="dolar-blue">Dólar Blue</option>
-                    <option value="dolar-mep">Dólar Bolsa (MEP)</option>
-                    <option value="dolar-ccl">
-                      Dólar Contado Con Liqui (CCL)
-                    </option>
-                    <option value="dolar-tarjeta">Dólar Tarjeta</option>
-                    <option value="dolar-mayorista">Dólar Mayorista</option>
-                    <option value="dolar-cripto">Dólar Cripto</option>
-                    <option value="euro">Euro</option>
-                    <option value="real">Real Brasileño</option>
-                    <option value="peso-chileno">Peso Chileno</option>
-                    <option value="peso-uruguayo">Peso Uruguayo</option>
-                  </select>
-                  <i class="fa-solid fa-angle-down"></i>
+              <div class="grafico-selector">
+                <div class="selector-moneda">
+                  <label for="moneda">Seleccione una moneda:</label>
+                  <div class="icono-selector">
+                    <select id="moneda">
+                      <option value="dolar-oficial">Dólar Oficial</option>
+                      <option value="dolar-blue">Dólar Blue</option>
+                      <option value="dolar-mep">Dólar Bolsa (MEP)</option>
+                      <option value="dolar-ccl">
+                        Dólar Contado Con Liqui (CCL)
+                      </option>
+                      <option value="dolar-tarjeta">Dólar Tarjeta</option>
+                      <option value="dolar-mayorista">Dólar Mayorista</option>
+                      <option value="dolar-cripto">Dólar Cripto</option>
+                      <option value="euro">Euro</option>
+                      <option value="real">Real Brasileño</option>
+                      <option value="peso-chileno">Peso Chileno</option>
+                      <option value="peso-uruguayo">Peso Uruguayo</option>
+                    </select>
+                    <div class="filtrar-monedas">
+                      <button class="btn-filtrar">
+                        <i class="fa-solid fa-filter-circle-dollar"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="grafico-cotizacion">
+                  <!-- Gráfico  -->
+                  <h3>Informe</h3>
+                  <div class="img-grafico-container">
+                    <img src="img/grafico.jpg" alt="Gráfico de cotización" />
+                  </div>
                 </div>
               </div>
-
               <div class="compartir-info">
                 <a href="#">
                   <i class="fa-solid fa-envelope"></i> Compartir Información
@@ -114,12 +129,6 @@
               </div>
 
               <div class="datos-moneda">
-                <h2>Informe:</h2>
-                <div class="grafico-cotizacion">
-                  <!-- Gráfico  -->
-                  <img src="#" alt="Gráfico de cotización" />
-                </div>
-
                 <div class="tabla-cotizaciones">
                   <div class="encabezado fila-cotizaciones">
                     <div>Moneda</div>

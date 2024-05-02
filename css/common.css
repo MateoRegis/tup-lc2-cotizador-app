@@ -31,10 +31,9 @@
     --color-interactive-warning: #df8700;
     --color-interactive-warning-hover: #c97500;
 }
-header {
-    
+header { 
     width: 100%;
-    height: 300px;
+    height: 1000px;
 }
 ul {
     list-style: none;
@@ -72,7 +71,7 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-content-primary);
+    color: var(--color-black);
     
 }
 .img-container {
