@@ -1,16 +1,24 @@
+
 .informes-section {
     padding: 30px;
 }
 .tablero-cotizaciones {
     border: 1px solid green;
+    border-radius: 10px;
+    padding: 20px;
 }
 .grafico-selector {
+    width: 100%;
     display: flex;
     justify-content: space-around;
     margin: 50px 0px 20px 0px;
-    align-content: center;
+    align-items: center;
 }
-
+.grafico-cotizacion h3{
+    font-size: 2pc;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
 .img-grafico-container {
     width: 400px;
     height: 250px;
@@ -24,22 +32,25 @@
     display: flex;
 }
 .selector-moneda {
-    border: 1px solid green;
+    border: 1px solid var(--color-interactive-control);
     padding: 20px;
     background-color: var(--color-interactive-primary);
-    width: 400px;
+    width: 350px;
     border-radius: 15px;
     height: 100px;
-    margin: auto;
+}
+.selector-moneda label{
+    font-size: 1.2pc;
 }
 select {
     border-radius: 7px;
     width: 270px;
-    height: 28px;
+    height: 32px;
     padding: 4px;
     font-size: 16px;
     cursor: pointer;
     outline-style: none;
+    font-size: 1.1pc;
 }
 
 .filtrar-monedas {
@@ -54,12 +65,70 @@ select {
     font-size: 17px;
     color: var(--color-interactive-control);
 }
+.compartir-info{
+    width: 200px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+.compartir-info a{
+    font-size: 1pc;
+    text-decoration: underline;
+    color: var(--color-interactive-control);
+}
+.datos-moneda{
+    width: 100%;
+}
 .tabla-cotizaciones {
+    width: 100%;
     display: grid;
     grid-auto-rows: minmax(40px,auto);
 }
-.fila-cotizaciones {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
+.informe-cotizaciones {
+    height: 300px;
+    overflow-y: scroll;
 }
-
+.encabezado{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 70px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: 1px solid var(--color-interactive-control);
+}
+.encabezado div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fila-tipo-moneda{
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    color: blue;
+    padding: 10px;
+}
+.fila-datos{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.columna-datos{
+    border: 1px solid lightgray;
+    text-align: center;
+}
+.columna-datos ul{
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.columna-datos li{
+    margin-bottom: 5px;
+}
+.fila-datos p{
+    font-size: 1.2pc;
+    letter-spacing: 1px;
+}
