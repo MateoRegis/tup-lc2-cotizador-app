@@ -39,10 +39,12 @@ ul {
     list-style: none;
 }
 h1 {
-    font-size: 3.5pc;
-    font-weight: 400;
-    line-height: 5pc;
-    letter-spacing: 5px;
+    font-size: 6.5pc;
+    font-weight: 500;
+    /* line-height: 3pc; */
+    letter-spacing: 7px;
+    /* text-shadow: 4px 3px 0 #7A7A7A; */
+    text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
 }
 h3 {
     font-size: 1.3pc;
@@ -51,8 +53,15 @@ h3 {
     letter-spacing: 1.7px;
 }
 h4 {
+    font-size: 1.3pc;
     font-weight: 550;
     letter-spacing: 1.1px;
+}
+h5{
+    font-size: 18px;
+}
+.moneda body span{
+    font-size: 14px;
 }
 a {
     text-decoration: none;
@@ -75,8 +84,8 @@ p{
     
 }
 .img-container {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow:hidden;
     background-color: beige;

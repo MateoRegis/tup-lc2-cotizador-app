@@ -13,10 +13,6 @@ h5 {
 span {
     font-weight: 300;
 }
-.main{
-    background-color: var(--color-interactive-control);
-
-}
 .pizarra-section{
     padding: 20px;
 }
@@ -28,7 +24,7 @@ span {
 .cotizaciones-title {
     text-align: center;
     margin-bottom: 20px;
-    color: var(--color-content-primary);
+    color: var(--color-interactive-control);
 }
 .selector-monedas { 
     background-color: #fff;
@@ -38,13 +34,11 @@ span {
     width: 580px;
     border-radius: 15px;
     justify-content: center;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1);
 }
 label {
     font-size: 18px;
     letter-spacing: 1.25px;
-}
-.selector-monedas:hover {
-    box-shadow: 3px 3px 3px 3px hsla(180, 1%, 22%, 0.658);
 }
 .selector {
     display: grid;
@@ -84,32 +78,51 @@ select {
 }
 .monedas-container {
     display: grid;
-    grid-template-columns: auto auto ;
+    grid-template-columns: auto auto auto;
     border: 1px solid var(--color-interactive-control);
     border-radius: 40px;
     background-color: #fff;
+    padding: 20px;
 }
 .moneda-container{
     padding: 15px;
 }
-.moneda-tarjeta {
-    display: flex;
-    align-items: center;
+.moneda-card{
+    border-radius: 15px;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1);
 }
-.moneda{
-    flex: 2;
+
+
+.moneda-title {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+.moneda-body{
     display: flex;
     justify-content: space-around;
+    height: 50px;
+}
+.moneda-footer{
+    display: flex;
+    justify-content: center;
+}
+.favoritos{
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    border: 1px solid var(--color-interactive-control);
-    border-radius: 14px;
-    padding: 7px;
-    margin-right: 10px;
-    color: var(--color-interactive-control);
+    background-color: var(--color-interactive-accent);
+    cursor: pointer;
+
 }
 .btn-favorito {
-    width: 40px;
-    height: 40px;
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -118,8 +131,13 @@ select {
     font-size: 30px;
     color: var(--color-interactive-control);
 }
-.moneda-title {
-    justify-items: flex-start; /* fix*/
+.flag-container{
+    width: 24px;
+    height: 24px;
+}
+.flag-container img{
+    width: 100%;
+    object-fit: cover;
 }
 .aviso-favoritos {
     display: flex;

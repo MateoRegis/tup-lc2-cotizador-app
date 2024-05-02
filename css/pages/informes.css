@@ -109,8 +109,9 @@ select {
     padding: 10px;
     gap: 13px;
 }
-.flag-container {
-    width: 30px;
+.flag-container{
+    width: 24px;
+    height: 24px;
 }
 .flag-container img{
     width: 100%;
