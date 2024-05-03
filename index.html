@@ -24,14 +24,14 @@
           </li>
           <li>
             <a href="Miarchivo.html"
-              ><i class="fa-solid fa-folder-open"></i>Mi Archivo</a
+              ><i class="fa-solid fa-folder-open"></i> Mi Archivo</a
             >
           </li>
           <li>
-            <a href="informes.html"><i class="fa-solid fa-file"></i>Informes</a>
+            <a href="informes.html"><i class="fa-solid fa-file"></i> Informes</a>
           </li>
           <li>
-            <a href="contacto.html"><i class="fa-solid fa-address-book"></i>Contáctenos</a>
+            <a href="contacto.html"><i class="fa-solid fa-address-book"></i> Contáctenos</a>
           </li>
         </ul>
       </div>
@@ -66,29 +66,17 @@
               <div class="cotizaciones-title">
                 <h2>PIZARRA DE COTIZACIONES</h2>
               </div>
-              <div class="selector-monedas">
-                <div class="selector">
-                  <label for="monedas">Seleccione una moneda: </label>
-                  <select name="monedas" id="monedas">
-                    <option value="todas">TODAS</option>
-                    <option value="dolar-oficial">Dólar Oficial</option>
-                    <option value="dolar-blue">Dólar Blue</option>
-                    <option value="dolar-mep">Dólar Bolsa (MEP)</option>
-                    <option value="dolar-ccl">
-                      Dólar Contado Con Liqui (CCL)
-                    </option>
-                    <option value="dolar-tarjeta">Dólar Tarjeta</option>
-                    <option value="dolar-mayorista">Dólar Mayorista</option>
-                    <option value="dolar-cripto">Dólar Cripto</option>
-                    <option value="euro">Euro</option>
-                    <option value="real">Real Brasileño</option>
-                    <option value="peso-chileno">Peso Chileno</option>
-                    <option value="peso-uruguayo">Peso Uruguayo</option>
-                  </select>
+              <div class="selector-monedas-container">
+                <div class="nombre-bandera">
+                  <div class="flag">
+                    <img src="img/eur.svg" alt="">
+                  </div>
+                  <div class="nombre">Euro</div>
                 </div>
-                <div class="filtrar-monedas">
-                  <button class="btn-filtrar">
-                    <i class="fa-solid fa-filter-circle-dollar"></i>
+                <input type="text" class="selector-moneda" value="Euro">
+                <div class="selector-moneda-btn-container">
+                  <button class="btn-selector-moneda">
+                    <div class="icono-selector"><i class="fa-solid fa-chevron-down"></i></div>
                   </button>
                 </div>
               </div>

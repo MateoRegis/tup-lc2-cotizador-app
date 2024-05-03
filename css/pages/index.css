@@ -18,7 +18,7 @@ span {
 }
 .pizarra-cotizaciones {
     border: 2px solid var(--color-grey2);
-    border-radius: 15px;
+    border-radius: 4px;
     padding: 20px;
 }
 .cotizaciones-title {
@@ -26,54 +26,75 @@ span {
     margin-bottom: 20px;
     color: var(--color-interactive-control);
 }
-.selector-monedas { 
-    background-color: #fff;
+.selector-monedas-container{
+    width: 300px;
     display: flex;
-    height: 60px;
     align-items: center;
-    width: 580px;
-    border-radius: 15px;
+    border-radius: 4px;
+    padding: 15px;
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+}
+.nombre-bandera{
+    padding-left: 8px;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1);
 }
-label {
-    font-size: 18px;
-    letter-spacing: 1.25px;
-}
-.selector {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px;
+.flag{
+    width: 35px;
+    height: 100%;
+    display: flex;
     align-items: center;
-   
-    height: 100px;
+    justify-content: center;
 }
-.selector-monedas{
-    border: 1px solid var(--color-interactive-control);
-    padding: 10px;
-    background-color: var(--color-interactive-primary);
-    border-radius: 15px;
+.flag img{
+    width: 100%;
+    object-fit: cover;
 }
-select {
-    border-radius: 7px;
-    width: 270px;
-    height: 28px;
-    padding: 4px;
-    font-size: 16px;
+.nombre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.selector-moneda{
+    padding-left: 12px;
+    padding: 9.5px 4px;
+    min-width: 30px;
+    opacity: 1;
+    border: 0;
+    font-size: 1rem;
+    margin-right: 5px;
+}
+.btn-selector-moneda{
+    border: 0;
     cursor: pointer;
-    outline-style: none;
-}
-.filtrar-monedas {
-    margin-left: 10px;
-}
-.btn-filtrar {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    border: none;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    border-radius: 0;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
     background-color: transparent;
-    font-size: 17px;
-    color: var(--color-interactive-control);
+    font-size: 1.5rem;
+    text-align: center;
+}
+.icono-selector{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icono-selector i{
+    font-size: 1.2rem;
 }
 .fecha-hora {
     margin-top: 20px;
@@ -86,10 +107,11 @@ select {
 .monedas-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    border: 1px solid var(--color-interactive-control);
     border-radius: 40px;
     background-color: #fff;
     padding: 20px;
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
 }
 .moneda-container{
     padding: 15px;
@@ -97,9 +119,11 @@ select {
 .moneda-card{
     border-radius: 15px;
     /* box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1); */
-    box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
+    /* box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75); */
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
 }
 
 
@@ -179,9 +203,11 @@ select {
 }
 .comentario {
     /* box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1); */
-    box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
+    /* box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75); */
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
     width: 200px;
     border-radius: 10px;
 }
