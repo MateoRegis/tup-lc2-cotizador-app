@@ -28,7 +28,6 @@ textarea {
   width: max-content;
   margin: auto;
   border-radius: 15px;
-
 }
 .contacto-web-seccion h1 {
   font-size: 2pc;
@@ -125,4 +124,86 @@ textarea {
   content: ">";
   padding: 0 8px;
   color: #000;
+}
+
+@media screen and (max-width:768px){
+  .form-grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width:460px){
+  .form-container {
+    width: 300px;
+    margin: auto;
+  }
+  .form-grid{
+    display: block;
+    width: 200px;
+    margin: auto;
+  }
+  .row-form{
+    display: block;
+  }
+  .datos-contacto {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+  }
+  .contacto-web-seccion {
+    padding: 30px;
+  }
+  .contacto-web-seccion h1 {
+    font-size: 1.5pc;
+  }
+}
+@media screen and (max-width:380px) {
+  .form-container {
+    width: 260px;
+  }
+  .datos-contacto {
+    width: 280px;
+  }
+  .contacto-web-seccion {
+    padding: 20px;
+  }
+  .contacto-web-seccion h1 {
+    font-size: 1.3pc;
+  }
+  .datos-container {
+    flex-direction: column;
+  }
+  .datos-container-img {
+    width: 100px;
+  }
+}
+@media screen and (max-width:325px) {
+  .form-container {
+    width: 200px;
+  }
+  .datos-contacto {
+    width: 220px;
+    justify-content: center;
+  }
+  .contacto-web-seccion {
+    padding: 12px;
+  }
+  .contacto-web-seccion h1 {
+    font-size: 1.1pc;
+  }
+  .datos-container {
+    flex-direction: column;
+  }
+  .datos-container-img {
+    width: 70px;
+  }
+  .row-buttons {
+    flex-direction: column;
+  }
+  input {
+    width: 150px;
+  }
+  textarea {
+    width: 150px;
+  }
 }

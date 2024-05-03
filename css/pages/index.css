@@ -102,7 +102,7 @@ span {
 }
 .fecha-hora p {
     font-size: 20px;
-    color: var(--color-content-primary);
+    color: var(--color-interactive-control);
 }
 .monedas-container {
     display: grid;
@@ -180,7 +180,7 @@ span {
 }
 .aviso-favoritos p {
     font-size: 16px;
-    color: var(--color-content-primary);
+    color: var(--color-interactive-control);
 }
 .aviso-favoritos span {
     font-weight: bold;
@@ -234,4 +234,38 @@ span {
 }
 .comentario-content h4{
     margin-bottom: 10px;
+}
+@media screen and (max-width:768px){
+    .comentarios-container {
+        grid-template-columns: repeat(3 , 1fr);
+    }
+    
+}
+@media screen and (max-width:430px) {
+    .cotizaciones-title h2 {
+        font-size: 22px;
+    }
+    .monedas-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .comentarios-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fecha-hora {
+        text-align: start;
+    }
+    .fecha-hora p {
+        font-size: 18px;
+    }
+    .aviso-favoritos {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+@media screen and (max-width:325px){
+    .selector-monedas-container {
+        width: 250px;
+    }
 }

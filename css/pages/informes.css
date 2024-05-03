@@ -187,3 +187,15 @@
     padding: 0 8px;
     color: #000;
 }
+@media screen and (max-width:768px){
+    .img-grafico-container {
+        width: 300px;
+        height: 200px;
+    }
+}
+@media screen and (max-width:430px) {
+    .grafico-selector {
+        flex-wrap: wrap;
+    }
+    
+}
