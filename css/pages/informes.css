@@ -181,3 +181,9 @@
     font-size: 1.2pc;
     letter-spacing: 1px;
 }
+
+.bread-crumb-item-active::before{
+    content: ">";
+    padding: 0 8px;
+    color: #000;
+}
