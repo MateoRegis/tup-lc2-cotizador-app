@@ -14,66 +14,42 @@
   </head>
   <body>
     <header>
-      <div class="img-background">
-        <div class="img-container">
-          <img src="img/logo-2.jpg" alt="Logo web" />
-        </div>
-        <div class="title"><h1>BullCoin</h1></div>
+      <div id="menu">
+        <a href="index.html"><img src="img/logo-2.jpg" alt="" /></a>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+          </li>
+          <li>
+            <a href="Miarchivo.html"
+              ><i class="fa-solid fa-folder-open"></i>Mi Archivo</a
+            >
+          </li>
+          <li>
+            <a href="informes.html"><i class="fa-solid fa-file"></i>Informes</a>
+          </li>
+          <li>
+            <a href="contacto.html"><i class="fa-solid fa-address-book"></i>Contáctenos</a>
+          </li>
+        </ul>
       </div>
+      <!-- <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button> -->
     </header>
+
+    <!-- <header>
+      
+    </header> -->
     <div class="page-container">
-      <aside>
-        <div class="sidebar">
-          <div class="menu-container">
-            <ul class="menu">
-              <li class="menu-item">
-                <div>
-                  <a href="index.html"
-                    ><i class="fa-solid fa-house"></i> Inicio</a
-                  >
-                </div>
-              </li>
-              <li class="menu-item">
-                <div>
-                  <a href="Miarchivo.html"
-                    ><i class="fa-solid fa-folder-open"></i>Mi Archivo</a
-                  >
-                </div>
-              </li>
-              <li class="menu-item">
-                <div>
-                  <a href="informes.html"
-                    ><i class="fa-solid fa-file"></i>Informes</a
-                  >
-                </div>
-              </li>
-              <li class="menu-item">
-                <div>
-                  <a href="contacto.html"
-                    ><i class="fa-solid fa-address-book"></i>Contáctenos</a
-                  >
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="comentarios-container">
-            <div class="comentario">
-              <div class="comentario-img">
-                <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
-              </div>
-              <div class="comentario-content">
-                <h4>Nombre Usuario</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                  blanditiis maiores perferen
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
       <main>
         <div class="main">
+          <section class="img-background-section">
+            <div class="img-background">
+              <div class="img-container">
+                <img src="img/logo-2.jpg" alt="Logo web" />
+              </div>
+              <div class="title"><h1>BullCoin</h1></div>
+            </div>
+          </section>
           <section class="bread-crumb-section">
             <nav class="bread-crumb-container">
               <ol class="bread-crumb">
@@ -123,7 +99,7 @@
                   <div class="moneda-card">
                     <div class="moneda-title">
                       <div class="flag-container">
-                        <img src="img/usd.svg" alt="dolar">
+                        <img src="img/usd.svg" alt="dolar" />
                       </div>
                       <h4>Dólar Blue</h4>
                     </div>
@@ -155,7 +131,7 @@
                   <div class="moneda-card">
                     <div class="moneda-title">
                       <div class="flag-container">
-                        <img src="img/usd.svg" alt="dolar">
+                        <img src="img/usd.svg" alt="dolar" />
                       </div>
                       <h4>Dólar Blue</h4>
                     </div>
@@ -187,7 +163,7 @@
                   <div class="moneda-card">
                     <div class="moneda-title">
                       <div class="flag-container">
-                        <img src="img/eur.svg" alt="dolar">
+                        <img src="img/eur.svg" alt="dolar" />
                       </div>
                       <h4>Euro</h4>
                     </div>
@@ -219,7 +195,7 @@
                   <div class="moneda-card">
                     <div class="moneda-title">
                       <div class="flag-container">
-                        <img src="img/usd.svg" alt="dolar">
+                        <img src="img/usd.svg" alt="dolar" />
                       </div>
                       <h4>Dólar Blue</h4>
                     </div>
@@ -251,7 +227,7 @@
                   <div class="moneda-card">
                     <div class="moneda-title">
                       <div class="flag-container">
-                        <img src="img/eur.svg" alt="dolar">
+                        <img src="img/eur.svg" alt="dolar" />
                       </div>
                       <h4>Euro</h4>
                     </div>
@@ -283,7 +259,7 @@
                   <div class="moneda-card">
                     <div class="moneda-title">
                       <div class="flag-container">
-                        <img src="img/usd.svg" alt="dolar">
+                        <img src="img/usd.svg" alt="dolar" />
                       </div>
                       <h4>Dólar Blue</h4>
                     </div>
@@ -311,15 +287,6 @@
                     </div>
                   </div>
                 </div>
-                
-               
-                
-                
-                
-               
-                
-                
-                
               </div>
               <div class="aviso-favoritos">
                 <p>
@@ -332,6 +299,67 @@
                     ><a href="https://dolarapi.com/docs">DolarApi.com</a></span
                   >
                 </p>
+              </div>
+            </div>
+          </section>
+          <section class="comentarios-section">
+            <h2>Comentarios</h2>
+            <div class="comentarios-container">
+              <div class="comentario">
+                <div class="comentario-header">
+                  <div class="comentario-img-container">
+                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
+                  </div>
+                </div>
+                <div class="comentario-body">
+                  <h4>Nombre Usuario</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    blanditiis maiores perferen
+                  </p>
+                </div>
+              </div>
+              <div class="comentario">
+                <div class="comentario-header">
+                  <div class="comentario-img-container">
+                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
+                  </div>
+                </div>
+                <div class="comentario-body">
+                  <h4>Nombre Usuario</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    blanditiis maiores perferen
+                  </p>
+                </div>
+              </div>
+              <div class="comentario">
+                <div class="comentario-header">
+                  <div class="comentario-img-container">
+                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
+                  </div>
+                </div>
+                <div class="comentario-body">
+                  <h4>Nombre Usuario</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    blanditiis maiores perferen
+                  </p>
+                </div>
+              </div>
+              <div class="comentario">
+                <div class="comentario-header">
+                  <div class="comentario-img-container">
+                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
+                  </div>
+                </div>
+                <div class="comentario-body">
+                  <h4>Nombre Usuario</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    blanditiis maiores perferen
+                  </p>
+                </div>
               </div>
             </div>
           </section>

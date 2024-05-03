@@ -31,9 +31,44 @@
     --color-interactive-warning: #df8700;
     --color-interactive-warning-hover: #c97500;
 }
-header { 
+header {
     width: 100%;
-    height: 100vh;
+    z-index: 2000;
+    background-color: var(--color-interactive-control);
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+#menu {
+    display: flex;
+    justify-content: space-around;
+    padding: 26px;
+    left: 0px;
+}
+/* Logo */
+#menu img {
+    width: 100%;
+    height: 38px;
+}
+
+/* Menu */
+#menu ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+#menu a {
+    padding: 10px 0px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: .25s;
+
+}
+
+#menu a:hover {
+    border-color: #ffffff;
 }
 ul {
     list-style: none;
@@ -76,7 +111,7 @@ p{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,10 +131,10 @@ p{
     width: 100%;
     border-radius: 50%;
 }
-.page-container{
+/* .page-container{
     display: grid;
     grid-template-columns: 300px auto;
-}
+} */
 .sidebar {
     max-width: 300px;
     grid-area: 'sidebar';  
@@ -143,32 +178,43 @@ p{
     padding: 10px; 
     border-radius: 7px; 
 }  */  
-
+.comentarios-section{
+    width: 100%;
+    height: 100%;
+}
+.comentarios-section h2{
+    text-align: center;
+}
 .comentarios-container{
-    width: 260px;
-    height: 200px;
-    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
     padding: 20px;
-    border-radius: 20px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    
+    gap: 15px;
+    place-content: center;
 }
 .comentario {
-    display: flex;
-    justify-content: space-evenly;
+    border: 1px solid black;
+    width: 200px;
+    border-radius: 10px;
 }
-.comentario-img{
-    width: 140px;
-    height: 140px;
+.comentario-header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comentario-img-container{
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
-.comentario-img img{
+.comentario-header img{
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
-.comentario-content {
+.comentario-body {
     padding: 10px;
     margin-left: 5px;
 }
