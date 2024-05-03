@@ -10,6 +10,7 @@
     ></script>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="shortcut icon" href="/img/logo-1.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="css/pages/contacto.css" />
   </head>
   <body>
     <!-- <header>
@@ -20,6 +21,7 @@
         <div class="title"><h1>Cotizador de Monedas</h1></div>
       </div>
     </header> -->
+
     <div class="page-container">
       <aside>
         <div class="sidebar">
@@ -35,21 +37,21 @@
               <li class="menu-item">
                 <div>
                   <a href="Miarchivo.html"
-                    ><i class="fa-solid fa-folder-open"></i>Mi Archivo</a
+                    ><i class="fa-solid fa-folder-open"></i> Mi Archivo</a
                   >
                 </div>
               </li>
               <li class="menu-item">
                 <div>
                   <a href="informes.html"
-                    ><i class="fa-solid fa-file"></i>Informes</a
+                    ><i class="fa-solid fa-file"></i> Informes</a
                   >
                 </div>
               </li>
               <li class="menu-item">
                 <div>
                   <a href="contacto.html"
-                    ><i class="fa-solid fa-address-book"></i>Contáctenos</a
+                    ><i class="fa-solid fa-address-book"></i> Contáctenos</a
                   >
                 </div>
               </li>
@@ -82,75 +84,132 @@
               </ol>
             </nav>
           </section>
+          <!-- Esto va abajo de la section del migas de pan -->
+          <section class="form-section">
+            <div class="contacto-web-seccion">
+              <h1>Contacto Web Cotizaciones</h1>
+              <div class="form-grid-container">
+                <div class="form-container">
+                  <form class="formulario">
+                    <div>
+                      <label for="nombre">Nombre:</label>
+                      <input type="text" id="nombre" name="nombre" />
+                    </div>
+                    <div>
+                      <label for="email">Email:</label>
+                      <input type="email" id="email" name="email" />
+                    </div>
+
+                    <div>
+                      <label for="mensaje">Mensaje:</label>
+                      <textarea id="mensaje" name="mensaje"></textarea>
+                    </div>
+                    <div>
+                      <button type="submit">Enviar</button>
+                      <button type="reset">Limpiar</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="datos-contacto">
+                  <div class="text-content">
+                    <p>
+                      Si tiene alguna sugerencia o inconveniente por favor
+                      complete el siguiente formulario y envíenoslo. Lo
+                      contactaremos a la brevedad.
+                    </p>
+                    <p>
+                      Esta web está desarrollada utilizando
+                      <a href="https://dolarapi.com/">https://dolarapi.com/</a>
+                    </p>
+                  </div>
+
+                  <div class="datos-container">
+                    <div class="datos-container-content">
+                      <h3>Universidad Tecnológica Nacional</h3>
+                      <p>ZEBALLOS 1341 - S2000BQA</p>
+                      <p>ROSARIO</p>
+                      <p>Tel: 0341 - 4481871</p>
+                    </div>
+                    <div class="datos-container-img">
+                      <img src="img/logo-utn-siglas.png" alt="">
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
     </div>
-      <footer>
-        <div class="footer-container">
-          <div class="institucional-container item-footer">
-            <h3>INSTITUCIONAL</h3>
-            <ul class="lista-institucional">
-              <li class="lista-institucional-item">
-                <a href="">¿Quiénes Somos?</a>
-              </li>
-              <li class="lista-institucional-item">
-                <a href="">Socios Estratégicos</a>
-              </li>
-              <li class="lista-institucional-item">
-                <a href="">Trabaje con Nosotros</a>
-              </li>
-              <li class="lista-institucional-item"><a href="">Ayuda</a></li>
-            </ul>
-          </div>
-          <div class="accesos-container item-footer">
-            <h3>ACCESOS</h3>
-            <ul class="lista-accesos">
-              <li class="lista-accesos-item"><a href="index.html">Inicio</a></li>
-              <li class="lista-accesos-item">
-                <a href="Miarchivo.html">Mi Archivo</a>
-              </li>
-              <li class="lista-accesos-item">
-                <a href="informes.html">Informes</a>
-              </li>
-              <li class="lista-accesos-item">
-                <a href="contacto.html">Contáctenos</a>
-              </li>
-            </ul>
-          </div>
-          <div class="contacto-container item-footer">
-            <h3>CONTACTO</h3>
-            <ul class="lista-contacto">
-              <li class="lista-contacto-item">
-                Universidad Tecnológica Nacional
-              </li>
-              <li class="lista-contacto-item">
-                ZEBALLOS 1341 - S2000BQA - ROSARIO
-              </li>
-              <li class="lista-contacto-item">0341 - 4481871</li>
-              <li class="lista-contacto-item">
-                <a href="contacto.html">!Escríbanos!</a>
-              </li>
-            </ul>
-          </div>
-          <div class="desarrollado-container item-footer">
-            <h3>DESARROLLADO POR</h3>
-            <ul class="lista-desarrollo">
-              <li class="lista-desarrollo-item">
-                <a href="#repo">Jenson Medina (legajo)</a>
-              </li>
-              <li class="lista-desarrollo-item">
-                <a href="#repo">Mateo Regis (legajo)</a>
-              </li>
-              <li class="lista-desarrollo-item">
-                <a href="#repo">Bruno Rubini(legajo)</a>
-              </li>
-              <li class="lista-desarrollo-item">TUP06 - 2024</li>
-            </ul>
-          </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="institucional-container item-footer">
+          <h3>INSTITUCIONAL</h3>
+          <ul class="lista-institucional">
+            <li class="lista-institucional-item">
+              <a href="">¿Quiénes Somos?</a>
+            </li>
+            <li class="lista-institucional-item">
+              <a href="">Socios Estratégicos</a>
+            </li>
+            <li class="lista-institucional-item">
+              <a href="">Trabaje con Nosotros</a>
+            </li>
+            <li class="lista-institucional-item"><a href="">Ayuda</a></li>
+          </ul>
         </div>
-        <div class="nombre-materia">
-          <span>Tup - Cátedra de Laboratorio de Computación 2 - Año 2024</span>
+        <div class="accesos-container item-footer">
+          <h3>ACCESOS</h3>
+          <ul class="lista-accesos">
+            <li class="lista-accesos-item"><a href="index.html">Inicio</a></li>
+            <li class="lista-accesos-item">
+              <a href="Miarchivo.html">Mi Archivo</a>
+            </li>
+            <li class="lista-accesos-item">
+              <a href="informes.html">Informes</a>
+            </li>
+            <li class="lista-accesos-item">
+              <a href="contacto.html">Contáctenos</a>
+            </li>
+          </ul>
         </div>
-      </footer>
+        <div class="contacto-container item-footer">
+          <h3>CONTACTO</h3>
+          <ul class="lista-contacto">
+            <li class="lista-contacto-item">
+              Universidad Tecnológica Nacional
+            </li>
+            <li class="lista-contacto-item">
+              ZEBALLOS 1341 - S2000BQA - ROSARIO
+            </li>
+            <li class="lista-contacto-item">0341 - 4481871</li>
+            <li class="lista-contacto-item">
+              <a href="contacto.html">¡Escríbanos!</a>
+            </li>
+          </ul>
+        </div>
+        <div class="desarrollado-container item-footer">
+          <h3>DESARROLLADO POR</h3>
+          <ul class="lista-desarrollo">
+            <li class="lista-desarrollo-item">
+              <a href="#repo">Jenson Medina (legajo)</a>
+            </li>
+            <li class="lista-desarrollo-item">
+              <a href="#repo">Mateo Regis (legajo)</a>
+            </li>
+            <li class="lista-desarrollo-item">
+              <a href="#repo">Bruno Rubini (legajo)</a>
+            </li>
+            <li class="lista-desarrollo-item">TUP06 - 2024</li>
+          </ul>
+        </div>
+      </div>
+      <div class="nombre-materia">
+        <span>Tup - Cátedra de Laboratorio de Computación 2 - Año 2024</span>
+      </div>
+    </footer>
+     
   </body>
 </html>
