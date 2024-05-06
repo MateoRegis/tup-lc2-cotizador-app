@@ -9,9 +9,8 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="shortcut icon" href="/img/logo-1.jpg" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/logo-1.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="css/pages/contacto.css" />
-    
   </head>
   <body>
     <header>
@@ -82,12 +81,15 @@
                       <div><label for="mensaje">Mensaje</label></div>
                       <div><textarea name="mensaje" id="mensaje" cols="4" rows="8"></textarea></div>
                     </div>
-                    <div class="row-buttons">
-                      <button class="btn btn-enviar" id="btn-enviar" onclick="enviar_formulario()">Enviar</button>
-                      <button class="btn btn-limpiar" id="btn-limpiar">Limpiar</button>
+                    <div class="row-form">
+                      <label id="lblValidacion"></label>
                     </div>
+                    
                   </form>
-                  <label for="respuesta" id="respuesta">ACA</label>
+                  <div class="row-buttons">
+                    <button class="btn btn-enviar" onclick="EnviarFormulario()">Enviar</button>
+                    <button class="btn btn-limpiar" onclick="LimpiarFormulario()">Limpiar</button>
+                  </div>
                 </div>
                 <div class="datos-contacto">
                   <div class="text-content">
