@@ -157,6 +157,17 @@ p{
     margin-right: 15px;
 }
 
+/*boton menu desplegable*/
+.btn-mnu {
+    display: none;
+    padding: 3px 10px;
+    border: none;
+    background-color: #13130d50;
+    color: #fff;
+    font-size: 36px;
+    position: absolute;
+    right: 20px;
+}
 
 /* --FOOTER-- */
 footer{
@@ -186,7 +197,34 @@ footer{
 
 @media screen and (max-width:768px){
     header {
-        height: 140px;
+        height: 0;
+    }
+    /*Menu desplegable*/
+    .btn-mnu {
+        display: block;
+        margin: 10px 10px;
+    }
+    #menu{
+        width: 80%;
+		height: 100%;
+		position: fixed;
+        top: 0px;
+        background-color: var(--color-interactive-control);
+        transition: transform 1s ease-in-out;
+        transform: translateX(-120%);  
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+    }
+    #menu ul{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }  
+    #menu ul li{
+        width: 100%;
+        text-align: center;
     }
     .img-background {
         flex-direction: column;

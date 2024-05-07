@@ -87,7 +87,7 @@
     color: whitesmoke;
     cursor: pointer;
 }
-button:hover {
+.btn-container button:hover {
     background-color: rgb(210, 67, 91);
 }
 .bread-crumb-item-active::before{
