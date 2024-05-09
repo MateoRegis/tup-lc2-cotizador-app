@@ -192,10 +192,21 @@
         width: 300px;
         height: 200px;
     }
-}
-@media screen and (max-width:430px) {
     .grafico-selector {
         flex-wrap: wrap;
+        gap: 30px;
     }
     
+}
+@media screen and (max-width: 530px) {
+    .fila-cotizaciones h3 {
+        font-size: 1pc;
+        font-weight: 400;
+        line-height: 1pc;
+        letter-spacing: 1px;
+    }
+    .fila-datos p{
+        font-size: 1pc;
+        letter-spacing: 0.5px;
+    }
 }

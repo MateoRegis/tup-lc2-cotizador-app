@@ -27,7 +27,7 @@ window.addEventListener('resize', function() {
     const menu = document.querySelector('#menu');
     // Hacer lo que necesites con el nuevo ancho
     console.log("El ancho de la ventana ha cambiado a: " + nuevoAncho);
-    if(nuevoAncho>1000){
+    if(nuevoAncho>768){
         menu.style.transform = 'translateX(0%)';
 		contador=0;
     }else{
