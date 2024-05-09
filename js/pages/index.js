@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {                     //funcion que se ejecutara cuando el evento DOMContentLoaded ocurra
+document.addEventListener("DOMContentLoaded", function () {               //funcion que se ejecutara cuando el evento DOMContentLoaded ocurra
   
   const imagenes = [                                                          // Arreglo de imágenes que se mostrarán en el fondo
     'url("img/fondo1.jpg")',
@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {                     
     'url("img/fondo3.jpg")',
     'url("img/fondo4.jpg")',
     'url("img/fondo5.jpg")',
+    'url("img/fondo6.jpg")',
   ];
 
  
