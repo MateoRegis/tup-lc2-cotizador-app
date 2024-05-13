@@ -197,24 +197,28 @@ footer {
 }
 /*_______________________________________________________________________________________________*/
 #menu {
-  /* background-image: url("../img/menu1.jpg"); Ajusta la ruta según donde esté tu imagen  */
-  background-size: cover; /* Cubre todo el div sin perder proporciones */
-  background-repeat: no-repeat; /* Para que la imagen no se repita */
+  /* background-image: url("../img/menu1.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #menu ul a {
-  font-size: 20px; /*  más grande y visible */
-  font-weight: 700; /*  fuente más gruesa */
-  color: (var--color-white); /* color  más llamativo definido en variables */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /*  sombra para mejorar la legibilidad sobre fondos variados */
+  font-size: 20px; /*  letra mas grande */
+  font-weight: 700; /*  la letra mas gruesa y visible para que resalte */
+  color: (var--color-white); /* color blanco */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /*  sombra  */
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-#menu a:hover, #menu a:focus {
-  color: var(--color-content-link-hover); /* Cambia el color al pasar el mouse */
-  border-color: var(--color-content-link-hover); /* Cambia el color de la línea bajo el texto */
+#menu a:hover,
+#menu a:focus {
+  color: var(
+    --color-content-link-hover
+  ); /* cuando se pasa el mouse se pone de color verde */
+  border-color: var(
+    --color-content-link-hover
+  ); /* la linea de abajo tambien cambia al mismo color*/
 }
 /*_______________________________________________________________________________________________*/
-
 
 /* --MEDIA QUERIES--*/
 
