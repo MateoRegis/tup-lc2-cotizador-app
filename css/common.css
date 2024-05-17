@@ -38,6 +38,7 @@ header {
   background-color: var(--color-interactive-control);
   box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.2);
 }
+/*_____________________________________MENU__________________________________________________________*/
 #menu {
   display: flex;
   justify-content: space-around;
@@ -45,6 +46,33 @@ header {
   left: 0px;
   align-items: center;
 }
+
+#menu a:hover {
+  color: var(--color-content-link-hover); /* cuando se pasa el mouse se pone de color verde */
+  border-color: var(--color-content-link-hover); /* la linea de abajo tambien cambia al mismo color*/
+}
+#menu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Menu */
+#menu ul {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+}
+#menu ul a {
+  padding: 10px 0px;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--color-white); 
+  text-shadow: 2px 2px 4px rgb(255, 255, 255); /*  sombra  */
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: 0.25s;
+}
+/*_______________________________________________________________________________________________*/
 /* Logo */
 .icono-container {
   width: 70px;
@@ -54,32 +82,6 @@ header {
 }
 .icono-container a {
   height: 100%;
-}
-#menu img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Menu */
-#menu ul {
-  display: flex;
-  list-style: none;
-  gap: 50px;
-}
-
-#menu ul a {
-  padding: 10px 0px;
-  font-size: 18px;
-  font-weight: 300;
-  color: #fff;
-  cursor: pointer;
-  border-bottom: 1px solid transparent;
-  transition: 0.25s;
-}
-
-#menu a:hover {
-  border-color: #ffffff;
 }
 ul {
   list-style: none;
@@ -141,6 +143,21 @@ p {
   width: 100%;
   border-radius: 50%;
 }
+#BackgroundDinamico {
+  transition: opacity 4s ease-in-out;
+  opacity: 1;
+}
+/*boton menu desplegable*/
+.btn-mnu {
+  display: none;
+  padding: 3px 10px;
+  border: none;
+  background-color: #13130d50;
+  color: #fff;
+  font-size: 36px;
+  position: absolute;
+  right: 20px;
+}
 
 /*Migas de Pan*/
 .bread-crumb-container {
@@ -154,18 +171,6 @@ p {
 }
 .bread-crumb li {
   margin-right: 15px;
-}
-
-/*boton menu desplegable*/
-.btn-mnu {
-  display: none;
-  padding: 3px 10px;
-  border: none;
-  background-color: #13130d50;
-  color: #fff;
-  font-size: 36px;
-  position: absolute;
-  right: 20px;
 }
 
 /* --FOOTER-- */
@@ -190,35 +195,6 @@ footer {
   color: var(--color-primary);
   font-size: 18px;
 }
-
-#BackgroundDinamico {
-  transition: opacity 4s ease-in-out;
-  opacity: 1;
-}
-/*_______________________________________________________________________________________________*/
-#menu {
-  /* background-image: url("../img/menu1.jpg"); */
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-#menu ul a {
-  font-size: 20px; /*  letra mas grande */
-  font-weight: 700; /*  la letra mas gruesa y visible para que resalte */
-  color: (var--color-white); /* color blanco */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /*  sombra  */
-  transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-#menu a:hover,
-#menu a:focus {
-  color: var(
-    --color-content-link-hover
-  ); /* cuando se pasa el mouse se pone de color verde */
-  border-color: var(
-    --color-content-link-hover
-  ); /* la linea de abajo tambien cambia al mismo color*/
-}
-/*_______________________________________________________________________________________________*/
 
 /* --MEDIA QUERIES--*/
 
@@ -278,5 +254,4 @@ footer {
     font-style: italic;
   }
 }
-@media screen and (max-width: 460px) {
-}
+
