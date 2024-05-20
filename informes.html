@@ -14,7 +14,52 @@
   </head>
   <body>
     <header>
-      <div id="menu">
+      <nav class="nav">
+        <div class="nav__container">
+          <div class="nav__title">
+            <a href="index.html">
+              <span>BULLCOIN</span>
+              <div class="icono-container">
+                <img src="img/bullCoinIcono.jpg" alt="" />
+              </div>
+            </a>
+          </div>
+          <a href="#menu" class="nav__menu">
+            <img src="img/menu.svg" class="nav__icon" alt="" />
+          </a>        
+          <a href="#" class="nav__menu nav__menu--second">
+            <img src="img/close.svg" class="nav__icon" alt="" />
+          </a>
+          <ul class="dropdown" id="menu">
+            <li class="dropdown__list">
+              <a href="index.html" class="dropdown__link">
+                <img src="img/house.svg" class="dropdown__icon" alt="" />
+                <span class="dropdown__span">Inicio</span>
+              </a>
+            </li>
+            <li class="dropdown__list">
+              <a href="Miarchivo.html" class="dropdown__link">
+                <img src="img/projects.svg" class="dropdown__icon" alt="" />
+                <span class="dropdown__span">Mi Archivo</span>
+              </a>
+            </li>
+            <li class="dropdown__list">
+              <a href="informes.html" class="dropdown__link">
+                <img src="img/projects.svg" class="dropdown__icon" alt="" />
+                <span class="dropdown__span">Informes</span>
+              </a>
+            </li>
+            <li class="dropdown__list">
+              <a href="contacto.html" class="dropdown__link">
+                <img src="img/email.svg" class="dropdown__icon" alt="" />
+                <span class="dropdown__span">Contáctenos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Esto lo comento porque lo vamos a usar despues cuando habilitemos el js -->
+      <!-- <div id="menu">
         <div class="icono-container">
           <a href="index.html"><img src="img/toroblanco2.jpg" alt="" /></a>
         </div>
@@ -28,14 +73,18 @@
             >
           </li>
           <li>
-            <a href="informes.html"><i class="fa-solid fa-file"></i> Informes</a>
+            <a href="informes.html"
+              ><i class="fa-solid fa-file"></i> Informes</a
+            >
           </li>
           <li>
-            <a href="contacto.html"><i class="fa-solid fa-address-book"></i> Contáctenos</a>
+            <a href="contacto.html"
+              ><i class="fa-solid fa-address-book"></i> Contáctenos</a
+            >
           </li>
         </ul>
       </div>
-      <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button>
+      <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button> -->
     </header>
     <div class="page-container">
       <main>
@@ -43,7 +92,7 @@
           <section class="img-background-section">
             <div class="img-background" id="BackgroundDinamico">
               <div class="img-container">
-                <img src="img/toroblanco2.jpg" alt="Logo web" />
+                <img src="img/bullCoinIcono.jpg" alt="Logo web" />
               </div>
               <div class="title"><h1>BullCoin</h1></div>
             </div>

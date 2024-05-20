@@ -6,6 +6,7 @@
   padding: 0;
   font-family: "Roboto", sans-serif;
 }
+/* Definimos variables */
 :root {
   --color-bright-yellow: #ffeb69;
   --color-bright-orange: #ffc091;
@@ -32,14 +33,95 @@
   --color-interactive-warning: #df8700;
   --color-interactive-warning-hover: #c97500;
 }
+/* le damos estilo al header  */
 header {
   width: 100%;
-  z-index: 2000;
   background-color: var(--color-interactive-control);
-  box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 /*_____________________________________MENU__________________________________________________________*/
-#menu {
+
+/* Define variables para controlar la escala de elementos dentro de la navegación */
+.nav {
+  /* definimos variables personalizadas */
+   --img1: scale(1); /*establecemos la variable img1 son un valor de escala 1 */
+   --img2: scale(0); /*establecemos la variable img2 son un valor de escala 0*/
+   /* La propiedad scale() en CSS se utiliza para especificar una transformación de escala para un elemento. Esta transformación altera el tamaño de un elemento, haciéndolo más grande o más pequeño según los valores proporcionados. */
+}
+/* Estilos específicos cuando un elemento .nav contiene un .dropdown apuntado por un enlace :target */
+.nav:has(.dropdown:target) {
+  --img1: scale(0);
+  --img2: scale(1);
+  --clip: inset(0 0 0 0);
+}
+
+/* Estilos para el contenedor de navegación */
+.nav__container {
+  width: 90%;
+  margin: 0 auto;
+  height: 90px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-areas: "title img";
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.nav__menu {
+  grid-area: img;
+  position: absolute;
+  right: 15px;
+  z-index: 10;
+  transform: var(--img1);
+  display: none;
+}
+.nav__menu--second {
+  transform: var(--img2);
+}
+.nav__title {
+  grid-area: title;
+}
+.nav__title a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #fff;
+  font-size: 2pc;
+}
+
+.nav__icon {
+  width: 30px;
+  display: block;
+}
+.dropdown {
+  display: flex;
+  gap: 20px;
+  transition: clip-path .5;
+}
+
+.dropdown__list {
+  list-style: none;
+}
+.dropdown__link {
+  color: #fff;
+  padding: 1em 0.7em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+/* Logo */
+.icono-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.icono-container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* #menu {
   display: flex;
   justify-content: space-around;
   padding: 26px;
@@ -48,50 +130,37 @@ header {
 }
 
 #menu a:hover {
-  color: var(--color-content-link-hover); /* cuando se pasa el mouse se pone de color verde */
-  border-color: var(--color-content-link-hover); /* la linea de abajo tambien cambia al mismo color*/
+  color: var(--color-content-link-hover);
+  border-color: var(--color-content-link-hover);
 }
-#menu img {
+/* #menu img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 /* Menu */
-#menu ul {
+/* #menu ul {
   display: flex;
   list-style: none;
   gap: 50px;
-}
-#menu ul a {
+} */
+/* #menu ul a {
   padding: 10px 0px;
   font-size: 20px;
   font-weight: 300;
   color: var(--color-white); 
-  /* text-shadow: 2px 2px 4px rgb(255, 255, 255); */
   cursor: pointer;
   border-bottom: 1px solid transparent;
   transition: 0.25s;
-}
-/*_______________________________________________________________________________________________*/
-/* Logo */
-.icono-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.icono-container a {
-  height: 100%;
-}
-ul {
+}  */
+_______________________________________________________________________________________________
+  ul {
   list-style: none;
 }
 h1 {
   font-size: 6.5pc;
   font-weight: 500;
-  /* line-height: 3pc; */
   letter-spacing: 7px;
-  /* text-shadow: 4px 3px 0 #7A7A7A; */
   text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
 }
 h3 {
@@ -144,11 +213,96 @@ p {
   border-radius: 50%;
 }
 #BackgroundDinamico {
-  transition: opacity 4s ease-in-out;
-  opacity: 1;
+  width: 100%;
+  animation: cambioDeFondo 60s infinite linear; /* Duración actualizada a 96s */
+}
+@keyframes cambioDeFondo {
+   /* Definición de los keyframes */
+  /* Cada porcentaje indica un punto en la animación */
+  /* Los estilos definidos se aplican en ese punto durante la animación */
+  0%,
+  10% {
+    /* Durante los primeros 10% de la animación, se establece un fondo específico y opacidad completa */
+    background-image: url("../img/img-background-header.jpg");
+    opacity: 1;
+  }
+  10%,
+  12% {
+    opacity: 0.5;
+  }
+
+  12%,
+  22% {
+    background-image: url("../img/fondo1.jpg");
+    opacity: 1;
+  }
+  22%,
+  24% {
+    opacity: 0.5;
+  }
+
+  24%,
+  34% {
+    background-image: url("../img/fondo2.jpg");
+    opacity: 1;
+  }
+  34%,
+  36% {
+    opacity: 0.5;
+  }
+
+  36%,
+  46% {
+    background-image: url("../img/fondo3.jpg");
+    opacity: 1;
+  }
+  46%,
+  48% {
+    opacity: 0.5;
+  }
+
+  48%,
+  58% {
+    background-image: url("../img/fondo4.jpg");
+    opacity: 1;
+  }
+  58%,
+  60% {
+    opacity: 0.5;
+  }
+
+  60%,
+  70% {
+    background-image: url("../img/fondo5.jpg");
+    opacity: 1;
+  }
+  70%,
+  72% {
+    opacity: 0.5;
+  }
+
+  72%,
+  82% {
+    background-image: url("../img/fondo6.jpg");
+    opacity: 1;
+  }
+  82%,
+  84% {
+    opacity: 0.5;
+  }
+
+  84%,
+  94% {
+    background-image: url("../img/img-background-header.jpg");
+    opacity: 1;
+  }
+  94%,
+  96% {
+    opacity: 0.5;
+  }
 }
 /*boton menu desplegable*/
-.btn-mnu {
+/* .btn-mnu {
   display: none;
   padding: 3px 10px;
   border: none;
@@ -157,7 +311,7 @@ p {
   font-size: 36px;
   position: absolute;
   right: 20px;
-}
+} */
 
 /*Migas de Pan*/
 .bread-crumb-container {
@@ -203,23 +357,29 @@ footer {
     height: 0;
   }
   /*Menu desplegable*/
-  .btn-mnu {
-    display: block;
-    margin: 10px 10px;
-  }
-  #menu {
-    width: 80%;
-    height: 100%;
-    position: fixed;
-    top: 0px;
+  .dropdown {
+    position: absolute;
     background-color: var(--color-interactive-control);
-    transition: transform 1s ease-in-out;
-    transform: translateX(-120%);
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
+    width: 75%;
+    max-width: 300px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1em;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
+    clip-path: var(--clip, inset(0 100% 100% 0));
+    z-index: 10;
   }
-  #menu ul {
+  .nav__title {
+    display: none;
+  }
+  .nav__menu {
+    display: block;
+  }
+  /* #menu ul {
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -228,7 +388,7 @@ footer {
   #menu ul li {
     width: 100%;
     text-align: center;
-  }
+  } */
   .img-background {
     flex-direction: column;
     min-height: 300px;
@@ -254,4 +414,3 @@ footer {
     font-style: italic;
   }
 }
-
