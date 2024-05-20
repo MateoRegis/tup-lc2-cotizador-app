@@ -53,8 +53,10 @@ const elementoFondo = document.getElementById("BackgroundDinamico");    // Eleme
 function actualizarFondo() {
     elementoFondo.style.opacity = "0";                                    //Establece la opacidad del fondo a 0 (transparente)
     elementoFondo.style.backgroundImage = imagenes[indiceActual];    // Cambia la imagen de fondo
-    elementoFondo.style.opacity = "1";  
-    elementoFondo.style.transition = "2s ease-in";  
+    elementoFondo.style.transition = "opacity 4s ease-in-out";
+    elementoFondo.style.opacity = "1";                               // La hacemos totalmente visible
+    elementoFondo.style.transition = "2s ease-in";                  
+    
     setInterval(()=>{
         indiceActual++;
         if (indiceActual >= imagenes.length) {
