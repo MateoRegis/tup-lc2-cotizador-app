@@ -67,7 +67,7 @@ header {
   font-size: 20px;
   font-weight: 300;
   color: var(--color-white); 
-  text-shadow: 2px 2px 4px rgb(255, 255, 255); /*  sombra  */
+  /* text-shadow: 2px 2px 4px rgb(255, 255, 255); */
   cursor: pointer;
   border-bottom: 1px solid transparent;
   transition: 0.25s;
