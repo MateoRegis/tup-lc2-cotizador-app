@@ -25,6 +25,7 @@ window.addEventListener('resize', function() {
     // Obtener el nuevo ancho de la ventana
     var nuevoAncho = window.innerWidth;
     const menu = document.querySelector('#menu');
+    // Hacer lo que necesites con el nuevo ancho
     console.log("El ancho de la ventana ha cambiado a: " + nuevoAncho);
     if(nuevoAncho>768){
         menu.style.transform = 'translateX(0%)';
@@ -47,20 +48,21 @@ const imagenes = [                                                     // Arregl
     ];
 
 
-let indiceActual = 0;                                                     // Índice inicial para el arreglo de imágenes    
-const elementoFondo = document.getElementById("BackgroundDinamico");      // Elemento del DOM cuyo fondo se actualizará
-elementoFondo.style.opacity = "0";       //                             //Establece la opacidad del fondo a 0 (transparente)
-elementoFondo.style.transition = "2s ease-in";        //          
-elementoFondo.style.opacity = "1";          //                          // La hacemos totalmente visible
+let indiceActual = 0;                                                    // Índice inicial para el arreglo de imágenes    
+const elementoFondo = document.getElementById("BackgroundDinamico");    // Elemento del DOM cuyo fondo se actualizará
 function actualizarFondo() {
-    elementoFondo.style.backgroundImage = imagenes[indiceActual];         // Cambia la imagen de fondo
-    indiceActual++;
-    if (indiceActual >= imagenes.length) {
-        indiceActual = 0;
-    }                       
+    elementoFondo.style.opacity = "0";                                    //Establece la opacidad del fondo a 0 (transparente)
+    elementoFondo.style.backgroundImage = imagenes[indiceActual];    // Cambia la imagen de fondo
+    elementoFondo.style.transition = "opacity 4s ease-in-out";
+    elementoFondo.style.opacity = "1";                               // La hacemos totalmente visible
+    elementoFondo.style.transition = "2s ease-in";                  
+    
+    setInterval(()=>{
+        indiceActual++;
+        if (indiceActual >= imagenes.length) {
+            indiceActual = 0;
+        }
+    }, 3000)                        
 }
 // Intervalo para cambiar automáticamente las imágenes
 setInterval(actualizarFondo, 4000);
-
-
-
