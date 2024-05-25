@@ -115,16 +115,34 @@
                 <div class="selector-monedas-container">
                   <div class="nombre-bandera">
                     <div class="flag">
-                      <img src="img/eur.svg" alt="">
+                      <img src="img/eur.svg" alt="" />
                     </div>
                     <div class="nombre">Euro</div>
                   </div>
-                  <input type="text" class="selector-moneda" value="Euro">
+                  <select name="selector-moneda" id="selcetor-moneda">
+                    <option value="0">Seleccione una opción</option>
+                    <option value="todas">Todas</option>
+                    <option value="oficial">Dólar oficial</option>
+                    <option value="blue">Dólar Blue</option>
+                    <option value="mep">Dólar Bolsa (MEP)</option>
+                    <option value="liqui">Dólar Contado con Liqui (CCL)</option>
+                    <option value="tarjeta">Dólar Tarjeta</option>
+                    <option value="mayorista">Dólar Mayorista</option>
+                    <option value="cripto">Dólar Cripto</option>
+                    <option value="euro">Euro</option>
+                    <option value="real">Real Brasileño</option>
+                    <option value="chile">Peso Chileno</option>
+                    <option value="uyu">Peso Uruguayo</option>
+                  </select>
+                  <!-- esto lo dejo comentado porque despues lo vamos a usar con js -->
+                  <!-- <input type="text" class="selector-moneda" value="Euro" />
                   <div class="selector-moneda-btn-container">
                     <button class="btn-selector-moneda">
-                      <div class="icono-selector"><i class="fa-solid fa-chevron-down"></i></div>
+                      <div class="icono-selector">
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
                     </button>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="grafico-cotizacion">
                   <!-- Gráfico  -->
@@ -432,13 +450,19 @@
           <h3>DESARROLLADO POR</h3>
           <ul class="lista-desarrollo">
             <li class="lista-desarrollo-item">
-              <a href="https://github.com/JensonMedina" target="_blank">Jenson Medina (legajo)</a>
+              <a href="https://github.com/JensonMedina" target="_blank"
+                >Jenson Medina (53338)</a
+              >
             </li>
             <li class="lista-desarrollo-item">
-              <a href="https://github.com/MateoRegis" target="_blank">Mateo Regis (legajo)</a>
+              <a href="https://github.com/MateoRegis" target="_blank"
+                >Mateo Regis (48963)</a
+              >
             </li>
             <li class="lista-desarrollo-item">
-              <a href="https://github.com/BrunoRubini" target="_blank">Bruno Rubini(legajo)</a>
+              <a href="https://github.com/BrunoRubini" target="_blank"
+                >Bruno Rubini(53367)</a
+              >
             </li>
             <li class="lista-desarrollo-item">TUP06 - 2024</li>
           </ul>

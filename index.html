@@ -10,7 +10,11 @@
     ></script>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/pages/index.css" />
-    <link rel="shortcut icon" href="img/logo-1.jpg" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="img/bullCoinIcono.jpg"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <header>
@@ -26,7 +30,7 @@
           </div>
           <a href="#menu" class="nav__menu">
             <img src="img/menu.svg" class="nav__icon" alt="" />
-          </a>        
+          </a>
           <a href="#" class="nav__menu nav__menu--second">
             <img src="img/close.svg" class="nav__icon" alt="" />
           </a>
@@ -119,14 +123,30 @@
                   </div>
                   <div class="nombre">Euro</div>
                 </div>
-                <input type="text" class="selector-moneda" value="Euro" />
+                <select name="selector-moneda" id="selcetor-moneda">
+                  <option value="0">Seleccione una opción</option>
+                  <option value="todas">Todas</option>
+                  <option value="oficial">Dólar oficial</option>
+                  <option value="blue">Dólar Blue</option>
+                  <option value="mep">Dólar Bolsa (MEP)</option>
+                  <option value="liqui">Dólar Contado con Liqui (CCL)</option>
+                  <option value="tarjeta">Dólar Tarjeta</option>
+                  <option value="mayorista">Dólar Mayorista</option>
+                  <option value="cripto">Dólar Cripto</option>
+                  <option value="euro">Euro</option>
+                  <option value="real">Real Brasileño</option>
+                  <option value="chile">Peso Chileno</option>
+                  <option value="uyu">Peso Uruguayo</option>
+                </select>
+                <!-- esto lo dejo comentado porque despues lo vamos a usar con js -->
+                <!-- <input type="text" class="selector-moneda" value="Euro" />
                 <div class="selector-moneda-btn-container">
                   <button class="btn-selector-moneda">
                     <div class="icono-selector">
                       <i class="fa-solid fa-chevron-down"></i>
                     </div>
                   </button>
-                </div>
+                </div> -->
               </div>
               <div class="fecha-hora">
                 <p>Datos Actualizados al <span>15/04/2024 17:30hs</span></p>
@@ -345,9 +365,7 @@
             <div class="comentarios-container">
               <div class="comentario">
                 <div class="comentario-header">
-                  <div class="comentario-img-container">
-                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
-                  </div>
+                  <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
                 </div>
                 <div class="comentario-body">
                   <h4>Nombre Usuario</h4>
@@ -359,9 +377,7 @@
               </div>
               <div class="comentario">
                 <div class="comentario-header">
-                  <div class="comentario-img-container">
-                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
-                  </div>
+                  <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
                 </div>
                 <div class="comentario-body">
                   <h4>Nombre Usuario</h4>
@@ -373,9 +389,7 @@
               </div>
               <div class="comentario">
                 <div class="comentario-header">
-                  <div class="comentario-img-container">
-                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
-                  </div>
+                  <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
                 </div>
                 <div class="comentario-body">
                   <h4>Nombre Usuario</h4>
@@ -387,9 +401,7 @@
               </div>
               <div class="comentario">
                 <div class="comentario-header">
-                  <div class="comentario-img-container">
-                    <img src="img/logo-1.jpg" alt="Imagen de Usuario" />
-                  </div>
+                  <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
                 </div>
                 <div class="comentario-body">
                   <h4>Nombre Usuario</h4>
@@ -457,17 +469,17 @@
           <ul class="lista-desarrollo">
             <li class="lista-desarrollo-item">
               <a href="https://github.com/JensonMedina" target="_blank"
-                >Jenson Medina (legajo)</a
+                >Jenson Medina (53338)</a
               >
             </li>
             <li class="lista-desarrollo-item">
               <a href="https://github.com/MateoRegis" target="_blank"
-                >Mateo Regis (legajo)</a
+                >Mateo Regis (48963)</a
               >
             </li>
             <li class="lista-desarrollo-item">
               <a href="https://github.com/BrunoRubini" target="_blank"
-                >Bruno Rubini(legajo)</a
+                >Bruno Rubini(53367)</a
               >
             </li>
             <li class="lista-desarrollo-item">TUP06 - 2024</li>

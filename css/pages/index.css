@@ -27,11 +27,17 @@ span {
     color: var(--color-interactive-control);
 }
 .selector-monedas-container{
-    width: 300px;
+    width: 380px;
     display: flex;
     align-items: center;
     border-radius: 4px;
     padding: 15px;
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+}
+.selector-monedas-container select {
+    cursor: pointer;
+    font-size: 16px;
     border: 0.5px solid rgba(179, 187, 198, 0.45);
     box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
 }
@@ -61,7 +67,8 @@ span {
     font-size: 18px;
     font-weight: 700;
 }
-.selector-moneda{
+/* esto lo dejo comentado porque despus lo vamos a usar con js */
+/* .selector-moneda{
     padding-left: 12px;
     padding: 9.5px 4px;
     min-width: 30px;
@@ -86,7 +93,7 @@ span {
     background-color: transparent;
     font-size: 1.5rem;
     text-align: center;
-}
+} */
 .icono-selector{
     width: 100%;
     display: flex;
@@ -202,26 +209,17 @@ span {
     place-content: center;
 }
 .comentario {
-    /* box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1); */
-    /* box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75); */
     border: 0.5px solid rgba(179, 187, 198, 0.45);
     box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
     width: 200px;
     border-radius: 10px;
 }
 .comentario-header{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.comentario-img-container{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
 }
 .comentario-header img{
     width: 100%;
