@@ -55,6 +55,46 @@
     width: 100%;
     object-fit: cover;
 }
+.selector-container {
+    background-color: #fff;
+    margin-top: 10px;
+    width: 300px;
+    max-height: 200px;
+    position: absolute;
+    left: 400px;
+    top: 850px; /*esto no me convence, lo puse para que quede bien ahora, pero me da la impresion de que se va a romper */
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    z-index: 5;
+    display: none;
+}
+.selector-option-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 10px;
+}
+.selector-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.flag-img {
+  width: 30px;
+}
+.flag-img img {
+  width: 100%;
+  object-fit: cover;
+}
 .nombre{
     display: flex;
     align-items: center;

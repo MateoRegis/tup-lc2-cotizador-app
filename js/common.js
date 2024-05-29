@@ -132,7 +132,6 @@ window.addEventListener('resize', function() {
     // Obtener el nuevo ancho de la ventana
     var nuevoAncho = window.innerWidth;
     const menu = document.querySelector('#menu');
-    // Hacer lo que necesites con el nuevo ancho
     console.log("El ancho de la ventana ha cambiado a: " + nuevoAncho);
     if(nuevoAncho>768){
         menu.style.transform = 'translateX(0%)';

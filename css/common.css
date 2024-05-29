@@ -144,7 +144,6 @@ p {
 }
 #BackgroundDinamico {
   width: 100%;
-  animation: cambioDeFondo 60s infinite linear; /* Duración actualizada a 96s */
 }
 
 /*boton menu desplegable*/
