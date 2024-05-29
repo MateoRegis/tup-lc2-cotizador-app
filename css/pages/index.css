@@ -27,7 +27,7 @@ span {
     color: var(--color-interactive-control);
 }
 .selector-monedas-container{
-    width: 380px;
+    width: 300px;
     display: flex;
     align-items: center;
     border-radius: 4px;
@@ -35,12 +35,12 @@ span {
     border: 0.5px solid rgba(179, 187, 198, 0.45);
     box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
 }
-.selector-monedas-container select {
+/* .selector-monedas-container select {
     cursor: pointer;
     font-size: 16px;
     border: 0.5px solid rgba(179, 187, 198, 0.45);
     box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
-}
+} */
 .nombre-bandera{
     padding-left: 8px;
     padding-right: 4px;
@@ -68,7 +68,7 @@ span {
     font-weight: 700;
 }
 /* esto lo dejo comentado porque despus lo vamos a usar con js */
-/* .selector-moneda{
+.selector-moneda{
     padding-left: 12px;
     padding: 9.5px 4px;
     min-width: 30px;
@@ -93,7 +93,7 @@ span {
     background-color: transparent;
     font-size: 1.5rem;
     text-align: center;
-} */
+}
 .icono-selector{
     width: 100%;
     display: flex;

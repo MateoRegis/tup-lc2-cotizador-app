@@ -17,78 +17,9 @@
     />
   </head>
   <body>
-    <header>
-      <nav class="nav">
-        <div class="nav__container">
-          <div class="nav__title">
-            <a href="index.html">
-              <span>BULLCOIN</span>
-              <div class="icono-container">
-                <img src="img/bullCoinIcono.jpg" alt="" />
-              </div>
-            </a>
-          </div>
-          <a href="#menu" class="nav__menu">
-            <img src="img/menu.svg" class="nav__icon" alt="" />
-          </a>
-          <a href="#" class="nav__menu nav__menu--second">
-            <img src="img/close.svg" class="nav__icon" alt="" />
-          </a>
-          <ul class="dropdown" id="menu">
-            <li class="dropdown__list">
-              <a href="index.html" class="dropdown__link">
-                <img src="img/house.svg" class="dropdown__icon" alt="" />
-                <span class="dropdown__span">Inicio</span>
-              </a>
-            </li>
-            <li class="dropdown__list">
-              <a href="Miarchivo.html" class="dropdown__link">
-                <img src="img/projects.svg" class="dropdown__icon" alt="" />
-                <span class="dropdown__span">Mi Archivo</span>
-              </a>
-            </li>
-            <li class="dropdown__list">
-              <a href="informes.html" class="dropdown__link">
-                <img src="img/projects.svg" class="dropdown__icon" alt="" />
-                <span class="dropdown__span">Informes</span>
-              </a>
-            </li>
-            <li class="dropdown__list">
-              <a href="contacto.html" class="dropdown__link">
-                <img src="img/email.svg" class="dropdown__icon" alt="" />
-                <span class="dropdown__span">Contáctenos</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <!-- Esto lo comento porque lo vamos a usar despues cuando habilitemos el js -->
-      <!-- <div id="menu">
-        <div class="icono-container">
-          <a href="index.html"><img src="img/toroblanco2.jpg" alt="" /></a>
-        </div>
-        <ul>
-          <li>
-            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
-          </li>
-          <li>
-            <a href="Miarchivo.html"
-              ><i class="fa-solid fa-folder-open"></i> Mi Archivo</a
-            >
-          </li>
-          <li>
-            <a href="informes.html"
-              ><i class="fa-solid fa-file"></i> Informes</a
-            >
-          </li>
-          <li>
-            <a href="contacto.html"
-              ><i class="fa-solid fa-address-book"></i> Contáctenos</a
-            >
-          </li>
-        </ul>
-      </div>
-      <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button> -->
+    <header id="header">
+      
+
     </header>
 
     <div class="page-container">
@@ -123,30 +54,14 @@
                   </div>
                   <div class="nombre">Euro</div>
                 </div>
-                <select name="selector-moneda" id="selcetor-moneda">
-                  <option value="0">Seleccione una opción</option>
-                  <option value="todas">Todas</option>
-                  <option value="oficial">Dólar oficial</option>
-                  <option value="blue">Dólar Blue</option>
-                  <option value="mep">Dólar Bolsa (MEP)</option>
-                  <option value="liqui">Dólar Contado con Liqui (CCL)</option>
-                  <option value="tarjeta">Dólar Tarjeta</option>
-                  <option value="mayorista">Dólar Mayorista</option>
-                  <option value="cripto">Dólar Cripto</option>
-                  <option value="euro">Euro</option>
-                  <option value="real">Real Brasileño</option>
-                  <option value="chile">Peso Chileno</option>
-                  <option value="uyu">Peso Uruguayo</option>
-                </select>
-                <!-- esto lo dejo comentado porque despues lo vamos a usar con js -->
-                <!-- <input type="text" class="selector-moneda" value="Euro" />
+                <input type="text" class="selector-moneda" value="Euro" />
                 <div class="selector-moneda-btn-container">
-                  <button class="btn-selector-moneda">
+                  <button class="btn-selector-moneda" id="btn-selector-moneda">
                     <div class="icono-selector">
                       <i class="fa-solid fa-chevron-down"></i>
                     </div>
                   </button>
-                </div> -->
+                </div>
               </div>
               <div class="fecha-hora">
                 <p>Datos Actualizados al <span>15/04/2024 17:30hs</span></p>
@@ -417,79 +332,9 @@
       </main>
     </div>
 
-    <footer>
-      <div class="footer-container">
-        <div class="institucional-container item-footer">
-          <h3>INSTITUCIONAL</h3>
-          <ul class="lista-institucional">
-            <li class="lista-institucional-item">
-              <a href="">¿Quiénes Somos?</a>
-            </li>
-            <li class="lista-institucional-item">
-              <a href="">Socios Estratégicos</a>
-            </li>
-            <li class="lista-institucional-item">
-              <a href="">Trabaje con Nosotros</a>
-            </li>
-            <li class="lista-institucional-item"><a href="">Ayuda</a></li>
-          </ul>
-        </div>
-        <div class="accesos-container item-footer">
-          <h3>ACCESOS</h3>
-          <ul class="lista-accesos">
-            <li class="lista-accesos-item"><a href="index.html">Inicio</a></li>
-            <li class="lista-accesos-item">
-              <a href="Miarchivo.html">Mi Archivo</a>
-            </li>
-            <li class="lista-accesos-item">
-              <a href="informes.html">Informes</a>
-            </li>
-            <li class="lista-accesos-item">
-              <a href="contacto.html">Contáctenos</a>
-            </li>
-          </ul>
-        </div>
-        <div class="contacto-container item-footer">
-          <h3>CONTACTO</h3>
-          <ul class="lista-contacto">
-            <li class="lista-contacto-item">
-              Universidad Tecnológica Nacional
-            </li>
-            <li class="lista-contacto-item">
-              ZEBALLOS 1341 - S2000BQA - ROSARIO
-            </li>
-            <li class="lista-contacto-item">0341 - 4481871</li>
-            <li class="lista-contacto-item">
-              <a href="contacto.html">!Escríbanos!</a>
-            </li>
-          </ul>
-        </div>
-        <div class="desarrollado-container item-footer">
-          <h3>DESARROLLADO POR</h3>
-          <ul class="lista-desarrollo">
-            <li class="lista-desarrollo-item">
-              <a href="https://github.com/JensonMedina" target="_blank"
-                >Jenson Medina (53338)</a
-              >
-            </li>
-            <li class="lista-desarrollo-item">
-              <a href="https://github.com/MateoRegis" target="_blank"
-                >Mateo Regis (48963)</a
-              >
-            </li>
-            <li class="lista-desarrollo-item">
-              <a href="https://github.com/BrunoRubini" target="_blank"
-                >Bruno Rubini(53367)</a
-              >
-            </li>
-            <li class="lista-desarrollo-item">TUP06 - 2024</li>
-          </ul>
-        </div>
-      </div>
-      <div class="nombre-materia">
-        <span>Tup - Cátedra de Laboratorio de Computación 2 - Año 2024</span>
-      </div>
+    <footer id="footer">
     </footer>
-    <!-- <script src="js/common.js"></script> -->
+    <script src="js/common.js"></script>
+    <script src="js/pages/index.js"></script>
   </body>
 </html>
