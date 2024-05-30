@@ -26,8 +26,9 @@ span {
   color: var(--color-interactive-control);
 }
 .selector-monedas-container {
-  width: 300px;
+  width: 360px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-radius: 4px;
   padding: 15px;
@@ -118,16 +119,18 @@ span {
     overflow-y: scroll;
     z-index: 5;
     display: none;
-}
-.selector-option-container {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid lightgray;
-  padding: 5px;
-  border-radius: 10px;
+  }
+  .selector-option-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
 }
 .selector-option {
   display: flex;
@@ -143,20 +146,23 @@ span {
 }
 .fecha-hora {
   margin-top: 20px;
-  text-align: end;
+  text-align: center;
 }
 .fecha-hora p {
   font-size: 20px;
   color: var(--color-interactive-control);
 }
 .monedas-container {
+  width: max-content;
+  margin: auto;
   display: grid;
-  grid-template-columns: auto auto auto;
-  border-radius: 40px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* comento esto xq a mi personalmente me gusta mas como queda asi, luego lo comento con mis compañeros */
+  /* border-radius: 40px;
   background-color: #fff;
   padding: 20px;
   border: 0.5px solid rgba(179, 187, 198, 0.45);
-  box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+  box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45); */
 }
 .moneda-container {
   padding: 15px;
@@ -173,6 +179,7 @@ span {
 
 .moneda-title {
   display: flex;
+  flex-direction: column;
   gap: 13px;
   align-items: center;
   justify-content: center;
@@ -209,8 +216,8 @@ span {
   color: var(--color-interactive-control);
 }
 .flag-container {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
 .flag-container img {
   width: 100%;
@@ -218,7 +225,8 @@ span {
 }
 .aviso-favoritos {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 50px;
   margin-top: 20px;
 }
 .aviso-favoritos p {
