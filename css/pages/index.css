@@ -153,26 +153,20 @@ span {
   color: var(--color-interactive-control);
 }
 .monedas-container {
-  width: max-content;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* comento esto xq a mi personalmente me gusta mas como queda asi, luego lo comento con mis compañeros */
-  /* border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-radius: 40px;
   background-color: #fff;
   padding: 20px;
-  border: 0.5px solid rgba(179, 187, 198, 0.45);
-  box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45); */
 }
 .moneda-container {
+  width: 350px;
   padding: 15px;
 }
 .moneda-card {
   border-radius: 15px;
-  /* box-shadow: 0 0 60px 0 rgba(0, 0, 0, .1); */
-  /* box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -3px 8px 20px 0px rgba(0, 0, 0, 0.75); */
   border: 0.5px solid rgba(179, 187, 198, 0.45);
   box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
 }

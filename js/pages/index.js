@@ -169,11 +169,11 @@ btnSelectorMoneda.addEventListener("click", function () {
         //despues de mostrar las tarjetas oculto el desplegable
         selectorDesplegable.style.display = "none";
         //si la moneda seleccionada es distinta de cero, significa que se eligio una opcion distinta de Todas, por lo que en el contenedor de monedas solo se va a mostrar una cotizacion, entonces modifico el template columns para que quede bien, en caso de que la opcion seleccionada sea Todas entonces vuelvo a dejar el template columns como estaba originalmente en el css
-        if (monedaSeleccionada != "0") {
-          HTMLResponse.style.gridTemplateColumns = "400px";
-        } else {
-          HTMLResponse.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
-        }
+        // if (monedaSeleccionada != "0") {
+        //   HTMLResponse.style.gridTemplateColumns = "400px";
+        // } else {
+        //   HTMLResponse.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
+        // }
       });
     });
 
