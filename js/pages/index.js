@@ -11,6 +11,7 @@ const HTMLResponse = document.getElementById("monedas-container");
 let opcionesMonedas;
 
 let monedaSeleccionada;
+let monedaAGuardar;
 
 let nombreBandera = document.getElementById("nombre-bandera");
 
@@ -21,11 +22,11 @@ console.log(nombreBanderaFlagImg);
 console.log(nombreBanderaNombre);
 
 let fechaHora = document.getElementById("fecha-hora");
-let spanFechaHora = fechaHora.querySelector('span');
+let spanFechaHora = fechaHora.querySelector("span");
 
 console.log(spanFechaHora);
 
-
+let listaCotizacionesGuardadas = [];
 
 //este iconito es el que voy a usar para indicar que una moneda esta seleccionada en el selector
 let iconoCheck = `<i class="fa-solid fa-check"></i>`;
@@ -224,8 +225,10 @@ Promise.all(
   .catch((error) => console.error("Error al obtener datos:", error));
 
 //en este funcion lo que hago es retornar la tarjeta de la moneda, le paso por parametro la moneda, y con eso cargos los datos
+let index = -1;
 function construirTarjeta(datosMoneda, rutaImagen) {
-  return `<div class="moneda-container">
+  index += 1;
+  return `<div class="moneda-container" >
     <div class="moneda-card">
       <div class="moneda-title">
         <div class="flag-container">
@@ -249,7 +252,7 @@ function construirTarjeta(datosMoneda, rutaImagen) {
       </div>
       <div class="moneda-footer">
         <div class="favoritos">
-          <button class="btn-favorito">
+          <button class="btn-favorito" id="${index}" onClick=GuardarMoneda(this)>
             Guardar
           </button>
         </div>
@@ -276,38 +279,54 @@ function MostrarTarjetas(selectedOption) {
         dolaresData[selectedOption - 1],
         rutaImagen
       );
-      nombreBanderaFlagImg.src = "../img/" + rutaImagen;
+      nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = dolaresData[selectedOption - 1].nombre;
-      spanFechaHora.textContent = dolaresData[selectedOption - 1].fechaActualizacion.substring(0, 10);
+      monedaAGuardar = dolaresData[selectedOption - 1];
+      spanFechaHora.textContent = dolaresData[
+        selectedOption - 1
+      ].fechaActualizacion.substring(0, 10);
       break;
     case 8:
       rutaImagen = "eur.svg";
       HTMLResponse.innerHTML += construirTarjeta(eurosData, rutaImagen);
-      nombreBanderaFlagImg.src = "../img/" + rutaImagen;
+      nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = eurosData.moneda;
       spanFechaHora.textContent = eurosData.fechaActualizacion.substring(0, 10);
+      monedaAGuardar = eurosData;
       break;
     case 9:
       rutaImagen = "brl.svg";
       HTMLResponse.innerHTML += construirTarjeta(realBrasileño, rutaImagen);
-      nombreBanderaFlagImg.src = "../img/" + rutaImagen;
+      nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = realBrasileño.moneda;
-      spanFechaHora.textContent = realBrasileño.fechaActualizacion.substring(0, 10);
+      spanFechaHora.textContent = realBrasileño.fechaActualizacion.substring(
+        0,
+        10
+      );
+      monedaAGuardar = realBrasileño;
       break;
       break;
     case 10:
       rutaImagen = "clp.svg";
       HTMLResponse.innerHTML += construirTarjeta(pesoChileno, rutaImagen);
-      nombreBanderaFlagImg.src = "../img/" + rutaImagen;
+      nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = pesoChileno.moneda;
-      spanFechaHora.textContent = pesoChileno.fechaActualizacion.substring(0, 10);
+      spanFechaHora.textContent = pesoChileno.fechaActualizacion.substring(
+        0,
+        10
+      );
+      monedaAGuardar = pesoChileno;
       break;
     case 11:
       rutaImagen = "uyu.svg";
       HTMLResponse.innerHTML += construirTarjeta(pesoUruguayo, rutaImagen);
-      nombreBanderaFlagImg.src = "../img/" + rutaImagen;
+      nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = pesoUruguayo.moneda;
-      spanFechaHora.textContent = pesoUruguayo.fechaActualizacion.substring(0, 10);
+      spanFechaHora.textContent = pesoUruguayo.fechaActualizacion.substring(
+        0,
+        10
+      );
+      monedaAGuardar = pesoUruguayo;
       break;
     default:
       dolaresData.forEach((dolar) => {
@@ -317,9 +336,77 @@ function MostrarTarjetas(selectedOption) {
       HTMLResponse.innerHTML += construirTarjeta(realBrasileño, "brl.svg");
       HTMLResponse.innerHTML += construirTarjeta(pesoChileno, "clp.svg");
       HTMLResponse.innerHTML += construirTarjeta(pesoUruguayo, "uyu.svg");
-      nombreBanderaFlagImg.src = "../img/noun-world-2699516.svg";
+      nombreBanderaFlagImg.src = "img/noun-world-2699516.svg";
       nombreBanderaNombre.textContent = "Todas";
-      spanFechaHora.textContent = dolaresData[0].fechaActualizacion.substring(0, 10);
+      spanFechaHora.textContent = dolaresData[0].fechaActualizacion.substring(
+        0,
+        10
+      );
       break;
   }
+ 
+}
+
+function GuardarMoneda(data) {
+  console.log(data);
+  console.log(data.getAttribute("id"));
+  data = parseInt(data.getAttribute("id"));
+
+  if (data <= 10) {
+    switch (data) {
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        monedaAGuardar = dolaresData[data];
+        break;
+      case 7:
+        monedaAGuardar = eurosData;
+        break;
+      case 8:
+        monedaAGuardar = realBrasileño;
+        break;
+      case 9:
+        monedaAGuardar = pesoChileno;
+        break;
+      case 10:
+        monedaAGuardar = pesoUruguayo;
+        break;
+      default:
+        break;
+    }
+  }
+
+  console.log(monedaAGuardar);
+
+  let monedaExiste = false;
+
+  if (listaCotizacionesGuardadas.length > 0) {
+    for (let element of listaCotizacionesGuardadas) {
+      if (
+        element.moneda === monedaAGuardar.moneda &&
+        element.nombre === monedaAGuardar.nombre &&
+        element.fechaActualizacion === monedaAGuardar.fechaActualizacion
+      ) {
+        monedaExiste = true;
+        break;
+      }
+    }
+
+    if (!monedaExiste) {
+      listaCotizacionesGuardadas.push(monedaAGuardar);
+    } else {
+      console.log("La moneda ya existe.");
+    }
+  } else {
+    listaCotizacionesGuardadas.push(monedaAGuardar);
+  }
+
+  localStorage.setItem(
+    "cotizacion",
+    JSON.stringify(listaCotizacionesGuardadas)
+  );
 }
