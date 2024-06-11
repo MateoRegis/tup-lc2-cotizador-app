@@ -35,7 +35,7 @@
     border-radius: 10px;
 }
 .tarjeta-header{
-    height: 100px;
+    height: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,6 +53,7 @@
 }
 .title {
     font-size: 1.5pc;
+    text-align: center;
 }
 
 .tarjeta-body{
