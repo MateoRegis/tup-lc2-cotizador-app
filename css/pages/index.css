@@ -188,22 +188,15 @@ span {
   display: flex;
   justify-content: center;
 }
-.favoritos {
+
+.btn-favorito {
   width: 100px;
   height: 30px;
+  border: none;
   border-radius: 15px;
-  border: 1px solid black;
   margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: var(--color-interactive-accent);
   cursor: pointer;
-}
-.btn-favorito {
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
 }
 .btn-favorito i {
   font-size: 30px;

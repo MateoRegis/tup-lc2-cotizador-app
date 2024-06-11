@@ -11,139 +11,31 @@ const HTMLResponse = document.getElementById("monedas-container");
 let opcionesMonedas;
 
 let monedaSeleccionada;
-let monedaAGuardar;
 
 let nombreBandera = document.getElementById("nombre-bandera");
 
 let nombreBanderaFlagImg = nombreBandera.querySelector(".flag img");
 let nombreBanderaNombre = nombreBandera.querySelector(".nombre");
 
-console.log(nombreBanderaFlagImg);
-console.log(nombreBanderaNombre);
-
 let fechaHora = document.getElementById("fecha-hora");
 let spanFechaHora = fechaHora.querySelector("span");
 
-console.log(spanFechaHora);
-
 let listaCotizacionesGuardadas = [];
+
+// cargo las monedas guardadas desde localStorage al inicio
+function cargarMonedasGuardadas() {
+  const monedasGuardadas = localStorage.getItem("cotizaciones");
+  if (monedasGuardadas) {
+    listaCotizacionesGuardadas = JSON.parse(monedasGuardadas);
+  }
+}
+// llamo a la función para cargar las monedas guardadas al inicio
+cargarMonedasGuardadas();
 
 //este iconito es el que voy a usar para indicar que una moneda esta seleccionada en el selector
 let iconoCheck = `<i class="fa-solid fa-check"></i>`;
 
-//como voy a manejar estos divs para seleccionar las monedas ? con data-currency
-// let selectorDesplegableOptions = `<div class="selector-option-container" data-currency="0">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/noun-world-2699516.svg" alt="">
-//     </div>
-//     <h4>Todas</h4>
-// </div>
-// <span><i class="fa-solid fa-check"></i></span>
-// </div>
-// <div class="selector-option-container" data-currency="1">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar Oficial</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="2">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar Blue</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="3">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar Bolsa</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="4">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar CCL</h4>
-// </div>
-// <span></span>
-// </div>
-
-// <div class="selector-option-container" data-currency="5">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar Mayorista</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="6">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar Cripto</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="7">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/usd.svg" alt="">
-//     </div>
-//     <h4>Dólar Tarjeta</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="8">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/eur.svg" alt="">
-//     </div>
-//     <h4>Eur</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="9">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/brl.svg" alt="">
-//     </div>
-//     <h4>Real Brasileño</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="10">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/clp.svg" alt="">
-//     </div>
-//     <h4>Peso Chileno</h4>
-// </div>
-// <span></span>
-// </div>
-// <div class="selector-option-container" data-currency="11">
-// <div class="selector-option">
-//     <div class="flag-img">
-//         <img src="img/uyu.svg" alt="">
-//     </div>
-//     <h4>Peso Uruguayo</h4>
-// </div>
-// <span></span>
-// </div>`;
-
 btnSelectorMoneda.addEventListener("click", function () {
-  console.log(getComputedStyle(selectorDesplegable).display);
   //si el valor de la propiedad esta en none al hacer click significa que tengo que mostrar el selector, entonces lo que hago es  setear el valor de display en flex
   if (getComputedStyle(selectorDesplegable).display == "none") {
     selectorDesplegable.style.display = "flex";
@@ -153,8 +45,6 @@ btnSelectorMoneda.addEventListener("click", function () {
     //como esto me devuelve una lista de nodos, tengo que recorrer nodo por nodo, le agrego un evento click y me guardo el valor del atributo data currency del div clickeado
     opcionesMonedas.forEach((opcion) => {
       opcion.addEventListener("click", function () {
-        console.log("Nodo: " + opcion);
-        console.log("nodo html: " + opcion.innerHTML);
         //obtengo el elemento span en la opcion
         let span = opcion.querySelector("span");
         //al span de la opcion seleccionada le agrego el icono de iconoCheck
@@ -164,7 +54,6 @@ btnSelectorMoneda.addEventListener("click", function () {
 
         //en moneda seleccionada obtengo el valor del atributo data currency de la opcion clickeada
         monedaSeleccionada = opcion.getAttribute("data-currency");
-        console.log(typeof monedaSeleccionada);
         //ahora lo que voy a hacer es que voy a llamar a la funcion MostrarTarjetas y le paso el valor de monedaSeleccionada
         MostrarTarjetas(monedaSeleccionada);
         //despues de mostrar las tarjetas oculto el desplegable
@@ -225,9 +114,7 @@ Promise.all(
   .catch((error) => console.error("Error al obtener datos:", error));
 
 //en este funcion lo que hago es retornar la tarjeta de la moneda, le paso por parametro la moneda, y con eso cargos los datos
-let index = -1;
 function construirTarjeta(datosMoneda, rutaImagen) {
-  index += 1;
   return `<div class="moneda-container" >
     <div class="moneda-card">
       <div class="moneda-title">
@@ -252,7 +139,9 @@ function construirTarjeta(datosMoneda, rutaImagen) {
       </div>
       <div class="moneda-footer">
         <div class="favoritos">
-          <button class="btn-favorito" id="${index}" onClick=GuardarMoneda(this)>
+          <button class="btn-favorito" data-moneda= '${JSON.stringify(
+            datosMoneda
+          )}' onClick=GuardarMoneda(this)>
             Guardar
           </button>
         </div>
@@ -281,7 +170,6 @@ function MostrarTarjetas(selectedOption) {
       );
       nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = dolaresData[selectedOption - 1].nombre;
-      monedaAGuardar = dolaresData[selectedOption - 1];
       spanFechaHora.textContent = dolaresData[
         selectedOption - 1
       ].fechaActualizacion.substring(0, 10);
@@ -292,7 +180,6 @@ function MostrarTarjetas(selectedOption) {
       nombreBanderaFlagImg.src = "img/" + rutaImagen;
       nombreBanderaNombre.textContent = eurosData.moneda;
       spanFechaHora.textContent = eurosData.fechaActualizacion.substring(0, 10);
-      monedaAGuardar = eurosData;
       break;
     case 9:
       rutaImagen = "brl.svg";
@@ -303,8 +190,6 @@ function MostrarTarjetas(selectedOption) {
         0,
         10
       );
-      monedaAGuardar = realBrasileño;
-      break;
       break;
     case 10:
       rutaImagen = "clp.svg";
@@ -315,7 +200,6 @@ function MostrarTarjetas(selectedOption) {
         0,
         10
       );
-      monedaAGuardar = pesoChileno;
       break;
     case 11:
       rutaImagen = "uyu.svg";
@@ -326,7 +210,6 @@ function MostrarTarjetas(selectedOption) {
         0,
         10
       );
-      monedaAGuardar = pesoUruguayo;
       break;
     default:
       dolaresData.forEach((dolar) => {
@@ -344,69 +227,37 @@ function MostrarTarjetas(selectedOption) {
       );
       break;
   }
- 
 }
 
-function GuardarMoneda(data) {
-  console.log(data);
-  console.log(data.getAttribute("id"));
-  data = parseInt(data.getAttribute("id"));
+function GuardarMoneda(boton) {
+  let monedaAGuardar = JSON.parse(boton.getAttribute("data-moneda"));
 
-  if (data <= 10) {
-    switch (data) {
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-        monedaAGuardar = dolaresData[data];
-        break;
-      case 7:
-        monedaAGuardar = eurosData;
-        break;
-      case 8:
-        monedaAGuardar = realBrasileño;
-        break;
-      case 9:
-        monedaAGuardar = pesoChileno;
-        break;
-      case 10:
-        monedaAGuardar = pesoUruguayo;
-        break;
-      default:
-        break;
-    }
-  }
-
-  console.log(monedaAGuardar);
-
-  let monedaExiste = false;
-
-  if (listaCotizacionesGuardadas.length > 0) {
-    for (let element of listaCotizacionesGuardadas) {
-      if (
-        element.moneda === monedaAGuardar.moneda &&
-        element.nombre === monedaAGuardar.nombre &&
-        element.fechaActualizacion === monedaAGuardar.fechaActualizacion
-      ) {
-        monedaExiste = true;
-        break;
-      }
-    }
-
-    if (!monedaExiste) {
-      listaCotizacionesGuardadas.push(monedaAGuardar);
-    } else {
-      console.log("La moneda ya existe.");
-    }
-  } else {
+  // verifico si la moneda ya está guardada
+  if (!monedaYaGuardada(monedaAGuardar)) {
+    //si no esta guardada la agrego en la lista
     listaCotizacionesGuardadas.push(monedaAGuardar);
+    //imprimo un msjito para corroborar que si se guardo
+    console.log("Moneda guardada:", monedaAGuardar);
+  } else {
+    //si ya existe le informo al usuario que no se puede guardar, despues esto lo vamos a informar con un cartelito en pantalla
+    console.log("La moneda ya existe. No se puede guardar.");
   }
 
+  // finalmente guardo la lista en el localStorage
   localStorage.setItem(
-    "cotizacion",
+    "cotizaciones",
     JSON.stringify(listaCotizacionesGuardadas)
+  );
+}
+
+// funcion que me va a servir para verificar si una moneda ya existe
+function monedaYaGuardada(moneda) {
+  //el metodo some es un metodo de arrays, y basicamente devuelve true si un array pasa un "test" o false si no lo pasa.
+  //se recorre la lista elemento por elemento comprarando los atributos con la moneda que pasamos por parametro, si algun (some significa algun/alguna) elemento del array pasa el test entonces se devuelve true, lo que estaria indicando que ya existe una moneda como la que se paso por parametro
+  return listaCotizacionesGuardadas.some(
+    (element) =>
+      element.moneda === moneda.moneda &&
+      element.nombre === moneda.nombre &&
+      element.fechaActualizacion === moneda.fechaActualizacion
   );
 }
