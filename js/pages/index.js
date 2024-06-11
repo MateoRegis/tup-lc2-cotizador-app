@@ -253,7 +253,8 @@ function GuardarMoneda(boton) {
 // funcion que me va a servir para verificar si una moneda ya existe
 function monedaYaGuardada(moneda) {
   //el metodo some es un metodo de arrays, y basicamente devuelve true si un array pasa un "test" o false si no lo pasa.
-  //se recorre la lista elemento por elemento comprarando los atributos con la moneda que pasamos por parametro, si algun (some significa algun/alguna) elemento del array pasa el test entonces se devuelve true, lo que estaria indicando que ya existe una moneda como la que se paso por parametro
+  //se recorre la lista elemento por elemento comparando los atributos con la moneda que pasamos por parametro, 
+  //si algun (some significa algun/alguna) elemento del array pasa el test entonces se devuelve true, lo que estaria indicando que ya existe una moneda como la que se paso por parametro
   return listaCotizacionesGuardadas.some(
     (element) =>
       element.moneda === moneda.moneda &&

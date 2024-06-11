@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="shortcut icon" href="img/logo-1.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="css/pages/contacto.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function() {
+          // https://dashboard.emailjs.com/admin/account
+          emailjs.init({
+            publicKey: "dHS2R0YbE5ZlM8BD-",
+          });
+      })();
+  </script>
   </head>
   <body>
     <header id="header">
@@ -48,28 +60,27 @@
               <div class="form-grid-container">
                 <div class="form-container">
                   <h3>Datos de contacto</h3>
-                  <form class="form-grid">
+                  <form class="form-grid" id="contact-form">
                     <div class="row-form">
-                      <div><label for="nombre">Nombre</label></div>
-                      <div><input type="text" id="nombre" name="nombre"></div>
+                      <div><label for="user_name">Nombre</label></div>
+                      <div><input type="text" id="user_name" name="user_name"></div>
                     </div>
                     <div class="row-form">
-                      <div><label for="email">Email</label></div>
-                      <div><input type="email" id="email" name="email"></div>
+                      <div><label for="user_email">Email</label></div>
+                      <div><input type="email" id="user_email" name="user_email"></div>
                     </div>
                     <div class="row-form">
-                      <div><label for="mensaje">Mensaje</label></div>
-                      <div><textarea name="mensaje" id="mensaje" cols="4" rows="8"></textarea></div>
+                      <div><label for="message">Mensaje</label></div>
+                      <div><textarea name="message" id="message" cols="4" rows="8"></textarea></div>
                     </div>
                     <div class="row-form">
                       <label id="lblValidacion"></label>
-                    </div>
-                    
-                  </form>
+                    </div>  
                   <div class="row-buttons">
-                    <button class="btn btn-enviar" onclick="EnviarFormulario()">Enviar</button>
-                    <button class="btn btn-limpiar" onclick="LimpiarFormulario()">Limpiar</button>
+                    <button class="btn btn-enviar" onclick="EnviarFormulario()" type="submit">Enviar</button>
+                    <button class="btn btn-limpiar" onclick="LimpiarFormulario()" type="button">Limpiar</button>
                   </div>
+                  </form>
                 </div>
                 <div class="datos-contacto">
                   <div class="text-content">
