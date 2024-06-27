@@ -6,18 +6,7 @@
   border-radius: 10px;
   padding: 20px;
 }
-.grafico-selector {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  margin: 50px 0px 20px 0px;
-  align-items: center;
-}
-.grafico-cotizacion h3 {
-  font-size: 2pc;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
+
 .img-grafico-container {
   width: 400px;
   height: 250px;
@@ -27,14 +16,21 @@
   object-fit: cover;
 }
 .selector-monedas-container {
-  width: 300px;
+  width: 360px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-radius: 4px;
   padding: 15px;
   border: 0.5px solid rgba(179, 187, 198, 0.45);
   box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
 }
+/* .selector-monedas-container select {
+    cursor: pointer;
+    font-size: 16px;
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+} */
 .nombre-bandera {
   padding-left: 8px;
   padding-right: 4px;
@@ -53,37 +49,79 @@
   width: 100%;
   object-fit: cover;
 }
-.selector-container {
-  background-color: #fff;
-  margin-top: 10px;
-  width: 300px;
-  max-height: 200px;
-  position: absolute;
-  left: 400px;
-  top: 850px; /*esto no me convence, lo puse para que quede bien ahora, pero me da la impresion de que se va a romper */
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-  padding: 10px;
+.nombre {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  overflow-y: scroll;
-  z-index: 5;
-  display: none;
-}
-.selector-option-container {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  border: 1px solid lightgray;
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
+  justify-content: center;
+  padding: 16px 8px;
+  font-size: 18px;
+  font-weight: 700;
 }
-
+/* esto lo dejo comentado porque despus lo vamos a usar con js */
+.selector-moneda {
+  padding-left: 12px;
+  padding: 9.5px 4px;
+  min-width: 30px;
+  opacity: 1;
+  border: 0;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+.btn-selector-moneda {
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  border-radius: 0;
+  vertical-align: middle;
+  justify-content: center;
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.icono-selector {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icono-selector i {
+  font-size: 1.2rem;
+}
+.selector-container {
+    background-color: #fff;
+    margin-top: 10px;
+    width: 300px;
+    max-height: 200px;
+    position: absolute;
+    left: 300px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    z-index: 5;
+    display: none;
+  }
+  .selector-option-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
 .selector-option {
   display: flex;
   align-items: center;
@@ -155,73 +193,102 @@
 }
 .tabla-cotizaciones {
   width: 100%;
-  display: grid;
-  grid-auto-rows: minmax(40px, auto);
-}
-.informe-cotizaciones {
-  height: 300px;
+  overflow-x: auto;
+  margin: auto;
+  max-height: 300px;
   overflow-y: scroll;
 }
-.encabezado {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  height: 70px;
-  margin-bottom: 10px;
-  text-align: center;
-  border: 1px solid var(--color-interactive-control);
-  border-radius: 10px;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  margin: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.encabezado div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+thead {
+  background-color: #007BFF;
+  color: white;
 }
-.fila-tipo-moneda {
-  display: flex;
-  align-items: center;
-  background-color: lightgray;
-  color: blue;
+
+th, td {
   padding: 10px;
-  gap: 13px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
-.flag-container {
-  width: 24px;
-  height: 24px;
+
+th {
+  cursor: pointer;
 }
-.flag-container img {
-  width: 100%;
-  object-fit: cover;
+
+th:hover {
+  background-color: #0056b3;
 }
-.fila-datos {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+
+/* Estilos para el modal */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); 
 }
-.columna-datos {
-  border: 1px solid lightgray;
-  text-align: center;
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-.columna-datos ul {
-  height: 100%;
-  width: 100%;
-  list-style: none;
-  margin: 10px 0;
-  padding-bottom: 10px;
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-buttons {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  margin-top: 20px;
 }
-.columna-datos li {
-  margin-bottom: 5px;
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.cambio-positivo {
+
+.modal-buttons button:hover {
+  background-color: #ddd;
+}
+
+
+.fa-arrow-up {
   color: green;
 }
-.cambio-negativo {
+
+.fa-arrow-down {
   color: red;
-}
-.fila-datos p {
-  font-size: 1.2pc;
-  letter-spacing: 1px;
 }
 
 .bread-crumb-item-active::before {

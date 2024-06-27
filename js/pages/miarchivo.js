@@ -35,12 +35,26 @@ function construirTarjeta(cotizacion, rutaImagen) {
         </div>
         <div class="tarjeta-footer">
             <div class="btn-container">
-                <button class="btn-Eliminar">Eliminar</button>
+                <button class="btn-Eliminar" data-favorita='${JSON.stringify(cotizacion)}'  onClick="eliminarCotizacion(this)">Eliminar</button>
             </div>
         </div>
     `;
   return div;
 }
+
+// Función para eliminar la cotización del almacenamiento local
+function eliminarCotizacion(buton){
+  // console.log(buton.parentNode.parentNode.parentNode)
+  let cotizacionEliminar = JSON.parse(buton.getAttribute("data-favorita"));
+  console.log(cotizacionEliminar);
+  listaCotizacionesGuardadas = listaCotizacionesGuardadas.filter(item => 
+    !(item.fechaActualizacion === cotizacionEliminar.fechaActualizacion && item.moneda === cotizacionEliminar.moneda)
+  );
+  localStorage.setItem("cotizaciones", JSON.stringify(listaCotizacionesGuardadas));
+  buton.parentNode.parentNode.parentNode.remove()
+}
+
+
 
 //esta funcion la usamos para contruir el div donde va la fecha de la cotizacion
 function construirDivFecha(fecha) {

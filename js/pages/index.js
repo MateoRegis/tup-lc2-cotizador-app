@@ -262,3 +262,32 @@ function monedaYaGuardada(moneda) {
       element.fechaActualizacion === moneda.fechaActualizacion
   );
 }
+
+
+const slider = document.querySelector('.slider');
+const cards = document.querySelectorAll('.card-comentarios');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+
+let currentIndex = 0;
+
+function updateSlider() {
+    const cardWidth = cards[0].clientWidth;
+    slider.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+}
+
+prevButton.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+    }
+});
+
+nextButton.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        updateSlider();
+    }
+});
+
+window.addEventListener('resize', updateSlider);
