@@ -49,6 +49,7 @@ function extraerFechaSinHora(fechaISO) {
   return fechaISO.split("T")[0];
 }
 document.addEventListener("DOMContentLoaded", () => {
+  dibujarGrafico();
   const tableBody = document.getElementById("table-body");
   const data = JSON.parse(localStorage.getItem("cotizaciones")) || [];
   // Ordenar los datos por fecha de la más actual a la menos actual
@@ -152,3 +153,84 @@ shareForm.addEventListener("submit", (event) => {
 
   modal.style.display = "none";
 });
+
+
+function dibujarGrafico(){
+  const cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || [];
+  // Ordenar los datos por fecha de la más actual a la menos actual
+  cotizaciones.sort((a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion));
+
+  // Preparar datos para Chart.js
+  const data = {};
+  cotizaciones.forEach(entry => {
+    const key = `${entry.moneda}-${entry.casa}`; // Utilizamos moneda y casa como clave única
+    if (!data[key]) {
+      data[key] = {
+        labels: [],
+        prices: []
+      };
+    }
+    data[key].labels.push(entry.fechaActualizacion);
+    data[key].prices.push(entry.compra);
+  });
+
+  // Configurar datasets para Chart.js
+  const datasets = Object.keys(data).map(key => {
+    const [moneda, casa] = key.split('-'); // Separar moneda y casa de la clave
+    return {
+      label: `${moneda} (${casa})`,
+      data: data[key].prices,
+      fill: false,
+      borderColor: getRandomColor(),
+      tension: 0.4
+    };
+  });
+
+  // Crear gráfico con Chart.js
+  const ctx = document.getElementById('cotizaciones-chart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data[Object.keys(data)[0]].labels, // Usar las etiquetas de la primera moneda y casa como referencia
+      datasets: datasets
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+      },
+      scales: {
+        x: {
+          display: true,
+          title: {
+            display: true,
+            text: 'Fecha de Actualización'
+          }
+        },
+        y: {
+          display: true,
+          title: {
+            display: true,
+            text: 'Precio de Compra'
+          }
+        }
+      }
+    }
+  });
+
+  // Función para generar colores aleatorios
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+}

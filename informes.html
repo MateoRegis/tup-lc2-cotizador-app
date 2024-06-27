@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/pages/informes.css" />
     <link rel="shortcut icon" href="img/logo-1.jpg" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header id="header"></header>
@@ -166,9 +167,9 @@
               </div>
                 <div class="grafico-cotizacion">
                  
-                  <h3>Informe</h3>
-                  <div class="img-grafico-container">
-                    <img src="img/grafico.jpg" alt="Gráfico de cotización" />
+                  <h3 class="titulo-informe">Informe</h3>
+                  <div class="chart-container">
+                    <canvas id="cotizaciones-chart"></canvas>
                   </div>
                 </div>
               

@@ -12,6 +12,58 @@ h5 {
 span {
   font-weight: 300;
 }
+/* Estilos del modal */
+.modal {
+  display: none; /* Ocultar modal por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro translúcido */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrar vertical y horizontalmente */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Animación para mostrar el modal */
+.modal-content {
+  animation-name: modalopen;
+  animation-duration: 0.3s;
+}
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .pizarra-section {
   padding: 20px;
 }

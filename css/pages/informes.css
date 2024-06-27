@@ -198,7 +198,13 @@
   max-height: 300px;
   overflow-y: scroll;
 }
-
+.titulo-informe{
+  text-align: center;
+}
+.chart-container {
+  width: 80%;
+  margin: 50px auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;

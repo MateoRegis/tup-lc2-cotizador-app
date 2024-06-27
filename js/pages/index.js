@@ -1,6 +1,12 @@
 //me traigo el boton de selector moneda
 let btnSelectorMoneda = document.getElementById("btn-selector-moneda");
 
+// Obtener elementos del DOM
+
+const modalCotizacionAgregada = document.getElementById('modalCotizacionAgregada');
+const modalCotizacionExistente = document.getElementById('modalCotizacionExistente');
+const closeModalBtns = document.querySelectorAll('.close');
+
 //cuando se haga click en este boton quiero que se agregue un select
 let selectorDesplegable = document.getElementById("selector-container");
 
@@ -21,6 +27,24 @@ let fechaHora = document.getElementById("fecha-hora");
 let spanFechaHora = fechaHora.querySelector("span");
 
 let listaCotizacionesGuardadas = [];
+
+
+
+// Cerrar modales al hacer clic en la 'x' de cada uno
+closeModalBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    modalCotizacionAgregada.style.display = 'none';
+    modalCotizacionExistente.style.display = 'none';
+  });
+});
+
+// Cerrar modales al hacer clic fuera del contenido del modal
+window.addEventListener('click', (event) => {
+  if (event.target === modalCotizacionAgregada || event.target === modalCotizacionExistente) {
+    modalCotizacionAgregada.style.display = 'none';
+    modalCotizacionExistente.style.display = 'none';
+  }
+});
 
 // cargo las monedas guardadas desde localStorage al inicio
 function cargarMonedasGuardadas() {
@@ -232,15 +256,21 @@ function MostrarTarjetas(selectedOption) {
 function GuardarMoneda(boton) {
   let monedaAGuardar = JSON.parse(boton.getAttribute("data-moneda"));
 
+
+
   // verifico si la moneda ya está guardada
   if (!monedaYaGuardada(monedaAGuardar)) {
     //si no esta guardada la agrego en la lista
     listaCotizacionesGuardadas.push(monedaAGuardar);
     //imprimo un msjito para corroborar que si se guardo
     console.log("Moneda guardada:", monedaAGuardar);
+    modalCotizacionAgregada.style.display = 'block';
+
   } else {
     //si ya existe le informo al usuario que no se puede guardar, despues esto lo vamos a informar con un cartelito en pantalla
     console.log("La moneda ya existe. No se puede guardar.");
+    modalCotizacionExistente.style.display = 'block';
+
   }
 
   // finalmente guardo la lista en el localStorage

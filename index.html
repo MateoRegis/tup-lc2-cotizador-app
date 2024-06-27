@@ -22,6 +22,21 @@
     <div class="page-container">
       <main>
         <div class="main">
+          <!-- Modal -->
+          <div id="modalCotizacionAgregada" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Cotización agregada a favoritos correctamente.</p>
+            </div>
+          </div>
+
+          <!-- Modal Cotización Existente -->
+          <div id="modalCotizacionExistente" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>La cotización ya existe en favoritos.</p>
+            </div>
+          </div>
           <section class="img-background-section">
             <div class="img-background" id="BackgroundDinamico">
               <div class="img-container">
@@ -175,12 +190,11 @@
                 <p>Datos Actualizados al <span></span></p>
               </div>
 
-              <div class="monedas-container" id="monedas-container">
-              </div>
+              <div class="monedas-container" id="monedas-container"></div>
               <div class="aviso-favoritos">
                 <p>
-                  !Haga clic en guardar para guardar los datos de la
-                  cotización en sus favoritos!
+                  !Haga clic en guardar para guardar los datos de la cotización
+                  en sus favoritos!
                 </p>
                 <p>
                   Datos obtenidos de
@@ -194,62 +208,92 @@
           <section class="comentarios-section">
             <h2>Comentarios</h2>
             <div class="slider-container">
-                <button class="button-comentarios prev">Prev</button>
-                <div class="slider">
-                    <div class="card-comentarios">
-                        <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-                        <h3>Nombre Usuario 1</h3>
-                        <p>Comentario del usuario 1.</p>
-                    </div>
-                    <div class="card-comentarios">
-                        <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-                        <h3>Nombre Usuario 2</h3>
-                        <p>Comentario del usuario 2.</p>
-                    </div>
-                    <div class="card-comentarios">
-                        <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-                        <h3>Nombre Usuario 3</h3>
-                        <p>Comentario del usuario 3.</p>
-                    </div>
-                    <div class="card-comentarios">
-                      <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-                      <h3>Nombre Usuario 1</h3>
-                      <p>Comentario del usuario 1.</p>
-                  </div>
-                  <div class="card-comentarios">
-                    <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-                    <h3>Nombre Usuario 1</h3>
-                    <p>Comentario del usuario 1.</p>
-                </div>
+              <button class="button-comentarios prev">Prev</button>
+              <div class="slider">
                 <div class="card-comentarios">
-                  <img src="https://via.placeholder.com/100" alt="Foto de usuario">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
                   <h3>Nombre Usuario 1</h3>
                   <p>Comentario del usuario 1.</p>
-              </div>
-              <div class="card-comentarios">
-                <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-                <h3>Nombre Usuario 1</h3>
-                <p>Comentario del usuario 1.</p>
-            </div>
-            <div class="card-comentarios">
-              <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-              <h3>Nombre Usuario 1</h3>
-              <p>Comentario del usuario 1.</p>
-          </div>
-          <div class="card-comentarios">
-            <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-            <h3>Nombre Usuario 1</h3>
-            <p>Comentario del usuario 1.</p>
-        </div>
-        <div class="card-comentarios">
-          <img src="https://via.placeholder.com/100" alt="Foto de usuario">
-          <h3>Nombre Usuario 1</h3>
-          <p>Comentario del usuario 1.</p>
-      </div>
                 </div>
-                <button class="button-comentarios next">Next</button>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 2</h3>
+                  <p>Comentario del usuario 2.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 3</h3>
+                  <p>Comentario del usuario 3.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="https://via.placeholder.com/100"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nombre Usuario 1</h3>
+                  <p>Comentario del usuario 1.</p>
+                </div>
+              </div>
+              <button class="button-comentarios next">Next</button>
             </div>
-        </section>
+          </section>
         </div>
       </main>
     </div>
