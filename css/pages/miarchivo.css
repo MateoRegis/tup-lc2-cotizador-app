@@ -1,29 +1,22 @@
-.titulos h3{
-    font-size: 1.3pc;
-    font-weight: 400;
-    line-height: 2pc;
-    letter-spacing: 1.7px;
-}
-.cotizaciones p{
-    font-size: 1.2pc;
-    letter-spacing: 1px;
-}
+/* seccion cotizaciones favoritas */
 .archivos-section {
     padding: 30px;
 }
+
 .fecha {
     font-size: 1.7pc;
     font-weight: 500;
     letter-spacing: 5px;
     color: black;
 }
+
 .tarjetas-container{
     display: grid;
-    /* grid-template-columns: repeat(4, 1fr); */
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
     
 }
+
 .tarjeta{
     padding: 10px;
     max-width: 350px;
@@ -34,6 +27,7 @@
     box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
     border-radius: 10px;
 }
+
 .tarjeta-header{
     height: 130px;
     display: flex;
@@ -91,11 +85,16 @@
 .btn-container button:hover {
     background-color: rgb(210, 67, 91);
 }
+
+/* seccion migas de pan */
+
 .bread-crumb-item-active::before{
     content: ">";
     padding: 0 8px;
     color: #000;
 }
+
+/* medias querys */
 @media screen and (max-width: 768px){
     .titulos h3{
         font-size: 1pc;

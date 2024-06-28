@@ -1,5 +1,17 @@
-let listaCotizacionesGuardadas = [];
+////////////////////////////// Obtener elementos del DOM  ///////////////////////////////////////////////////////////////////////////////
 let fechaMonedas = document.getElementById("fecha-monedas");
+
+////variables globales
+
+//esta vaarible la vamos a usar para guardar la informacion que recuperamos del storage
+let listaCotizacionesGuardadas = [];
+
+
+
+
+//////////////////////////////////////////////////
+//////////////////////Principal//////////////////////////////////
+
 
 //Esta funcion nos sirve para recuperar los datos del local storage
 function cargarMonedasGuardadas() {
@@ -48,10 +60,10 @@ function eliminarCotizacion(buton){
   let cotizacionEliminar = JSON.parse(buton.getAttribute("data-favorita"));
   console.log(cotizacionEliminar);
   listaCotizacionesGuardadas = listaCotizacionesGuardadas.filter(item => 
-    !(item.fechaActualizacion === cotizacionEliminar.fechaActualizacion && item.moneda === cotizacionEliminar.moneda)
+    !(item.fechaActualizacion === cotizacionEliminar.fechaActualizacion && item.moneda === cotizacionEliminar.moneda && item.casa === cotizacionEliminar.casa)
   );
   localStorage.setItem("cotizaciones", JSON.stringify(listaCotizacionesGuardadas));
-  buton.parentNode.parentNode.parentNode.remove()
+  window.location = "Miarchivo.html";
 }
 
 

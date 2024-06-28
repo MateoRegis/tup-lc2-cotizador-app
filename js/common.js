@@ -3,6 +3,7 @@ let header = document.getElementById("header");
 let menu = `<div id="menu">
 <div class="icono-container">
   <a href="index.html"><img src="img/bullCoinIcono.jpg" alt="" /></a>
+  <h2>BullCoin</h2>
 </div>
 <ul>
   <li>

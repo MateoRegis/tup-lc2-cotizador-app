@@ -1,33 +1,73 @@
-//me traigo el boton de selector moneda
-let btnSelectorMoneda = document.getElementById("btn-selector-moneda");
 
-// Obtener elementos del DOM
 
+////////////////////////////// Obtener elementos del DOM  ///////////////////////////////////////////////////////////////////////////////
+
+//boton que expande el selector de tipo de divisas
+const btnSelectorMoneda = document.getElementById("btn-selector-moneda");
+
+//modal de cotizacion agregda correctamente
 const modalCotizacionAgregada = document.getElementById('modalCotizacionAgregada');
+
+//modal de cotizacion ya existente
 const modalCotizacionExistente = document.getElementById('modalCotizacionExistente');
+
+//botones de cerrar los modals
 const closeModalBtns = document.querySelectorAll('.close');
 
+//contenedor slider de los comentarios
+const slider = document.querySelector('.slider');
+
+//tarjeta de comentarios
+const cards = document.querySelectorAll('.card-comentarios');
+
+//boton de mover hacia izquierda los comentarios
+const prevButton = document.querySelector('.prev');
+
+//boton de mover a la derecha los comentarios
+const nextButton = document.querySelector('.next');
+
 //cuando se haga click en este boton quiero que se agregue un select
-let selectorDesplegable = document.getElementById("selector-container");
+const selectorDesplegable = document.getElementById("selector-container");
+
+const nombreBandera = document.getElementById("nombre-bandera");
 
 //en HTMLResponse me traigo el contenedor donde voy a ir agregando las tarjetas
 const HTMLResponse = document.getElementById("monedas-container");
 
+const nombreBanderaFlagImg = nombreBandera.querySelector(".flag img");
+
+const nombreBanderaNombre = nombreBandera.querySelector(".nombre");
+
+const fechaHora = document.getElementById("fecha-hora");
+const spanFechaHora = fechaHora.querySelector("span");
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////Definicion de variables globales /////////////////////////////////////
+
+
 //en opciones moneda me voy aguardar la lista de las opciones
 let opcionesMonedas;
 
+//en moneda seleccionada me voy a guardar el tipo de divisa selccionada por un usuario
 let monedaSeleccionada;
 
-let nombreBandera = document.getElementById("nombre-bandera");
 
-let nombreBanderaFlagImg = nombreBandera.querySelector(".flag img");
-let nombreBanderaNombre = nombreBandera.querySelector(".nombre");
-
-let fechaHora = document.getElementById("fecha-hora");
-let spanFechaHora = fechaHora.querySelector("span");
-
+//esta lista la voy a usar para almacenar las cotizaciones guardadas por un usuario
 let listaCotizacionesGuardadas = [];
 
+//este iconito es el que voy a usar para indicar que una moneda esta seleccionada en el selector
+let iconoCheck = `<i class="fa-solid fa-check"></i>`;
+
+//estas variables las voy a usar para almacenar los datos traidos de la api
+let dolaresData, eurosData, realBrasileño, pesoChileno, pesoUruguayo;
+
+let currentIndex = 0;
+
+//////////////////////////////////////////////////////////////////
+
+///////////////////////principal//////////////////////////////////////////
 
 
 // Cerrar modales al hacer clic en la 'x' de cada uno
@@ -56,8 +96,7 @@ function cargarMonedasGuardadas() {
 // llamo a la función para cargar las monedas guardadas al inicio
 cargarMonedasGuardadas();
 
-//este iconito es el que voy a usar para indicar que una moneda esta seleccionada en el selector
-let iconoCheck = `<i class="fa-solid fa-check"></i>`;
+
 
 btnSelectorMoneda.addEventListener("click", function () {
   //si el valor de la propiedad esta en none al hacer click significa que tengo que mostrar el selector, entonces lo que hago es  setear el valor de display en flex
@@ -82,12 +121,6 @@ btnSelectorMoneda.addEventListener("click", function () {
         MostrarTarjetas(monedaSeleccionada);
         //despues de mostrar las tarjetas oculto el desplegable
         selectorDesplegable.style.display = "none";
-        //si la moneda seleccionada es distinta de cero, significa que se eligio una opcion distinta de Todas, por lo que en el contenedor de monedas solo se va a mostrar una cotizacion, entonces modifico el template columns para que quede bien, en caso de que la opcion seleccionada sea Todas entonces vuelvo a dejar el template columns como estaba originalmente en el css
-        // if (monedaSeleccionada != "0") {
-        //   HTMLResponse.style.gridTemplateColumns = "400px";
-        // } else {
-        //   HTMLResponse.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
-        // }
       });
     });
 
@@ -103,8 +136,7 @@ btnSelectorMoneda.addEventListener("click", function () {
   }
 });
 
-//estas variables las voy a usar para almacenar los datos traidos de la api
-let dolaresData, eurosData, realBrasileño, pesoChileno, pesoUruguayo;
+
 
 // Array para almacenar las URLs de las cotizaciones
 const cotizacionesURLs = [
@@ -179,7 +211,7 @@ function MostrarTarjetas(selectedOption) {
   selectedOption = parseInt(selectedOption);
   let rutaImagen = "usd.svg";
   HTMLResponse.innerHTML = "";
-  //como para los primeros 7 casos hago lo mismo, por eso lo hago de esta manera
+  //como para los primeros 7 casos hago lo mismo (se evaluan los usd), por eso lo hago de esta manera
   switch (selectedOption) {
     case 1:
     case 2:
@@ -257,13 +289,13 @@ function GuardarMoneda(boton) {
   let monedaAGuardar = JSON.parse(boton.getAttribute("data-moneda"));
 
 
-
   // verifico si la moneda ya está guardada
   if (!monedaYaGuardada(monedaAGuardar)) {
     //si no esta guardada la agrego en la lista
     listaCotizacionesGuardadas.push(monedaAGuardar);
     //imprimo un msjito para corroborar que si se guardo
     console.log("Moneda guardada:", monedaAGuardar);
+    //muestro el modal de cotizacion agregada correctamente
     modalCotizacionAgregada.style.display = 'block';
 
   } else {
@@ -294,18 +326,18 @@ function monedaYaGuardada(moneda) {
 }
 
 
-const slider = document.querySelector('.slider');
-const cards = document.querySelectorAll('.card-comentarios');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
 
-let currentIndex = 0;
 
+
+//con esta funcion actualizamos la posicion del slider en funcion del indice actual y el ancho de la primera tarjeta
 function updateSlider() {
     const cardWidth = cards[0].clientWidth;
     slider.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
 }
 
+//este evento se activa cuando hacemos click en el boton de la izquierda de la seccion de los comentarios, primero verificamos que el indice actual sea mayor que cero para asegurarnos de que no se vaya mas alla de la primera tarjeta
+//decrementamos el indice actual en 1, porque nos estamos moviendo hacia la izquierda
+//actualizamos la posicion del slider llamando la funcion creada anteriormente
 prevButton.addEventListener('click', () => {
     if (currentIndex > 0) {
         currentIndex--;
@@ -313,6 +345,9 @@ prevButton.addEventListener('click', () => {
     }
 });
 
+//este evento se activa cuando hacemos click en el boton de la derecha de la seccion de comentarios.
+//verificamos que el indice actual sea menor que la longitud de las card menos 1 para asegurarmos que no nos vamos mas alla de la ultima tarjeta
+//incrementamos el indice actual porque nos estamos moviendo a la derecha y por ultimo llamamos la funcion para actualizar la posicion del slider
 nextButton.addEventListener('click', () => {
     if (currentIndex < cards.length - 1) {
         currentIndex++;
@@ -320,4 +355,5 @@ nextButton.addEventListener('click', () => {
     }
 });
 
+//cada vez que se redimensiona la pantalla actualizamos la posicion del slider
 window.addEventListener('resize', updateSlider);

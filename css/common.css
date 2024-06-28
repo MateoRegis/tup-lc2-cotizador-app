@@ -41,13 +41,24 @@ header {
 
 /* Logo */
 .icono-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.icono-container a{
+  display: block;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
 }
+.icono-container h2{
+  font-size: 2pc;
+  text-shadow: 2px 2px 0px #aaaaaa, 4px 3px 0px rgba(0, 0, 0, 0.13);
+}
 .icono-container img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -200,6 +211,9 @@ footer {
 @media screen and (max-width: 768px) {
   header {
     height: 0;
+  }
+  .icono-container {
+    flex-direction: column;
   }
   /*Menu desplegable*/
   .btn-mnu {
