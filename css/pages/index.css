@@ -29,13 +29,17 @@ span {
 }
 
 .modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   background-color: #fefefe;
   margin: 15% auto; /* Centrar vertical y horizontalmente */
   padding: 20px;
   border: 1px solid #888;
   width: 300px;
   border-radius: 10px;
-  text-align: center;
+  animation-name: modalopen;
+  animation-duration: 0.3s;
 }
 
 .close {
@@ -53,10 +57,6 @@ span {
 }
 
 /* Animación para mostrar el modal */
-.modal-content {
-  animation-name: modalopen;
-  animation-duration: 0.3s;
-}
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -311,12 +311,15 @@ span {
   min-width: 200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   border-radius: 10px;
 }
 
 .card-comentarios img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
 }
@@ -347,6 +350,9 @@ span {
   .comentarios-container {
     grid-template-columns: repeat(3, 1fr);
   }
+  .selector-container{
+    left: 100px;
+  }
 }
 @media screen and (max-width: 430px) {
   .cotizaciones-title h2 {
@@ -373,6 +379,13 @@ span {
   .aviso-favoritos {
     flex-wrap: wrap;
     gap: 10px;
+  }
+  .selector-monedas-container{
+    width: 300px;
+  }
+  .selector-container{
+    width: 250px;
+    left: 50px;
   }
 }
 @media screen and (max-width: 325px) {

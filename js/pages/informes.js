@@ -3,7 +3,6 @@
 //me traigo el boton de selector moneda
 const btnSelectorMoneda = document.getElementById("btn-selector-moneda");
 
-
 const modal = document.getElementById("modal");
 const linkCompartir = document.getElementById("link-compartir-info");
 const closeButton = document.querySelectorAll(".close-button");
@@ -14,7 +13,10 @@ const tableBody = document.getElementById("table-body");
 //cuando se haga click en este boton quiero que se agregue un select
 let selectorDesplegable = document.getElementById("selector-container");
 
+const nombreBandera = document.getElementById("nombre-bandera");
+const nombreBanderaFlagImg = nombreBandera.querySelector(".flag img");
 
+const nombreBanderaNombre = nombreBandera.querySelector(".nombre");
 
 ////////////////////////////////////////////////////
 ////////////////////////Definimos variables globales///////////////////////////////////////////
@@ -22,8 +24,7 @@ let selectorDesplegable = document.getElementById("selector-container");
 //este iconito es el que voy a usar para indicar que una moneda esta seleccionada en el selector
 let iconoCheck = `<i class="fa-solid fa-check"></i>`;
 let monedaSeleccionada;
-
-
+let chartInstance = null; // Variable para almacenar la instancia del gráfico
 
 ////////////////////////////////////////////////////////
 //////////////////////////principal/////////////////////////////////////
@@ -31,15 +32,15 @@ let monedaSeleccionada;
 //este evento se activa cuando se carga el  dom
 //dibujamos el grafico y la tabla
 document.addEventListener("DOMContentLoaded", () => {
-  dibujarGrafico();
+  MostrarGrafico("0");
   const data = JSON.parse(localStorage.getItem("cotizaciones")) || [];
   // Ordenar los datos por fecha de la más actual a la menos actual
-  data.sort(
+  datosOrdenadosDescendente = data.sort(
     (a, b) => new Date(b.fechaActualizacion) - new Date(a.fechaActualizacion)
   );
 
   // Generar filas de la tabla dependiendo de cuanta info hay en el local storage
-  data.forEach((moneda) => {
+  datosOrdenadosDescendente.forEach((moneda) => {
     const fila = document.createElement("tr");
 
     const celdaMoneda = document.createElement("td");
@@ -61,30 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const celdaVariacion = document.createElement("td");
     const icono = document.createElement("i");
 
-    //en data previa vamos a filtrar las cotizaciones iguales (que coinciden moneda y casa) pero con fechas anteriores
-    //data es el nombre que le pusimos a la variable donde almacenamos lo que recuperamos del local storage
-    //m es como un elemento de la data
-    //filter es un metodo de arrays que nos devuelve un nuevo array con los elementos del array original que pasa una "prueba"
-    //en este caso la prueba que le ponemos es que coincidan la moneda y la casa y la fecha de Actualización sea anterior
-    let dataPrevia = data.filter(
-      (item) =>
-        item.moneda === moneda.moneda &&
-        item.casa === moneda.casa &&
-        item.fechaActualizacion < moneda.fechaActualizacion
-    );
-    //validamos si se encontro elementos que cumplen con los requisitos, sinpo no tenemos con quien comparar
-    if (dataPrevia.length > 0) {
-      //en ultimo registro nos guardamos el ultimo elemento de data previa, que seria el mas reciente antes de moneda.fechaActualizacion
-      let ultimoRegistro = dataPrevia[dataPrevia.length - 1];
-      //comparamos si el precio de compra es mayor o menos
-      //si es mayor le ponemos el iconito para arriba en verde
-      //si es menor le ponemos el iconito para abajo en rojo
-      if (moneda.compra > ultimoRegistro.compra) {
-        icono.className = "fa-solid fa-arrow-up";
-      } else if (moneda.compra < ultimoRegistro.compra) {
-        icono.className = "fa-solid fa-arrow-down";
-      }
+    if (
+      !actualizarIconoConRegistrosPrevios(
+        datosOrdenadosDescendente,
+        moneda,
+        icono
+      )
+    ) {
+      actualizarIconoConRegistrosNuevos(data, moneda, icono);
     }
+
     //agregamos el icono a la celda
     celdaVariacion.appendChild(icono);
     //agregamos la celda a la fila
@@ -93,6 +80,56 @@ document.addEventListener("DOMContentLoaded", () => {
     tableBody.appendChild(fila);
   });
 });
+
+function actualizarIconoConRegistrosPrevios(data, moneda, icono) {
+  let dataPrevia = data.filter(
+    (item) =>
+      item.moneda === moneda.moneda &&
+      item.casa === moneda.casa &&
+      item.fechaActualizacion < moneda.fechaActualizacion
+  );
+
+  // Validamos si se encontraron elementos que cumplen con los requisitos
+  if (dataPrevia.length > 0) {
+    // Guardamos el último elemento de dataPrevia, el más reciente antes de moneda.fechaActualizacion
+    let ultimoRegistro = dataPrevia[dataPrevia.length - 1];
+    // Comparamos si el precio de compra es mayor o menor
+    if (moneda.compra > ultimoRegistro.compra) {
+      icono.className = "fa-solid fa-arrow-up";
+    } else if (moneda.compra < ultimoRegistro.compra) {
+      icono.className = "fa-solid fa-arrow-down";
+    } else {
+      icono.className = "fa-solid fa-minus"; 
+    }
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function actualizarIconoConRegistrosNuevos(data, moneda, icono) {
+  data.sort(
+    (a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion)
+  );
+
+  let datanueva = data.filter(
+    (item) =>
+      item.moneda === moneda.moneda &&
+      item.casa === moneda.casa &&
+      item.fechaActualizacion > moneda.fechaActualizacion
+  );
+
+  if (datanueva.length > 0) {
+    let primerRegistro = datanueva[0];
+    if (moneda.compra > primerRegistro.compra) {
+      icono.className = "fa-solid fa-arrow-up";
+    } else if (moneda.compra < primerRegistro.compra) {
+      icono.className = "fa-solid fa-arrow-down";
+    } else {
+      icono.className = "fa-solid fa-minus"; 
+    }
+  }
+}
 
 //este evento se activa cuando un usuario hace click en el selector
 btnSelectorMoneda.addEventListener("click", function () {
@@ -114,6 +151,20 @@ btnSelectorMoneda.addEventListener("click", function () {
 
         //en moneda seleccionada obtengo el valor del atributo data currency de la opcion clickeada
         monedaSeleccionada = opcion.getAttribute("data-currency");
+        console.log(monedaSeleccionada);
+        //monedaSeleccionada = 0 = Todas
+        //monedaSeleccionada = 1 = Dolar oficial
+        //monedaSeleccionada = 2 = Dolar Blue
+        //monedaSeleccionada = 3 = Dolar Bolsa
+        //monedaSeleccionada = 4 = Dolar CCL
+        //monedaSeleccionada = 5 = Dolar Mayorista
+        //monedaSeleccionada = 6 = Dolar Cripto
+        //monedaSeleccionada = 7 = Dolar Tarjeta
+        //monedaSeleccionada = 8 = Euro
+        //monedaSeleccionada = 9 = Real Brasileño
+        //monedaSeleccionada = 10 = peso chileno
+        //monedaSeleccionada = 11 = peso uruguayo
+        MostrarGrafico(monedaSeleccionada);
 
         //despues de mostrar las tarjetas oculto el desplegable
         selectorDesplegable.style.display = "none";
@@ -121,22 +172,90 @@ btnSelectorMoneda.addEventListener("click", function () {
     });
     //lo que hago aca es limpiar todos los span de las opciones que no sean la opcion clickeada
     opcionesMonedas.forEach((opcion) => {
-        if (opcion.getAttribute("data-currency") != monedaSeleccionada) {
-          opcion.querySelector("span").innerHTML = "";
-        }
-      });
+      if (opcion.getAttribute("data-currency") != monedaSeleccionada) {
+        opcion.querySelector("span").innerHTML = "";
+      }
+    });
   } else if (getComputedStyle(selectorDesplegable).display == "flex") {
     //por otro lado si el valor de la propiedad display es flex al momento de hacer click significa que tengo que ocultar el selector, entonces seteo el display en none
     selectorDesplegable.style.display = "none";
   }
 });
+// Función para mostrar el gráfico
+function MostrarGrafico(selectedOption) {
+  selectedOption = parseInt(selectedOption);
+  let cotizaciones = JSON.parse(localStorage.getItem("cotizaciones")) || [];
+  let rutaImagen;
+  let rutaImagenUsd = "usd.svg";
+  // Filtrar las cotizaciones según la opción seleccionada
+  let datosFiltrados = cotizaciones.filter(item => {
+    switch (selectedOption) {
+      case 0: // Todas las monedas
+        rutaImagen = "noun-world-2699516.svg";
+        nombreBanderaFlagImg.src = "img/" + rutaImagen;
+        nombreBanderaNombre.textContent = "Todas";
+        return true;
+      case 1:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "Oficial";
+        return item.moneda === "USD" && item.casa === "oficial";
+      case 2:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "Blue";
+        return item.moneda === "USD" && item.casa === "blue";
+      case 3:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "Bolsa";
+        return item.moneda === "USD" && item.casa === "bolsa";
+      case 4:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "CCL";
+        return item.moneda === "USD" && item.casa === "contadoconliqui";
+      case 5:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "Mayorista";
+        return item.moneda === "USD" && item.casa === "mayorista";
+      case 6:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "Cripto";
+        return item.moneda === "USD" && item.casa === "cripto";
+      case 7:
+        nombreBanderaFlagImg.src = "img/" + rutaImagenUsd;
+        nombreBanderaNombre.textContent = "Tarjeta";
+        return item.moneda === "USD" && item.casa === "tarjeta";
+      case 8:
+        rutaImagen = "eur.svg";
+        nombreBanderaFlagImg.src = "img/" + rutaImagen;
+        nombreBanderaNombre.textContent = "EUR";
+        return item.moneda === "EUR" && item.casa === "oficial";
+      case 9:
+        rutaImagen = "brl.svg";
+        nombreBanderaFlagImg.src = "img/" + rutaImagen;
+        nombreBanderaNombre.textContent = "BRL";
+        return item.moneda === "BRL" && item.casa === "oficial";
+      case 10:
+        rutaImagen = "clp.svg";
+        nombreBanderaFlagImg.src = "img/" + rutaImagen;
+        nombreBanderaNombre.textContent = "CLP";
+        return item.moneda === "CLP" && item.casa === "oficial";
+      case 11:
+        rutaImagen = "uyu.svg";
+        nombreBanderaFlagImg.src = "img/" + rutaImagen;
+        nombreBanderaNombre.textContent = "UYU";
+        return item.moneda === "UYU" && item.casa === "oficial";
+      default:
+        return false;
+    }
+  });
+
+  // Llamar a la función para dibujar el gráfico con los datos filtrados
+  dibujarGrafico(datosFiltrados, selectedOption);
+}
 
 //como los datos obtenidos de la api nos da una fecha con formato iso, hacemos esta funcion para quedarnos solamente con la fecha, sin hora
 function extraerFechaSinHora(fechaISO) {
   return fechaISO.split("T")[0];
 }
-
-
 
 //este evtno se activa cuando un usuario hace click en el link de compartir info
 linkCompartir.addEventListener("click", (event) => {
@@ -158,9 +277,8 @@ window.addEventListener("click", (event) => {
   }
 });
 
-
 //este evento se activa cuando se hace click en el boton enviar en el formulario de compartir información
-//guardamos la info de los inputs, osea nombre y correo y nos guardamos la info de la tabla 
+//guardamos la info de los inputs, osea nombre y correo y nos guardamos la info de la tabla
 //con la info de la tabla armamos el body del correo a enviar
 formCompartir.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -195,111 +313,100 @@ formCompartir.addEventListener("submit", (event) => {
   modal.style.display = "none";
 });
 
-//funcion para dibujar el grafico
-function dibujarGrafico(){
-  const cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || [];
+// Función para dibujar el gráfico
+function dibujarGrafico(cotizaciones, selectedOption) {
+   // Destruir el gráfico anterior si existe
+   if (chartInstance) {
+    chartInstance.destroy();
+  }
   // Ordenar los datos por fecha de la más actual a la menos actual
   cotizaciones.sort((a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion));
 
   // Preparar datos para Chart.js
-  const data = {}; //inicializamos un objeto vacio en donde vamos a almacenar los datos que vamos a usar en el grafico
+  const data = {};
 
-  //recorremos las cotizaciones que recuperamos del local storage
-  cotizaciones.forEach(item => {
-    //en key creamos una clave unica para cada combinacion combinando la moneda y la casa
-    const key = `${item.moneda}-${item.casa}`; // Utilizamos moneda y casa como clave única
-    //verificamos si la clave key ya existe en data, si no existe lo inicializamos con un objeto que contiene arreglos vacios para labels y prices
+  cotizaciones.forEach((item) => {
+    const key = `${item.moneda}-${item.casa}`;
     if (!data[key]) {
       data[key] = {
         labels: [],
-        prices: []
+        prices: [],
+        salePrices: [],
       };
     }
-    //agregamos la fecha de actualizacion al areglo prices
     data[key].labels.push(item.fechaActualizacion);
-    //agregamos el precio de compra al arreglo prices
     data[key].prices.push(item.compra);
+    data[key].salePrices.push(item.venta);
   });
 
   // Configurar datasets para Chart.js
-  //generamos un arreglo dataset utilizacion objets keys para iterar sobre las claves del objeto data (moneda y casa)
-  const datasets = Object.keys(data).map(key => {
-    //separamos en dos arreglos, uno llamado moneda, y otro llamado casa, esto lo hacemos mediante el split
-    const [moneda, casa] = key.split('-'); // Separar moneda y casa de la clave
-    //con return devolvemos un objeto para cada clave key en data, que representa un conjunto de datos para chart.js
+  const datasets = Object.keys(data).map((key) => {
+    const [moneda, casa] = key.split("-");
     return {
-      //con label definimos las etiquetas del conjunto de datos
-      label: `${moneda} (${casa})`,
-      //con data definimos los datos reales que mostramos en el grafico, que son los precios almacenados en data[key].prices
+      label: selectedOption === 0 ? `${moneda} (${casa})` : `${moneda} (${casa}) - Compra`,
       data: data[key].prices,
-      //con fill false le indicamos que el area bajo la linea del grafico no se debe rellenar
       fill: false,
-      //asignamos un color aleatorio al borde de la linea usanod la funcion getrandomcolor
       borderColor: getRandomColor(),
-      //con tension controlamos la curvatura de la linea del grafico, a menor tension la linea se hace mas recta
-      tension: 0.4
+      tension: 0.4,
     };
   });
 
+  if (selectedOption !== 0) {
+    const saleDatasets = Object.keys(data).map((key) => {
+      const [moneda, casa] = key.split("-");
+      return {
+        label: `${moneda} (${casa}) - Venta`,
+        data: data[key].salePrices,
+        fill: false,
+        borderColor: getRandomColor(),
+        tension: 0.4,
+      };
+    });
+    datasets.push(...saleDatasets);
+  }
+
   // Crear gráfico con Chart.js
-  const ctx = document.getElementById('cotizaciones-chart').getContext('2d');
-  new Chart(ctx, {
-    type: 'line', //especificamos que el tipo de grafico es lineal
-    //data contiene los datos que se mostraran en el grafico
-    //los labels dfinen las etiquetas del eje x
-    //dataset contiene la configuracion y datos de cadfa conjunto de datos que mostramos en el graafico
+  const ctx = document.getElementById("cotizaciones-chart").getContext("2d");
+  chartInstance = new Chart(ctx, {
+    type: "line",
     data: {
-      labels: data[Object.keys(data)[0]].labels, // Usar las etiquetas de la primera moneda y casa como referencia
-      datasets: datasets
+      labels: data[Object.keys(data)[0]].labels,
+      datasets: datasets,
     },
-    //con options especificamos las opciones de configuracion del grafico.
     options: {
-      //con responsive: true permitimos que el grafico se ajuste y sea responsive
       responsive: true,
-      //con plugins vamos a definir configuraciones adicionales propocionadas por plugins de chatr.js
       plugins: {
-        //con tooltip configuramos el comportamiento del cuaadrito que aparece al pasar el mouse sobre el grafico
         tooltip: {
-          //mode index muestra un solo tooltip por cada punto del grafico
-          mode: 'index',
-          //con interset en false evitamos que los tooltips se intersecten, mostrando solo el mas cercano al cursor
+          mode: "index",
           intersect: false,
         },
       },
-      //con scales configuramos las escalas de los ejes del grafico
       scales: {
-        //con x configuramos el eje x (horizontal)
         x: {
-          //con display true mostramos el eje
           display: true,
-          //con tittle configuramos el titulo el titulo del eje x
-          //display true para mostrarlo y en text el txto que queremos que tenga
           title: {
             display: true,
-            text: 'Fecha de Actualización'
-          }
+            text: "Fecha de Actualización",
+          },
         },
-        //y para la configuracion del eje y (vertical)
         y: {
-          //las mismas configuraciones de antes
           display: true,
           title: {
             display: true,
-            text: 'Precio de Compra'
-          }
-        }
-      }
-    }
+            text: selectedOption === 0 ? "Precio de Compra" : "Precio",
+          },
+        },
+      },
+    },
   });
 
   // Función para generar colores aleatorios
   function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
+    const letters = "0123456789ABCDEF";
+    let color = "#";
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
   }
 }
-

@@ -166,14 +166,13 @@
                   <span></span>
                 </div>
               </div>
-                <div class="grafico-cotizacion">
-                 
-                  <h3 class="titulo-informe">Informe</h3>
-                  <div class="chart-container">
-                    <canvas id="cotizaciones-chart"></canvas>
-                  </div>
+              <div class="grafico-cotizacion">
+                <h3 class="titulo-informe">Informe</h3>
+                <div class="chart-container">
+                  <canvas id="cotizaciones-chart"></canvas>
                 </div>
-              
+              </div>
+
               <div class="compartir-info">
                 <a href="#" id="link-compartir-info">
                   <i class="fa-solid fa-envelope"></i> Compartir Información
@@ -181,37 +180,38 @@
               </div>
               <div id="modal" class="modal">
                 <div class="modal-content">
-                    <span class="close-button">&times;</span>
-                    <h2>Compartir Información</h2>
-                    <form id="formularioCompartir">
-                        <label for="name">Nombre:</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="modal-buttons">
-                            <button type="button" class="close-button">Cerrar</button>
-                            <button type="submit">Enviar</button>
-                        </div>
-                    </form>
+                  <span class="close-button">&times;</span>
+                  <h2>Compartir Información</h2>
+                  <form id="formularioCompartir">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required />
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                    <div class="modal-buttons">
+                      <button type="button" class="close-button">Cerrar</button>
+                      <button type="submit">Enviar</button>
+                    </div>
+                  </form>
                 </div>
-            </div>
+              </div>
 
               <div class="datos-moneda">
                 <div class="tabla-cotizaciones">
                   <table id="cotizaciones-table">
                     <thead>
-                        <tr>
-                            <th>Moneda</th>
-                            <th>Fecha</th>
-                            <th>Compra</th>
-                            <th>Venta</th>
-                            <th>Variación</th>
-                        </tr>
+                      <tr>
+                        <th>Moneda</th>
+                        <th>Fecha</th>
+                        <th>Compra</th>
+                        <th>Venta</th>
+                        <th>Variación</th>
+                      </tr>
                     </thead>
+
                     <tbody id="table-body">
-                        <!-- Las filas se generarán dinámicamente -->
+                      <!-- Las filas se generarán dinámicamente -->
                     </tbody>
-                </table>
+                  </table>
                 </div>
               </div>
             </div>
