@@ -73,13 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const celdaVariacion = document.createElement("td");
       const icono = document.createElement("i");
 
-      if (
-        !actualizarIconoConRegistrosPrevios(
-          datosOrdenadosDescendente,
-          moneda,
-          icono
-        )
-      ) {
+      //llamamos a la funcion actualizar icono con registros previos, si dicha funcion no devuelve true, osea que devuelve false, significa que no hay registros previos con quien comparar para actualizar el icono, entonces llamamos a la funcion para actualizar el icono comparando con registros nuevos
+      if (!actualizarIconoConRegistrosPrevios(datosOrdenadosDescendente ,moneda , icono)) 
+      {
         actualizarIconoConRegistrosNuevos(data, moneda, icono);
       }
 
@@ -93,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//recibimos la data, la moneda y el icono, con filter filtramos las monedas que coinciden moneda y casa pero que la fecha es anterior a la moneda actual
 function actualizarIconoConRegistrosPrevios(data, moneda, icono) {
   let dataPrevia = data.filter(
     (item) =>
@@ -119,11 +116,13 @@ function actualizarIconoConRegistrosPrevios(data, moneda, icono) {
   }
 }
 
+//aca tambien recibimos data, moneda e icono, pero como la data no viene ordenada, entonces primero tenemos que ordenarla, de mas actual a menos actual
 function actualizarIconoConRegistrosNuevos(data, moneda, icono) {
   data.sort(
     (a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion)
   );
 
+  //luego filtramos teniendo en cuenta la moneda y la casa y las monedas que son mas actuales que la actual
   let datanueva = data.filter(
     (item) =>
       item.moneda === moneda.moneda &&
@@ -131,6 +130,7 @@ function actualizarIconoConRegistrosNuevos(data, moneda, icono) {
       item.fechaActualizacion > moneda.fechaActualizacion
   );
 
+  //actualizamos el icono si se encontraron elementos
   if (datanueva.length > 0) {
     let primerRegistro = datanueva[0];
     if (moneda.compra > primerRegistro.compra) {
@@ -261,8 +261,8 @@ function MostrarGrafico(selectedOption) {
     }
   });
 
-   // Verificar si no hay datos filtrados y mostrar un mensaje de alerta
-   if (datosFiltrados.length === 0) {
+  // Verificar si no hay datos filtrados y mostrar un mensaje de alerta
+  if (datosFiltrados.length === 0) {
     Swal.fire({
       title: "Sin datos",
       text: "No hay cotizaciones guardadas para la moneda seleccionada.",
@@ -270,7 +270,6 @@ function MostrarGrafico(selectedOption) {
     });
     return;
   }
-  
 
   // Llamar a la función para dibujar el gráfico con los datos filtrados
   dibujarGrafico(datosFiltrados, selectedOption);
@@ -283,93 +282,97 @@ function extraerFechaSinHora(fechaISO) {
 
 //este evtno se activa cuando un usuario hace click en el link de compartir info
 linkCompartir.addEventListener("click", (event) => {
-  event.preventDefault();
+  // event.preventDefault();
   // modal.style.display = "block";
   Swal.fire({
-    title: 'Compartir Información',
+    title: "Compartir Información",
     html:
-        '<form id="formularioCompartir">' +
-        '<label for="name">Nombre:</label>' +
-        '<input type="text" id="name" name="name" required class="swal2-input">' +
-        '<label for="email">Email:</label>' +
-        '<input type="email" id="email" name="email" required class="swal2-input">' +
-        '</form>',
+      '<form id="formularioCompartir">' +
+      '<label for="name">Nombre:</label>' +
+      '<input type="text" id="name" name="name" required class="swal2-input">' +
+      '<label for="email">Email:</label>' +
+      '<input type="email" id="email" name="email" required class="swal2-input">' +
+      "</form>",
     showCancelButton: true,
-    confirmButtonText: 'Enviar',
+    confirmButtonText: "Enviar",
     preConfirm: () => {
-        const name = Swal.getPopup().querySelector('#name').value;
-        const email = Swal.getPopup().querySelector('#email').value;
-        if (!name || !email) {
-            Swal.showValidationMessage(`Por favor completa ambos campos`);
-        }
-        return { name: name, email: email };
-    }
-}).then((result) => {
+      const name = Swal.getPopup().querySelector("#name").value;
+      const email = Swal.getPopup().querySelector("#email").value;
+      if (!name || !email) {
+        Swal.showValidationMessage(`Por favor completa ambos campos`);
+      }
+      return { name: name, email: email };
+    },
+  }).then((result) => {
     if (result.isConfirmed) {
-        console.log(result.value);
-        // Aquí puedes manejar el envío del formulario
-        // Por ejemplo, enviar los datos a tu servidor
-        // O hacer algo con la información recibida
-        enviarFormulario(result.value.name, result.value.email);
+      console.log(result.value);
+      enviarFormulario(result.value.name, result.value.email);
     }
+  });
 });
-});
 
-
-
-//este evento se activa cuando se hace click en el boton enviar en el formulario de compartir información
-//guardamos la info de los inputs, osea nombre y correo y nos guardamos la info de la tabla
-//con la info de la tabla armamos el body del correo a enviar
+//esta funcion la llamamos cuando hacemos click en enviar en el modal de sweealert
+//le pasamos por parametro el nombre y e email
 function enviarFormulario(name, email) {
-  console.log(name)
-  console.log(email)
+  //recuperamos del dom la tabla
   const table = document.getElementById("cotizaciones-table");
+  //aca recorremos todas las filas de la tabla
   const filas = Array.from(table.querySelectorAll("tr"));
   let tableContent = "";
 
   // Capturar encabezados de la tabla
   const headers = Array.from(table.querySelectorAll("th")).map(
-      (th) => th.textContent
+    (th) => th.textContent
   );
 
   tableContent += headers.join("\t") + "\n";
 
   // Capturamos filas de la tabla y vamos guardando en tableContent el contenido de la tabla celda por celda
   filas.forEach((row) => {
-      const cells = row.querySelectorAll("td");
-      const rowContent = Array.from(cells)
-          .map((cell) => cell.textContent)
-          .join("\t\t");
-      tableContent += rowContent + "\n";
+    const cells = row.querySelectorAll("td");
+    const rowContent = Array.from(cells)
+      .map((cell) => cell.textContent)
+      .join("\t\t");
+    tableContent += rowContent + "\n";
   });
 
   const subject = "Información de Cotizaciones";
   const body = `Hola ${name},\n\nAquí tienes la información de cotizaciones:\n\n${tableContent}`;
-  
+
   // Verifica la longitud del cuerpo del correo
   if (body.length > 2000) {
-      console.warn("El cuerpo del correo es demasiado largo y puede no abrirse correctamente en algunos clientes de correo.");
+    console.log(
+      "El cuerpo del correo es demasiado largo y puede no abrirse correctamente en algunos clientes de correo."
+    );
   }
-
-  window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
 }
 
-// Función para dibujar el gráfico
+// funcion para mostrar el grafico
 function dibujarGrafico(cotizaciones, selectedOption) {
-  // Destruir el gráfico anterior si existe
+  // destruimos el grafico anterior si ya existre
+  // lo destruimos para poder crear uno nuevo, sino nos tira error, es como que no puede dibujar un nuevo grafico si ya existe uno, por eso primero lo eliminamos
   if (chartInstance) {
     chartInstance.destroy();
   }
-  // Ordenar los datos por fecha de la más actual a la menos actual
+
+  
+  //con sort ordenamos los datos por fecha de mas actual a menos actual basandonos en la fecha de actualizacion
   cotizaciones.sort(
     (a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion)
   );
 
-  // Preparar datos para Chart.js
+  
+  // Creamos un objeto para almacenar los datos que vamos a usar para el grafico
   const data = {};
 
+  // iteramos sobre cada cotizacion para organizar los datos
   cotizaciones.forEach((item) => {
+    // Creamos una clave unica para cada combinación de moneda y casa de cambio
     const key = `${item.moneda}-${item.casa}`;
+    // Si la clave no existe en el objeto data, la inicializamos con arrays vacios
     if (!data[key]) {
       data[key] = {
         labels: [],
@@ -377,69 +380,75 @@ function dibujarGrafico(cotizaciones, selectedOption) {
         salePrices: [],
       };
     }
-    data[key].labels.push(item.fechaActualizacion);
-    data[key].prices.push(item.compra);
-    data[key].salePrices.push(item.venta);
+    // Añadimos los datos de la cotización actual a los arrays correspondientes
+    data[key].labels.push(item.fechaActualizacion); // Fechas de actualización
+    data[key].prices.push(item.compra); // Precios de compra
+    data[key].salePrices.push(item.venta); // Precios de venta
   });
 
-  // Configurar datasets para Chart.js
+ 
+  // creamos los conjuntos de datos (datasets) para el chart basandonos en los datos preparados
   const datasets = Object.keys(data).map((key) => {
-    const [moneda, casa] = key.split("-");
+    const [moneda, casa] = key.split("-"); // dividimos la clave en moneda y casa de cambio con split, y como antes le habiamos puesto un "-" entonces lo podemos hacer facilmente
     return {
       label:
         selectedOption === 0
-          ? `${moneda} (${casa})`
-          : `${moneda} (${casa}) - Compra`,
-      data: data[key].prices,
-      fill: false,
-      borderColor: getRandomColor(),
-      tension: 0.4,
+          ? `${moneda} (${casa})` // Etiqueta para el grafico de precios de compra
+          : `${moneda} (${casa}) - Compra`, // Etiqueta para otro tipo de grafico
+      data: data[key].prices, // Datos de precios de compra
+      fill: false, // No rellenar el area bajo la linea
+      borderColor: getRandomColor(), // Color aleatorio para la línea
+      tension: 0.4, // Suavizar la linea del gráfico
     };
   });
 
+  // Si la opción seleccionada no es 0, añadir datasets para los precios de venta
   if (selectedOption !== 0) {
     const saleDatasets = Object.keys(data).map((key) => {
-      const [moneda, casa] = key.split("-");
+      const [moneda, casa] = key.split("-"); // Dividimos la clave en moneda y casa de cambio nuevamente
       return {
-        label: `${moneda} (${casa}) - Venta`,
-        data: data[key].salePrices,
-        fill: false,
-        borderColor: getRandomColor(),
-        tension: 0.4,
+        label: `${moneda} (${casa}) - Venta`, // Etiqueta para el grafico de precios de venta
+        data: data[key].salePrices, // Datos de precios de venta
+        fill: false, // No rellenar el area bajo la línea
+        borderColor: getRandomColor(), // Color aleatorio para la linea
+        tension: 0.4, // Suavizar la línea del gráfico
       };
     });
+    // Añadimos los datasets de venta a los datasets existentes
     datasets.push(...saleDatasets);
   }
 
-  // Crear gráfico con Chart.js
-  const ctx = document.getElementById("cotizaciones-chart").getContext("2d");
+
+  // accedemos al elemento canva
+  const ctx = document.getElementById("cotizaciones-chart");
+  // Creamos una nueva instancia de Chart.js para dibujar el grafico y lo guardamos en chart instance para despues validar si ya existe un grafico
   chartInstance = new Chart(ctx, {
-    type: "line",
+    type: "line", // Tipo de gráfico: línea
     data: {
-      labels: data[Object.keys(data)[0]].labels,
-      datasets: datasets,
+      labels: data[Object.keys(data)[0]].labels, // Usamos las etiquetas (fechas) del primer conjunto de datos
+      datasets: datasets, // Conjuntos de datos para el grafico
     },
     options: {
-      responsive: true,
+      responsive: true, // Hacer que el grafico sea responsivo
       plugins: {
         tooltip: {
-          mode: "index",
-          intersect: false,
+          mode: "index", // Mostrar tooltips por indice
+          intersect: false, // No requerir intersección para mostrar tooltips
         },
       },
       scales: {
         x: {
-          display: true,
+          display: true, // Mostrar eje X
           title: {
-            display: true,
-            text: "Fecha de Actualización",
+            display: true, // Mostrar titulo del eje X
+            text: "Fecha de Actualización", // Texto del titulo del eje X
           },
         },
         y: {
-          display: true,
+          display: true, // Mostrar eje Y
           title: {
-            display: true,
-            text: selectedOption === 0 ? "Precio de Compra" : "Precio",
+            display: true, // Mostrar título del eje Y
+            text: selectedOption === 0 ? "Precio de Compra" : "Precio", // Texto del titulo del eje Y
           },
         },
       },
@@ -447,12 +456,13 @@ function dibujarGrafico(cotizaciones, selectedOption) {
   });
 
   // Función para generar colores aleatorios
+  // Esta función crea un color hexadecimal aleatorio
   function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
+    const letters = "0123456789ABCDEF"; // Caracteres hexadecimales
+    let color = "#"; // Comienza con #
     for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      color += letters[Math.floor(Math.random() * 16)]; // Añade 6 caracteres aleatorios
     }
-    return color;
+    return color; // Devuelve el color generado
   }
 }

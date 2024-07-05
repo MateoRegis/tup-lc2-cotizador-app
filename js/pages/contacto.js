@@ -2,25 +2,26 @@ let nombre = document.getElementById("user_name");
 let email = document.getElementById("user_email");
 let mensaje = document.getElementById("message");
 let lblValidacion = document.getElementById("lblValidacion");
-let formulario = document.getElementById('contact-form');
+let formulario = document.getElementById("contact-form");
 function EnviarFormulario() {
-  if (ValidarFormulario()) {
-    lblValidacion.innerHTML = "Todos los campos estan completos.";
-    lblValidacion.style.color = "Green";
-  } else {
+  if (!ValidarFormulario()) {
     lblValidacion.innerText = "Debes completar todos los campos.";
     lblValidacion.style.color = "Red";
   }
 }
 function LimpiarFormulario() {
   formulario.reset();
-  lblValidacion.style.display = 'none';
+  lblValidacion.style.display = "none";
 }
 function ValidarFormulario() {
-  if (nombre.value.trim() != "" && email.value.trim() != "" && mensaje.value.trim() != "") {
+  if (
+    nombre.value.trim() != "" &&
+    email.value.trim() != "" &&
+    mensaje.value.trim() != ""
+  ) {
     return true;
   }
-  lblValidacion.style.display = 'block';
+  lblValidacion.style.display = "block";
   return false;
 }
 
@@ -29,11 +30,16 @@ window.onload = function () {
     .getElementById("contact-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      // these IDs from the previous steps
       if (ValidarFormulario()) {
         emailjs.sendForm("contact_service", "contact_form", this).then(
           () => {
             console.log("SUCCESS!");
+            Swal.fire({
+              title: "Correo enviado",
+              text: "El correo se envió correctamente.",
+              icon: "success",
+              confirmButtonText: "OK",
+            });
             LimpiarFormulario();
           },
           (error) => {
