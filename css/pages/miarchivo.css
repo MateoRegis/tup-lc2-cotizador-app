@@ -1,3 +1,15 @@
+.aviso{
+    color: #333; /* Color del texto */
+  font-size: 2.5rem; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+  text-align: center; /* Centrado del texto */
+  padding: 20px; /* Espacio alrededor del texto */
+  border: 2px solid #333; /* Borde alrededor del texto */
+  border-radius: 10px; /* Esquinas redondeadas */
+  background-color: #fff; /* Fondo blanco para el texto */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para el texto */
+}
+
 /* seccion cotizaciones favoritas */
 .archivos-section {
     padding: 30px;

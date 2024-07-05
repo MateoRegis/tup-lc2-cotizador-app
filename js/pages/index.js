@@ -296,12 +296,24 @@ function GuardarMoneda(boton) {
     //imprimo un msjito para corroborar que si se guardo
     console.log("Moneda guardada:", monedaAGuardar);
     //muestro el modal de cotizacion agregada correctamente
-    modalCotizacionAgregada.style.display = 'block';
+    // modalCotizacionAgregada.style.display = 'block';
+    Swal.fire({
+      title: "¡Cotización guardada!",
+      text: "Cotización guardada correctamente.",
+      icon: "success",
+      confirmButtonText: "OK"
+    });
 
   } else {
     //si ya existe le informo al usuario que no se puede guardar, despues esto lo vamos a informar con un cartelito en pantalla
     console.log("La moneda ya existe. No se puede guardar.");
-    modalCotizacionExistente.style.display = 'block';
+    // modalCotizacionExistente.style.display = 'block';
+    Swal.fire({
+      title: "Error",
+      text: "Ya existe esta cotización en favoritos.",
+      icon: "error",
+      confirmButtonText: "OK",
+    });
 
   }
 
@@ -321,11 +333,13 @@ function monedaYaGuardada(moneda) {
     (element) =>
       element.moneda === moneda.moneda &&
       element.nombre === moneda.nombre &&
-      element.fechaActualizacion === moneda.fechaActualizacion
+      extraerFechaSinHora(element.fechaActualizacion) === extraerFechaSinHora(moneda.fechaActualizacion)
   );
 }
 
-
+function extraerFechaSinHora(fechaISO) {
+  return fechaISO.split("T")[0];
+}
 
 
 

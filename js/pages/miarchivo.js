@@ -6,11 +6,27 @@ let fechaMonedas = document.getElementById("fecha-monedas");
 //esta vaarible la vamos a usar para guardar la informacion que recuperamos del storage
 let listaCotizacionesGuardadas = [];
 
-
-
-
 //////////////////////////////////////////////////
 //////////////////////Principal//////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  const cotizaciones = localStorage.getItem("cotizaciones");
+ 
+
+  if (!cotizaciones || cotizaciones === "[]") {
+    console.log("Estoy entrando al if.");
+    Swal.fire({
+      title: "Favoritos",
+      text: "No hay cotizaciones guardadas.",
+      icon: "info",
+    });
+    document.querySelector(
+      "main"
+    ).innerHTML = `<h2 class="aviso">Debes guardar cotizaciones para que aparezcan aquí.</h2>`;
+  }
+});
 
 
 //Esta funcion nos sirve para recuperar los datos del local storage
@@ -47,7 +63,9 @@ function construirTarjeta(cotizacion, rutaImagen) {
         </div>
         <div class="tarjeta-footer">
             <div class="btn-container">
-                <button class="btn-Eliminar" data-favorita='${JSON.stringify(cotizacion)}'  onClick="eliminarCotizacion(this)">Eliminar</button>
+                <button class="btn-Eliminar" data-favorita='${JSON.stringify(
+                  cotizacion
+                )}'  onClick="eliminarCotizacion(this)">Eliminar</button>
             </div>
         </div>
     `;
@@ -55,18 +73,42 @@ function construirTarjeta(cotizacion, rutaImagen) {
 }
 
 // Función para eliminar la cotización del almacenamiento local
-function eliminarCotizacion(buton){
-  // console.log(buton.parentNode.parentNode.parentNode)
-  let cotizacionEliminar = JSON.parse(buton.getAttribute("data-favorita"));
-  console.log(cotizacionEliminar);
-  listaCotizacionesGuardadas = listaCotizacionesGuardadas.filter(item => 
-    !(item.fechaActualizacion === cotizacionEliminar.fechaActualizacion && item.moneda === cotizacionEliminar.moneda && item.casa === cotizacionEliminar.casa)
-  );
-  localStorage.setItem("cotizaciones", JSON.stringify(listaCotizacionesGuardadas));
-  window.location = "Miarchivo.html";
+function eliminarCotizacion(button) {
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Esta acción no se puede deshacer",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let cotizacionEliminar = JSON.parse(button.getAttribute("data-favorita"));
+      console.log(cotizacionEliminar);
+      listaCotizacionesGuardadas = listaCotizacionesGuardadas.filter(
+        (item) =>
+          !(
+            item.fechaActualizacion === cotizacionEliminar.fechaActualizacion &&
+            item.moneda === cotizacionEliminar.moneda &&
+            item.casa === cotizacionEliminar.casa
+          )
+      );
+      localStorage.setItem(
+        "cotizaciones",
+        JSON.stringify(listaCotizacionesGuardadas)
+      );
+      Swal.fire(
+        "Eliminado",
+        "La cotización ha sido eliminada.",
+        "success"
+      ).then(() => {
+        window.location = "Miarchivo.html";
+      });
+    }
+  });
 }
-
-
 
 //esta funcion la usamos para contruir el div donde va la fecha de la cotizacion
 function construirDivFecha(fecha) {
@@ -91,13 +133,13 @@ function ordenarYAgruparPorFecha(lista) {
   //en la variable grupos nos vamos a guardar la nueva lista agrupada por fecha
   //reduce es un metodo de arrays, se pasa por parametro una funcion, y un valor inicial, en nuestro caso solo le pasamos la funcion, el valor inicial no se lo damos, y como no se lo damos, el primer elemento del array se utiliza como el initialValue y reduce comienza a partir del segundo elemento.
   //la funcion que se pasa por parametro debe tener 4 parametros: total - currentValue - currentIndex - array
-// el total y el current value son obligatorios, los otros dos son opcionales.
-//total hace la funcion de un acumulador
-//el total que nosotros le pasamos es listaAgrupados, es decir que en lista agrupados vamos a acumular el valor de vuelto por la funcion.
-//lo inicializamos vacio.
-//el currentValue que nosotros le pasamos a la funcion es cotizacion, que es el elemento actual-
-//luego dentro de la funcion lo que hacemos es construir el div de la fecha sin hora, inicializar la lista como vacia, y luego ir cargando las cotizaciones, se usa fechaSinHora como indice
-// finalmente retornamos list agrupados pero como todo esto lo asignamos en la variable grupos, entonces lo que hacemos es retornar grupos, y asi logramos ordenar y agrupar las cotizaciones por fecha.
+  // el total y el current value son obligatorios, los otros dos son opcionales.
+  //total hace la funcion de un acumulador
+  //el total que nosotros le pasamos es listaAgrupados, es decir que en lista agrupados vamos a acumular el valor de vuelto por la funcion.
+  //lo inicializamos vacio.
+  //el currentValue que nosotros le pasamos a la funcion es cotizacion, que es el elemento actual-
+  //luego dentro de la funcion lo que hacemos es construir el div de la fecha sin hora, inicializar la lista como vacia, y luego ir cargando las cotizaciones, se usa fechaSinHora como indice
+  // finalmente retornamos list agrupados pero como todo esto lo asignamos en la variable grupos, entonces lo que hacemos es retornar grupos, y asi logramos ordenar y agrupar las cotizaciones por fecha.
   let grupos = lista.reduce((listaAgrupados, cotizacion) => {
     let fechaSinHora = extraerFechaSinHora(cotizacion.fechaActualizacion);
     if (!listaAgrupados[fechaSinHora]) {
@@ -108,7 +150,6 @@ function ordenarYAgruparPorFecha(lista) {
   }, {});
   return grupos;
 }
-
 
 //en esta funcion mostramos las tarjetas
 function MostrarTarjetas() {

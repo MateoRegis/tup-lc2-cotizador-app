@@ -32,53 +32,66 @@ let chartInstance = null; // Variable para almacenar la instancia del gráfico
 //este evento se activa cuando se carga el  dom
 //dibujamos el grafico y la tabla
 document.addEventListener("DOMContentLoaded", () => {
-  MostrarGrafico("0");
-  const data = JSON.parse(localStorage.getItem("cotizaciones")) || [];
-  // Ordenar los datos por fecha de la más actual a la menos actual
-  datosOrdenadosDescendente = data.sort(
-    (a, b) => new Date(b.fechaActualizacion) - new Date(a.fechaActualizacion)
-  );
+  const cotizaciones = localStorage.getItem("cotizaciones");
+  if (!cotizaciones || cotizaciones === "[]") {
+    console.log("Estoy entrando al if.");
+    Swal.fire({
+      title: "Informes",
+      text: "Debes guardar cotizaciones para que aparezca aquí un informe.",
+      icon: "info",
+    });
+    document.querySelector(
+      "main"
+    ).innerHTML = `<h2 class="aviso">Debes guardar cotizaciones para que aparezcan aquí.</h2>`;
+  } else {
+    MostrarGrafico("0");
+    const data = JSON.parse(localStorage.getItem("cotizaciones")) || [];
+    // Ordenar los datos por fecha de la más actual a la menos actual
+    datosOrdenadosDescendente = data.sort(
+      (a, b) => new Date(b.fechaActualizacion) - new Date(a.fechaActualizacion)
+    );
 
-  // Generar filas de la tabla dependiendo de cuanta info hay en el local storage
-  datosOrdenadosDescendente.forEach((moneda) => {
-    const fila = document.createElement("tr");
+    // Generar filas de la tabla dependiendo de cuanta info hay en el local storage
+    datosOrdenadosDescendente.forEach((moneda) => {
+      const fila = document.createElement("tr");
 
-    const celdaMoneda = document.createElement("td");
-    celdaMoneda.textContent = moneda.moneda + " " + moneda.casa;
-    fila.appendChild(celdaMoneda);
+      const celdaMoneda = document.createElement("td");
+      celdaMoneda.textContent = moneda.moneda + " " + moneda.casa;
+      fila.appendChild(celdaMoneda);
 
-    const celdaFecha = document.createElement("td");
-    celdaFecha.textContent = extraerFechaSinHora(moneda.fechaActualizacion);
-    fila.appendChild(celdaFecha);
+      const celdaFecha = document.createElement("td");
+      celdaFecha.textContent = extraerFechaSinHora(moneda.fechaActualizacion);
+      fila.appendChild(celdaFecha);
 
-    const celdaCompra = document.createElement("td");
-    celdaCompra.textContent = moneda.compra;
-    fila.appendChild(celdaCompra);
+      const celdaCompra = document.createElement("td");
+      celdaCompra.textContent = moneda.compra;
+      fila.appendChild(celdaCompra);
 
-    const celdaVenta = document.createElement("td");
-    celdaVenta.textContent = moneda.venta;
-    fila.appendChild(celdaVenta);
+      const celdaVenta = document.createElement("td");
+      celdaVenta.textContent = moneda.venta;
+      fila.appendChild(celdaVenta);
 
-    const celdaVariacion = document.createElement("td");
-    const icono = document.createElement("i");
+      const celdaVariacion = document.createElement("td");
+      const icono = document.createElement("i");
 
-    if (
-      !actualizarIconoConRegistrosPrevios(
-        datosOrdenadosDescendente,
-        moneda,
-        icono
-      )
-    ) {
-      actualizarIconoConRegistrosNuevos(data, moneda, icono);
-    }
+      if (
+        !actualizarIconoConRegistrosPrevios(
+          datosOrdenadosDescendente,
+          moneda,
+          icono
+        )
+      ) {
+        actualizarIconoConRegistrosNuevos(data, moneda, icono);
+      }
 
-    //agregamos el icono a la celda
-    celdaVariacion.appendChild(icono);
-    //agregamos la celda a la fila
-    fila.appendChild(celdaVariacion);
-    //una vez que tenemos toda la fila cargada la agregamos a la tabla
-    tableBody.appendChild(fila);
-  });
+      //agregamos el icono a la celda
+      celdaVariacion.appendChild(icono);
+      //agregamos la celda a la fila
+      fila.appendChild(celdaVariacion);
+      //una vez que tenemos toda la fila cargada la agregamos a la tabla
+      tableBody.appendChild(fila);
+    });
+  }
 });
 
 function actualizarIconoConRegistrosPrevios(data, moneda, icono) {
@@ -99,7 +112,7 @@ function actualizarIconoConRegistrosPrevios(data, moneda, icono) {
     } else if (moneda.compra < ultimoRegistro.compra) {
       icono.className = "fa-solid fa-arrow-down";
     } else {
-      icono.className = "fa-solid fa-minus"; 
+      icono.className = "fa-solid fa-minus";
     }
     return true;
   } else {
@@ -126,7 +139,7 @@ function actualizarIconoConRegistrosNuevos(data, moneda, icono) {
     } else if (moneda.compra < primerRegistro.compra) {
       icono.className = "fa-solid fa-arrow-down";
     } else {
-      icono.className = "fa-solid fa-minus"; 
+      icono.className = "fa-solid fa-minus";
     }
   }
 }
@@ -188,7 +201,8 @@ function MostrarGrafico(selectedOption) {
   let rutaImagen;
   let rutaImagenUsd = "usd.svg";
   // Filtrar las cotizaciones según la opción seleccionada
-  let datosFiltrados = cotizaciones.filter(item => {
+  //de las cotizaciones recuperadas del local storage lo que hacemos el filtrar las que coinciden con la opcion seleccionada por el usuario
+  let datosFiltrados = cotizaciones.filter((item) => {
     switch (selectedOption) {
       case 0: // Todas las monedas
         rutaImagen = "noun-world-2699516.svg";
@@ -247,6 +261,17 @@ function MostrarGrafico(selectedOption) {
         return false;
     }
   });
+
+   // Verificar si no hay datos filtrados y mostrar un mensaje de alerta
+   if (datosFiltrados.length === 0) {
+    Swal.fire({
+      title: "Sin datos",
+      text: "No hay cotizaciones guardadas para la moneda seleccionada.",
+      icon: "warning",
+    });
+    return;
+  }
+  
 
   // Llamar a la función para dibujar el gráfico con los datos filtrados
   dibujarGrafico(datosFiltrados, selectedOption);
@@ -315,12 +340,14 @@ formCompartir.addEventListener("submit", (event) => {
 
 // Función para dibujar el gráfico
 function dibujarGrafico(cotizaciones, selectedOption) {
-   // Destruir el gráfico anterior si existe
-   if (chartInstance) {
+  // Destruir el gráfico anterior si existe
+  if (chartInstance) {
     chartInstance.destroy();
   }
   // Ordenar los datos por fecha de la más actual a la menos actual
-  cotizaciones.sort((a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion));
+  cotizaciones.sort(
+    (a, b) => new Date(a.fechaActualizacion) - new Date(b.fechaActualizacion)
+  );
 
   // Preparar datos para Chart.js
   const data = {};
@@ -343,7 +370,10 @@ function dibujarGrafico(cotizaciones, selectedOption) {
   const datasets = Object.keys(data).map((key) => {
     const [moneda, casa] = key.split("-");
     return {
-      label: selectedOption === 0 ? `${moneda} (${casa})` : `${moneda} (${casa}) - Compra`,
+      label:
+        selectedOption === 0
+          ? `${moneda} (${casa})`
+          : `${moneda} (${casa}) - Compra`,
       data: data[key].prices,
       fill: false,
       borderColor: getRandomColor(),
