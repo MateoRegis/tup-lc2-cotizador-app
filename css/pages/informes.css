@@ -190,16 +190,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para el texto */
 .icono-selector i {
   font-size: 1.2rem;
 }
-.compartir-info {
-  width: 200px;
-  margin-left: 30px;
-  margin-bottom: 30px;
-}
-.compartir-info a {
-  font-size: 1pc;
-  text-decoration: underline;
-  color: var(--color-interactive-control);
-}
+
 .datos-moneda {
   width: 100%;
 }
@@ -314,11 +305,18 @@ th:hover {
   padding: 0 8px;
   color: #000;
 }
-/* @media screen and (max-width: 1024px){
-    .selector-container{
-        left: 300px;
-    }
-} */
+
+#link-compartir-info{
+  padding: 5px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 5px;
+  background-color: var(--color-interactive-primary);
+}
+
+
 @media screen and (max-width: 768px) {
   .img-grafico-container {
     width: 300px;

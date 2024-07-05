@@ -6,7 +6,6 @@ const btnSelectorMoneda = document.getElementById("btn-selector-moneda");
 const modal = document.getElementById("modal");
 const linkCompartir = document.getElementById("link-compartir-info");
 const closeButton = document.querySelectorAll(".close-button");
-const formCompartir = document.getElementById("formularioCompartir");
 
 const tableBody = document.getElementById("table-body");
 
@@ -285,58 +284,75 @@ function extraerFechaSinHora(fechaISO) {
 //este evtno se activa cuando un usuario hace click en el link de compartir info
 linkCompartir.addEventListener("click", (event) => {
   event.preventDefault();
-  modal.style.display = "block";
+  // modal.style.display = "block";
+  Swal.fire({
+    title: 'Compartir Información',
+    html:
+        '<form id="formularioCompartir">' +
+        '<label for="name">Nombre:</label>' +
+        '<input type="text" id="name" name="name" required class="swal2-input">' +
+        '<label for="email">Email:</label>' +
+        '<input type="email" id="email" name="email" required class="swal2-input">' +
+        '</form>',
+    showCancelButton: true,
+    confirmButtonText: 'Enviar',
+    preConfirm: () => {
+        const name = Swal.getPopup().querySelector('#name').value;
+        const email = Swal.getPopup().querySelector('#email').value;
+        if (!name || !email) {
+            Swal.showValidationMessage(`Por favor completa ambos campos`);
+        }
+        return { name: name, email: email };
+    }
+}).then((result) => {
+    if (result.isConfirmed) {
+        console.log(result.value);
+        // Aquí puedes manejar el envío del formulario
+        // Por ejemplo, enviar los datos a tu servidor
+        // O hacer algo con la información recibida
+        enviarFormulario(result.value.name, result.value.email);
+    }
+});
 });
 
-//este evento es para cerrar el modal de compartir info
-closeButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-});
 
-//este evento es para cerra el modal de compartir info al hacer click en cualquier parte de la ventana
-window.addEventListener("click", (event) => {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-});
 
 //este evento se activa cuando se hace click en el boton enviar en el formulario de compartir información
 //guardamos la info de los inputs, osea nombre y correo y nos guardamos la info de la tabla
 //con la info de la tabla armamos el body del correo a enviar
-formCompartir.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
+function enviarFormulario(name, email) {
+  console.log(name)
+  console.log(email)
   const table = document.getElementById("cotizaciones-table");
   const filas = Array.from(table.querySelectorAll("tr"));
   let tableContent = "";
 
-  // Capturar encabezados de la tabla, excepto el último
-  const headers = Array.from(table.querySelectorAll("th:not(:last-child)")).map(
-    (th) => "|" + th.textContent
+  // Capturar encabezados de la tabla
+  const headers = Array.from(table.querySelectorAll("th")).map(
+      (th) => th.textContent
   );
 
   tableContent += headers.join("\t") + "\n";
 
-  // Capturamos filas de la tabla y vamos guardando en tablecontent el contenido de latabla celda por celda
+  // Capturamos filas de la tabla y vamos guardando en tableContent el contenido de la tabla celda por celda
   filas.forEach((row) => {
-    const cells = row.querySelectorAll("td");
-    const rowContent = Array.from(cells)
-      .map((cell) => "|" + cell.textContent)
-      .join("\t\t");
-    tableContent += rowContent + "\n";
+      const cells = row.querySelectorAll("td");
+      const rowContent = Array.from(cells)
+          .map((cell) => cell.textContent)
+          .join("\t\t");
+      tableContent += rowContent + "\n";
   });
 
   const subject = "Información de Cotizaciones";
   const body = `Hola ${name},\n\nAquí tienes la información de cotizaciones:\n\n${tableContent}`;
-  window.location.href = `mailto:${email}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
+  
+  // Verifica la longitud del cuerpo del correo
+  if (body.length > 2000) {
+      console.warn("El cuerpo del correo es demasiado largo y puede no abrirse correctamente en algunos clientes de correo.");
+  }
 
-  modal.style.display = "none";
-});
+  window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 // Función para dibujar el gráfico
 function dibujarGrafico(cotizaciones, selectedOption) {
