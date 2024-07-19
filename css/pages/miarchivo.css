@@ -1,13 +1,13 @@
-.aviso{
-    color: #333; /* Color del texto */
-  font-size: 2.5rem; /* Tamaño del texto */
-  font-weight: bold; /* Negrita */
-  text-align: center; /* Centrado del texto */
-  padding: 20px; /* Espacio alrededor del texto */
-  border: 2px solid #333; /* Borde alrededor del texto */
-  border-radius: 10px; /* Esquinas redondeadas */
-  background-color: #fff; /* Fondo blanco para el texto */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para el texto */
+.aviso {
+    color: #333;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* seccion cotizaciones favoritas */
@@ -22,14 +22,14 @@
     color: black;
 }
 
-.tarjetas-container{
+.tarjetas-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
-    
+
 }
 
-.tarjeta{
+.tarjeta {
     padding: 10px;
     max-width: 350px;
     display: flex;
@@ -40,7 +40,7 @@
     border-radius: 10px;
 }
 
-.tarjeta-header{
+.tarjeta-header {
     height: 130px;
     display: flex;
     flex-direction: column;
@@ -48,36 +48,43 @@
     gap: 6px;
     margin-bottom: 10px;
 }
-.tarjeta-img-container{
+
+.tarjeta-img-container {
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
-.tarjeta-img-container img{
+
+.tarjeta-img-container img {
     width: 100%;
     object-fit: cover;
 }
+
 .title {
     font-size: 1.5pc;
     text-align: center;
 }
 
-.tarjeta-body{
+.tarjeta-body {
     display: flex;
     gap: 15px;
     margin-bottom: 10px;
 }
-.item-tarjeta{
+
+.item-tarjeta {
     display: flex;
     flex-direction: column;
 }
+
 .item-tarjeta span {
     font-size: 18px;
 }
+
 .tarjeta-footer {
     width: 100%;
     height: 50px;
 }
+
 .btn-container {
     display: flex;
     justify-content: center;
@@ -85,6 +92,7 @@
     height: 100%;
     width: 100%;
 }
+
 .btn-container button {
     width: 100px;
     height: 30px;
@@ -94,32 +102,36 @@
     color: whitesmoke;
     cursor: pointer;
 }
+
 .btn-container button:hover {
     background-color: rgb(210, 67, 91);
 }
 
 /* seccion migas de pan */
 
-.bread-crumb-item-active::before{
+.bread-crumb-item-active::before {
     content: ">";
     padding: 0 8px;
     color: #000;
 }
 
 /* medias querys */
-@media screen and (max-width: 768px){
-    .titulos h3{
+@media screen and (max-width: 768px) {
+    .titulos h3 {
         font-size: 1pc;
         font-weight: 400;
     }
-    .titulo-archivo h1{
+
+    .titulo-archivo h1 {
         font-size: 2.5pc;
     }
-    .cotizaciones p{
+
+    .cotizaciones p {
         font-size: .8pc;
         letter-spacing: 1px;
     }
-    .fecha span{
+
+    .fecha span {
         font-size: .8pc;
     }
 }

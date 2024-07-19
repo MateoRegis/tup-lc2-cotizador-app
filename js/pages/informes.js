@@ -3,9 +3,9 @@
 //me traigo el boton de selector moneda
 const btnSelectorMoneda = document.getElementById("btn-selector-moneda");
 
-const modal = document.getElementById("modal");
+//const modal = document.getElementById("modal"); //No lo usamos
 const linkCompartir = document.getElementById("link-compartir-info");
-const closeButton = document.querySelectorAll(".close-button");
+//const closeButton = document.querySelectorAll(".close-button"); //No lo usamos
 
 const tableBody = document.getElementById("table-body");
 
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generar filas de la tabla dependiendo de cuanta info hay en el local storage
     datosOrdenadosDescendente.forEach((moneda) => {
+      console.log(datosOrdenadosDescendente.length);
       const fila = document.createElement("tr");
 
       const celdaMoneda = document.createElement("td");

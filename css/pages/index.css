@@ -5,6 +5,7 @@ h2 {
   letter-spacing: 2px;
   font-weight: 600;
 }
+
 h4 {
   font-weight: 400;
 }
@@ -12,61 +13,11 @@ h4 {
 h5 {
   font-weight: 400;
 }
+
 span {
   font-weight: 300;
 }
-/* Estilos del modal */
-.modal {
-  display: none; /* Ocultar modal por defecto */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro translúcido */
-}
 
-.modal-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #fefefe;
-  margin: 15% auto; /* Centrar vertical y horizontalmente */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 300px;
-  border-radius: 10px;
-  animation-name: modalopen;
-  animation-duration: 0.3s;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Animación para mostrar el modal */
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-50%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 /* Seccion selector- cotizacionees */
 .pizarra-section {
   padding: 20px;
@@ -77,6 +28,7 @@ span {
   margin-bottom: 20px;
   color: var(--color-interactive-control);
 }
+
 .selector-monedas-container {
   width: 360px;
   display: flex;
@@ -95,6 +47,7 @@ span {
   align-items: center;
   justify-content: center;
 }
+
 .flag {
   width: 35px;
   height: 100%;
@@ -102,10 +55,12 @@ span {
   align-items: center;
   justify-content: center;
 }
+
 .flag img {
   width: 100%;
   object-fit: cover;
 }
+
 .nombre {
   display: flex;
   align-items: center;
@@ -114,6 +69,7 @@ span {
   font-size: 18px;
   font-weight: 700;
 }
+
 .selector-moneda {
   padding-left: 12px;
   padding: 9.5px 4px;
@@ -123,6 +79,7 @@ span {
   font-size: 1rem;
   margin-right: 5px;
 }
+
 .btn-selector-moneda {
   border: 0;
   cursor: pointer;
@@ -140,64 +97,74 @@ span {
   font-size: 1.5rem;
   text-align: center;
 }
+
 .icono-selector {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .icono-selector i {
   font-size: 1.2rem;
 }
+
 .selector-container {
-    background-color: #fff;
-    margin-top: 10px;
-    width: 300px;
-    max-height: 200px;
-    position: absolute;
-    left: 300px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: scroll;
-    z-index: 5;
-    display: none;
-  }
-  .selector-option-container {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid lightgray;
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    user-select: none;
+  background-color: #fff;
+  margin-top: 10px;
+  width: 300px;
+  max-height: 200px;
+  position: absolute;
+  left: 300px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  z-index: 5;
+  display: none;
 }
+
+.selector-option-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
 .selector-option {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .flag-img {
   width: 30px;
 }
+
 .flag-img img {
   width: 100%;
   object-fit: cover;
 }
+
 .fecha-hora {
   margin-top: 20px;
   text-align: center;
 }
+
 .fecha-hora p {
   font-size: 20px;
   color: var(--color-interactive-control);
 }
+
 .monedas-container {
   display: flex;
   justify-content: center;
@@ -207,10 +174,12 @@ span {
   background-color: #fff;
   padding: 20px;
 }
+
 .moneda-container {
   width: 350px;
   padding: 15px;
 }
+
 .moneda-card {
   border-radius: 15px;
   border: 0.5px solid rgba(179, 187, 198, 0.45);
@@ -226,19 +195,23 @@ span {
   padding: 5px;
   margin-bottom: 3px;
 }
-.moneda-title h4{
+
+.moneda-title h4 {
   text-align: center;
 }
+
 .moneda-body {
   display: flex;
   justify-content: space-around;
   height: 50px;
   margin-bottom: 3px;
 }
+
 .moneda-footer {
   display: flex;
   justify-content: center;
 }
+
 .favoritos {
   width: 100px;
   height: 30px;
@@ -251,33 +224,40 @@ span {
   background-color: var(--color-interactive-accent);
   cursor: pointer;
 }
+
 .btn-favorito {
   cursor: pointer;
   border: none;
   background-color: transparent;
 }
+
 .btn-favorito i {
   font-size: 30px;
   color: var(--color-interactive-control);
 }
+
 .flag-container {
   width: 30px;
   height: 30px;
 }
+
 .flag-container img {
   width: 100%;
   object-fit: cover;
 }
+
 .aviso-favoritos {
   display: flex;
   justify-content: center;
   gap: 50px;
   margin-top: 20px;
 }
+
 .aviso-favoritos p {
   font-size: 16px;
   color: var(--color-interactive-control);
 }
+
 .aviso-favoritos span {
   font-weight: bold;
 }
@@ -350,49 +330,61 @@ span {
   .comentarios-container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .selector-container{
+
+  .selector-container {
     left: 100px;
   }
 }
+
 @media screen and (max-width: 430px) {
   .cotizaciones-title h2 {
     font-size: 22px;
   }
+
   .monedas-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .moneda-container{
+
+  .moneda-container {
     width: 300px;
   }
+
   .comentarios-container {
     display: flex;
     flex-wrap: wrap;
   }
+
   .fecha-hora {
     text-align: start;
   }
+
   .fecha-hora p {
     font-size: 18px;
   }
+
   .aviso-favoritos {
     flex-wrap: wrap;
     gap: 10px;
   }
-  .selector-monedas-container{
+
+  .selector-monedas-container {
     width: 300px;
   }
-  .selector-container{
+
+  .selector-container {
     width: 250px;
     left: 50px;
   }
 }
+
 @media screen and (max-width: 325px) {
   .selector-monedas-container {
     width: 250px;
   }
-  .moneda-container{
+
+  .moneda-container {
     width: 240px;
   }
 }

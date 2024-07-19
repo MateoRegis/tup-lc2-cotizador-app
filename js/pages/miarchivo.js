@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   const cotizaciones = localStorage.getItem("cotizaciones");
- 
+
 
   if (!cotizaciones || cotizaciones === "[]") {
     console.log("Estoy entrando al if.");
@@ -64,8 +64,8 @@ function construirTarjeta(cotizacion, rutaImagen) {
         <div class="tarjeta-footer">
             <div class="btn-container">
                 <button class="btn-Eliminar" data-favorita='${JSON.stringify(
-                  cotizacion
-                )}'  onClick="eliminarCotizacion(this)">Eliminar</button>
+    cotizacion
+  )}'  onClick="eliminarCotizacion(this)">Eliminar</button>
             </div>
         </div>
     `;
