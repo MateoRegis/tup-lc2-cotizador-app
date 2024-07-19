@@ -269,8 +269,7 @@ function GuardarMoneda(boton) {
     listaCotizacionesGuardadas.push(monedaAGuardar);
     //imprimo un msjito para corroborar que si se guardo
     console.log("Moneda guardada:", monedaAGuardar);
-    //muestro el modal de cotizacion agregada correctamente
-    // modalCotizacionAgregada.style.display = 'block';
+
     Swal.fire({
       title: "¡Cotización guardada!",
       text: "Cotización guardada correctamente.",
@@ -281,7 +280,6 @@ function GuardarMoneda(boton) {
   } else {
     //si ya existe le informo al usuario que no se puede guardar, despues esto lo vamos a informar con un cartelito en pantalla
     console.log("La moneda ya existe. No se puede guardar.");
-    // modalCotizacionExistente.style.display = 'block';
     Swal.fire({
       title: "Error",
       text: "Ya existe esta cotización en favoritos.",
