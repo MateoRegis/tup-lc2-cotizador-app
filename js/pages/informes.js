@@ -2,11 +2,7 @@
 
 //me traigo el boton de selector moneda
 const btnSelectorMoneda = document.getElementById("btn-selector-moneda");
-
-//const modal = document.getElementById("modal"); //No lo usamos
 const linkCompartir = document.getElementById("link-compartir-info");
-//const closeButton = document.querySelectorAll(".close-button"); //No lo usamos
-
 const tableBody = document.getElementById("table-body");
 
 //cuando se haga click en este boton quiero que se agregue un select
@@ -26,7 +22,7 @@ let monedaSeleccionada;
 let chartInstance = null; // Variable para almacenar la instancia del gráfico
 
 ////////////////////////////////////////////////////////
-//////////////////////////principal/////////////////////////////////////
+//////////////////////////Principal/////////////////////////////////////
 
 //este evento se activa cuando se carga el  dom
 //dibujamos el grafico y la tabla
@@ -283,8 +279,6 @@ function extraerFechaSinHora(fechaISO) {
 
 //este evtno se activa cuando un usuario hace click en el link de compartir info
 linkCompartir.addEventListener("click", (event) => {
-  // event.preventDefault();
-  // modal.style.display = "block";
   Swal.fire({
     title: "Compartir Información",
     html:
@@ -387,7 +381,7 @@ function dibujarGrafico(cotizaciones, selectedOption) {
     data[key].salePrices.push(item.venta); // Precios de venta
   });
 
- 
+
   // creamos los conjuntos de datos (datasets) para el chart basandonos en los datos preparados
   const datasets = Object.keys(data).map((key) => {
     const [moneda, casa] = key.split("-"); // dividimos la clave en moneda y casa de cambio con split, y como antes le habiamos puesto un "-" entonces lo podemos hacer facilmente
