@@ -323,7 +323,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cellIcono = document.createElement("td");
     const icono = document.createElement("i");
 
-    actualizarIconoConRegistrosPrevios(cotizaciones, cotizacion, icono);
+    if(!actualizarIconoConRegistrosPrevios(cotizaciones, cotizacion, icono)){
+      actualizarIconoConRegistrosNuevos(cotizaciones, cotizacion, icono);
+    }
     cellIcono.appendChild(icono);
 
     
