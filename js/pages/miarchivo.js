@@ -145,7 +145,7 @@ function ordenarYAgruparPorFecha(lista) {
     if (!listaAgrupados[fechaSinHora]) {
       listaAgrupados[fechaSinHora] = [];
     }
-    listaAgrupados[fechaSinHora].push(cotizacion);
+    listaAgrupados[fechaSinHora].push(cotizacion); //lista agrupados es un objeto de listas de cotizaciones en donde usa las fechas como indices
     return listaAgrupados;
   }, {});
   return grupos;
