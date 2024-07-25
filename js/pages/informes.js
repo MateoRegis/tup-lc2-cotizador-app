@@ -180,7 +180,7 @@ function dibujarGrafico(cotizaciones, selectedOption) {
       };
     }
     // Añadimos los datos de la cotización actual a los arrays correspondientes
-    data[key].labels.push(item.fechaActualizacion); // Fechas de actualización
+    data[key].labels.push(extraerFechaSinHora(item.fechaActualizacion)); // Fechas de actualización
     data[key].prices.push(item.compra); // Precios de compra
     data[key].salePrices.push(item.venta); // Precios de venta
   });

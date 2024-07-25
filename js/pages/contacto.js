@@ -3,16 +3,13 @@ let email = document.getElementById("user_email");
 let mensaje = document.getElementById("message");
 let lblValidacion = document.getElementById("lblValidacion");
 let formulario = document.getElementById("contact-form");
-function EnviarFormulario() {
-  if (!ValidarFormulario()) {
-    lblValidacion.innerText = "Debes completar todos los campos.";
-    lblValidacion.style.color = "Red";
-  }
-}
+
+
 function LimpiarFormulario() {
   formulario.reset();
   lblValidacion.style.display = "none";
 }
+
 function ValidarFormulario() {
   if (
     nombre.value.trim() != "" &&
@@ -21,6 +18,8 @@ function ValidarFormulario() {
   ) {
     return true;
   }
+  lblValidacion.innerText = "Debes completar todos los campos.";
+  lblValidacion.style.color = "Red";
   lblValidacion.style.display = "block";
   return false;
 }

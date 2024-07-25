@@ -114,7 +114,7 @@ function eventoMenu() {
   const menu = document.querySelector('#menu');
   const btnMnu = document.querySelector('#btnMnu');
   if (contador == 1) {
-    menu.style.transform = 'translateX(-0%)';
+    menu.style.transform = 'translateX(0%)';
     contador = 0;
     btnMnu.innerHTML = 'x';
   } else {
@@ -129,7 +129,7 @@ function eventoMenu() {
 /**************************************************/
 window.addEventListener('resize', function () {
   // Obtener el nuevo ancho de la ventana
-  var nuevoAncho = window.innerWidth;
+  let nuevoAncho = window.innerWidth;
   const menu = document.querySelector('#menu');
   if (nuevoAncho > 768) {
     menu.style.transform = 'translateX(0%)';
